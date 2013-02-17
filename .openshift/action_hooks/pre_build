@@ -20,3 +20,6 @@ else
   echo "  Restoring stored assets"
   ln -s "${STORED_ASSETS}" "${LIVE_ASSETS}"
 fi
+
+echo "Updating bundler"
+gem install bundler --pre
