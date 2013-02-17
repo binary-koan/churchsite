@@ -1,0 +1,31 @@
+table(class='sermons #{'compact' if compact}')
+  - @sermons.each do |sermon|
+    tr
+      td.description
+        strong = sermon.date.strftime "%-d %b %Y"
+        br
+        span
+          - if compact
+            = sermon.description.length > 100 ? sermon.description[0..100] + '...' : sermon.description
+          - else
+            = sermon.description
+      - unless compact
+        td.player
+          - if sermon.podcast_mp3.url or sermon.podcast_ogg.url
+            audio(preload='auto' controls)
+              source src=sermon.podcast_mp3.url
+              source src=sermon.podcast_ogg.url
+        td.download
+          - if sermon.podcast_mp3.url
+            a.btn(href=sermon.podcast_mp3.url target='_blank')
+              i.icon-download
+      - if editable
+        td.controls
+          = link_to edit_sermon_path(sermon) do
+            i.icon-pencil
+            | Edit
+          | &nbsp;
+          = link_to sermon, :confirm => 'Are you sure?', :method => :delete do
+            i.icon-trash
+            | Delete
+= will_paginate @sermons

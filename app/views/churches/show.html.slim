@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Image:
+  = @church.image
+p
+  strong Name:
+  = @church.name
+p
+  strong Services description:
+  = @church.services_description
+p
+  strong Address:
+  = @church.address
+p
+  strong Map address:
+  = @church.map_address
+
+= link_to 'Edit', edit_church_path(@church)
+'|
+= link_to 'Back', churches_path

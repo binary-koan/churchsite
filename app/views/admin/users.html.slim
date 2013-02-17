@@ -1,0 +1,26 @@
+.row
+  .span12
+    h1 Users
+    h3 Not Yet Confirmed
+    table.fill
+      - User.where(confirmed_at: nil).each do |user|
+        tr
+          td.fill
+            strong = user.name
+            | &nbsp;&mdash;&nbsp;
+            = user.email
+          td.user-controls
+            = link_to '/users/confirm?email='+user.email, method: 'post', class: 'btn btn-link' do
+              i.icon-check
+              | Confirm
+            = link_to registration_path(user), method: 'delete', confirm: 'Are you sure?', class: 'btn btn-link' do
+              i.icon-cancel
+              | Deny
+    h3 Other Users
+    table.fill
+      - User.where(:confirmed_at.lte => DateTime.now).each do |user|
+        tr
+          td
+            strong = user.name
+            | &nbsp;&mdash;&nbsp;
+            = user.email

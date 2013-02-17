@@ -1,0 +1,20 @@
+= form_for @community_page, html: { class: 'form-horizontal' } do |f|
+  - if @community_page.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@community_page.errors.count, "error")} prohibited this community_page from being saved:"
+      ul
+        - @community_page.errors.full_messages.each do |message|
+          li = message
+
+  .control-group
+    = f.label :title, class: 'control-label'
+    .controls = f.text_field :title, class: 'input-xxlarge'
+  .control-group
+    = f.label :image, class: 'control-label'
+    .controls = f.file_field :image
+  .control-group
+    = f.label :content, class: 'control-label'
+    .controls = f.cktext_area :content
+  .control-group: .controls
+    = f.submit 'Save', class: 'btn btn-primary'
+    = link_to "Back to List", community_pages_path, class: 'btn btn-link'

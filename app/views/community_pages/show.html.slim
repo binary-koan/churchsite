@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @community_page.title
+p
+  strong Image:
+  = @community_page.image
+p
+  strong Content:
+  = @community_page.content
+p
+  strong Identifier:
+  = @community_page.identifier
+
+= link_to 'Edit', edit_community_page_path(@community_page)
+'|
+= link_to 'Back', community_pages_path

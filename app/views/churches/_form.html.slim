@@ -1,0 +1,33 @@
+= form_for @church, html: { class: 'form-horizontal' } do |f|
+  - if @church.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@church.errors.count, "error")} prohibited this church from being saved:"
+      ul
+        - @church.errors.full_messages.each do |message|
+          li = message
+
+  .control-group
+    = f.label :name, "Name or Location", class: 'control-label'
+    .controls = f.text_field :name, class: 'input-xxlarge'
+  .control-group
+    = f.label :image, class: 'control-label'
+    .controls
+      img.image-preview src=@church.image.url style="max-height:150px"
+      br
+      = f.file_field :image, accept: 'image/*'
+      p.help-block We recommend this is at least 400px high
+      p.help-block Note that the preview won't update until you click 'Save'
+  .control-group
+    = f.label :services_description, "Description of services", class: 'control-label'
+    .controls = f.text_field :services_description, class: 'input-xxlarge'
+  .control-group
+    = f.label :address, class: 'control-label'
+    .controls = f.text_area :address, class: 'input-xxlarge', rows: 4
+  .control-group
+    = f.label :map_address, "Map Address", class: 'control-label'
+    .controls
+      = f.text_field :map_address, class: 'input-xxlarge'
+      p.help-block The address you would put in to find it on Google Maps
+  .control-group: .controls
+    = f.submit 'Save', class: 'btn btn-primary'
+    = link_to "Back to List", churches_path, class: 'btn btn-link'

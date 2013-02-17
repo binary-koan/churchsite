@@ -1,0 +1,23 @@
+.row.title-box
+  .span12
+    h1 = $config.title
+    p.lead Logged in as #{current_user.name}
+.row
+  - offset = 'offset3'
+  - offset = nil if $config.use_news? and $config.use_community?
+  - if $config.use_news?
+    div class="span6 #{offset}"
+      .well
+        h3 News
+        h4 Add News
+        == render 'news_items/form'
+        == render 'partials/news', editable: true
+        p: a href="/admin/news_items" See Older
+  - if $config.use_sermons?
+    div class="span6 #{offset}"
+      .well
+        h3 Podcasts
+        = link_to new_sermon_path, class: 'btn' do
+          i.icon-plus-squared
+          | Add Podcast
+        == render 'partials/sermons', editable: true, compact: true

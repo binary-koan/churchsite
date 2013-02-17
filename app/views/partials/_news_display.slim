@@ -1,0 +1,10 @@
+p
+  - if editable
+    a.news-edit-btn: i.icon-pencil
+  span.news-item
+    strong
+      | &nbsp;
+      = @news_item.title
+      | &nbsp;&mdash;&nbsp;
+    = @news_item.content
+== render 'news_items/form' if editable

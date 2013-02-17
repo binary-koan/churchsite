@@ -1,0 +1,67 @@
+= form_for @sermon, html: { class: 'form-horizontal' } do |f|
+  - if @sermon.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@sermon.errors.count, "error")} prohibited this sermon from being saved:"
+      ul
+        - @sermon.errors.full_messages.each do |message|
+          li = message
+
+  .control-group
+    = f.label :date, class: 'control-label'
+    .controls = f.date_select :date, { order: [:day, :month, :year], use_month_names: Date::ABBR_MONTHNAMES }, { class: 'input-small' }
+  .control-group
+    = f.label :description, class: 'control-label'
+    .controls = f.text_area :description, class: 'input-xxlarge', rows: 5
+  .control-group
+    = f.label :podcast_ogg, "OGG Podcast", class: 'control-label'
+    .controls
+      = f.file_field :podcast_ogg, accept: 'audio/ogg'
+      p.help-block Podcast in the OGG audio format.
+      p.help-block
+        a(href='#oggFileModal' data-toggle='modal') Learn how to make this sort of file
+      #oggFileModal.modal.hide.fade
+        .modal-header
+          h3 Make an OGG file
+        .modal-body
+          p.lead Do this once
+          ol
+            li Download Audacity from <a href="http://audacity.sourceforge.net">here</a>
+            li Run the installer and follow the prompts
+          p.lead Do this each time
+          ol
+            li Record your sound in any format
+            li Open Audacity and click <em>File</em> <i class="icon-right-open-big"></i> <em>Open ...</em>
+            li Find your recorded sound file and click <em>Open</em>
+            li Click <em>File</em> <i class="icon-right-open-big"></i> <em>Export ...</em>
+            li Choose <em>MP4 (AAC) files (FFmpeg)</em> under <em>Save as type</em> and click <em>Save</em>
+            li Finally, use the file picker on this webpage to find the file you just saved
+        .modal-footer
+          button.btn(data-dismiss='modal') Close
+  .control-group
+    = f.label :podcast_mp3, "MP3 Podcast", class: 'control-label'
+    .controls
+      = f.file_field :podcast_mp3, accept: 'audio/mp3'
+      p.help-block Podcast again in the MP3 audio format.
+      p.help-block
+        a(href='#mp3FileModal' data-toggle='modal') Learn how to make this sort of file
+      #mp3FileModal.modal.hide.fade
+        .modal-header
+          h3 Make an MP3 file
+        .modal-body
+          p.lead Do this once
+          ol
+            li Download Audacity from <a href="http://audacity.sourceforge.net">here</a>
+            li Run the installer and follow the prompts
+          p.lead Do this each time
+          ol
+            li Record your sound in any format
+            li Open Audacity and click <em>File</em> <i class="icon-right-open-big"></i> <em>Open ...</em>
+            li Find your recorded sound file and click <em>Open</em>
+            li Click <em>File</em> <i class="icon-right-open-big"></i> <em>Export ...</em>
+            li Choose <em>MP3 Files</em> under <em>Save as type</em> and click <em>Save</em>
+            li Finally, use the file picker on this webpage to find the file you just saved
+        .modal-footer
+          button.btn(data-dismiss='modal') Close
+  .control-group: .controls
+    = f.submit 'Save', class: 'btn btn-primary'
+    = link_to "Back to List", sermons_path, class: 'btn btn-link'

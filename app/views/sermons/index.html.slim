@@ -1,0 +1,9 @@
+.row
+  .span12
+    h1 Podcasts
+
+    = link_to new_sermon_path, class: 'btn' do
+      i.icon-plus-squared
+      | Add Podcast
+
+    = render 'partials/sermons', editable: true, compact: false

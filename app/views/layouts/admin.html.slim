@@ -1,0 +1,47 @@
+doctype html
+html
+  head
+    == stylesheet_link_tag    "application", :media => "all"
+    == javascript_include_tag "application"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    == csrf_meta_tags
+    title
+      = $config.title
+      |  - Administration
+  body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse"): i.icon-dot-3
+          .nav-collapse
+            ul.nav
+              li: a(href="/")
+                i.icon-left-open
+                | Back To Site
+              li.divider-vertical
+              li(class=cp(controller: 'admin', action: 'dashboard')): a(href="/admin") Dashboard
+              li.dropdown
+                a.dropdown-toggle(data-toggle='dropdown')
+                  | Home Page&nbsp;
+                  b.caret
+                ul.dropdown-menu
+                  li(class=cp(controller: 'admin', action: 'options')): a(href="/admin/options") Options
+                  li(class=cp(controller: 'churches', action: 'index')): a(href="/admin/churches") Churches
+              li.dropdown
+                a.dropdown-toggle(data-toggle='dropdown')
+                  | Site Content&nbsp;
+                  b.caret
+                ul.dropdown-menu
+                  li(class=cp(controller: 'news_items', action: 'index')): a(href="/admin/news_items") News Items
+                  li(class=cp(controller: 'community_pages', action: 'index')): a(href="/admin/community_pages") Community Pages
+                  li(class=cp(controller: 'sermons', action: 'index')): a(href="/admin/podcasts") Podcasts
+                  li(class=cp(controller: 'admin', action: 'about')): a(href="/admin/about") About Page
+              li(class=cp(controller: 'admin', action: 'users')): a(href="/admin/users")
+                | Users
+                - users_count = User.where(confirmed_at: nil).count
+                - if users_count > 0
+                  span.badge.badge-important = users_count
+            ul.nav.pull-right
+              li = link_to "Log Out", '/users/sign_out', method: 'delete'
+    .container
+      == yield

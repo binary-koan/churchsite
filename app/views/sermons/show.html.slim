@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Date:
+  = @sermon.date
+p
+  strong Description:
+  = @sermon.description
+
+= link_to 'Edit', edit_sermon_path(@sermon)
+'|
+= link_to 'Back', sermons_path

@@ -1,0 +1,2 @@
+module CommunityPagesHelper
+end

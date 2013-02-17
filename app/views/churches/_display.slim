@@ -1,0 +1,20 @@
+- c = Church.count % 4
+- church_span = 12 / (c == 0 ? 4 : c)
+- Church.each do |church|
+  div class="span#{church_span}"
+    .church-image style="background-image:url(#{church.image.url})"
+    h4
+      = church.name
+      - if editable
+        = link_to church, :confirm => 'Are you sure?', :method => :delete, class: 'pull-right btn btn-link' do
+          i.icon-trash
+          | Delete
+        = link_to edit_church_path(church), class: 'pull-right btn btn-link' do
+          i.icon-pencil
+          | Edit
+    p: em = church.services_description
+    .media
+      a.pull-left href="http://maps.google.com/?q=#{URI::escape(church.map_address)}" target="_blank"
+        .church-location: i.icon-location
+      .media-body
+        address == h(church.address).gsub "\n", '<br>'

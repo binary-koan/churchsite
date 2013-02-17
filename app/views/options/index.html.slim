@@ -1,0 +1,43 @@
+h1 Listing options
+
+table
+  tr
+    th Use news
+    th Use community
+    th Use about
+    th Title
+    th Tagline
+    th About page
+    th Leader title
+    th Leader name
+    th Leader contactmethods
+    th Leader phone
+    th Leader email
+    th Leader address
+    th Leader image
+    th
+    th
+    th
+
+  - @options.each do |option|
+    tr
+      td = option.use_news
+      td = option.use_community
+      td = option.use_about
+      td = option.title
+      td = option.tagline
+      td = option.about_page
+      td = option.leader_title
+      td = option.leader_name
+      td = option.leader_contactmethods
+      td = option.leader_phone
+      td = option.leader_email
+      td = option.leader_address
+      td = option.leader_image
+      td = link_to 'Show', option
+      td = link_to 'Edit', edit_option_path(option)
+      td = link_to 'Destroy', option, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Option', new_option_path

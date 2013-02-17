@@ -1,0 +1,9 @@
+.row
+  .span12
+    h1
+      | Churches
+      = link_to new_church_path, class: 'btn pull-right', style: 'margin-top:16px' do
+        i.icon-plus-squared
+        | Add Church
+.row
+  = render 'display', editable: true
