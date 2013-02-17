@@ -1,4 +1,34 @@
-RailsApp::Application.routes.draw do
+Churchsite::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
+  root to: 'pages#home'
+  get "news" => 'pages#news'
+  get "news/:date" => 'pages#news'
+  get "podcast" => 'pages#sermons'
+  get "about" => 'pages#about'
+  get "community/:id" => 'pages#community'
+
+  get "admin" => 'admin#dashboard'
+  get "admin/options"
+  get "admin/about"
+  get "admin/users"
+  post "users/confirm" => 'admin#confirm_user'
+
+  scope '/admin' do
+    resources :news_items
+    resources :churches
+    resources :community_pages
+    #TODO: Shouldn't be here but form_for needs option_path
+    resources :options
+  end
+  resources :sermons, :path => "/admin/podcasts"
+
+  mount Ckeditor::Engine => "/ckeditor"
+
+  devise_for :users#, :path => '', :path_names => {
+  #  :sign_in => 'login', :sign_out => 'logout', :sign_up => 'signup'
+  #}
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

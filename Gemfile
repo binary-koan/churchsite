@@ -1,30 +1,22 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.12'
-gem 'rack', '>= 1.4.5'
+ruby '1.9.3'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
-gem 'sqlite3'
 
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
+  gem 'bootstrap-sass-rails'
   gem 'coffee-rails', '~> 3.2.1'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
-
-  gem 'turbo-sprockets-rails3'
 end
-
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -41,8 +33,20 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-# This version needs to be hardcoded for OpenShift compatibility
-gem 'thor', '= 0.14.6'
+gem "capybara", :group => [:test]
+gem "cucumber-rails", :group => [:test]
+gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 
-# This needs to be installed so we can run Rails console on OpenShift directly
-gem 'minitest'
+gem "devise"
+gem "carrierwave"
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'will_paginate_mongoid'
+gem 'mini_magick'
+gem 'ckeditor', '~> 4.0.2'
+
+gem "jquery-rails"
+gem "slim"
+gem "slim-rails"
+
+gem "bson_ext"
+gem "mongoid", ">= 2.0.0.beta.19"
