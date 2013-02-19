@@ -13,7 +13,7 @@
             = link_to '/users/confirm?email='+user.email, method: 'post', class: 'btn btn-link' do
               i.icon-check
               | Confirm
-            = link_to registration_path(user), method: 'delete', confirm: 'Are you sure?', class: 'btn btn-link' do
+            = link_to '/users/deny?email=' + user.email, method: 'delete', confirm: 'Are you sure?', class: 'btn btn-link' do
               i.icon-cancel
               | Deny
     h3 Other Users

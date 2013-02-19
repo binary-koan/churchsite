@@ -13,6 +13,7 @@ Churchsite::Application.routes.draw do
   get "admin/about"
   get "admin/users"
   post "users/confirm" => 'admin#confirm_user'
+  delete "users/deny" => 'admin#deny_user'
 
   scope '/admin' do
     resources :news_items

@@ -30,4 +30,9 @@ class AdminController < ApplicationController
     end
     redirect_to action: 'users'
   end
+
+  def deny_user
+    User.delete_all email: params[:email]
+    redirect_to action: 'users'
+  end
 end
