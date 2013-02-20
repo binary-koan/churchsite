@@ -16,8 +16,8 @@
   - if $config.use_sermons?
     div class="span6 #{offset}"
       .well
-        h3 Podcasts
+        h3 Sermons
         = link_to new_sermon_path, class: 'btn' do
           i.icon-plus-squared
-          | Add Podcast
+          | Add Sermon
         == render 'partials/sermons', editable: true, compact: true

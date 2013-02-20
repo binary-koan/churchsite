@@ -450,6 +450,33 @@ img.image-preview {
   float: left;
 }
 
+.headings {
+  h1 {
+    float: left;
+  }
+
+  h2 {
+    display: inline-block;
+    min-height: 52px;
+    padding-top: 19px;
+    padding-left: 10px;
+  }
+}
+
+.church-type {
+  margin-top: -13px;
+
+  span {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 16px;
+    min-height: 16px;
+    margin-bottom: 0;
+    @extend .well;
+    @extend .well-small;
+  }
+}
+
 #leader-box {
   @extend .well;
   @extend .well-small;
@@ -509,6 +536,20 @@ table.sermons {
     text-align: right;
   }
 
+  td.read .btn {
+    height: 30px;
+    line-height: 30px;
+    margin-right: 10px;
+    padding: 0 10px 6px 10px;
+    text-align: center;
+    min-width: 60px;
+
+    i {
+      font-size: 18px;
+      line-height: 38px;
+    }
+  }
+
   td.download .btn {
     height: 36px;
     font-size: 18px;
@@ -516,6 +557,40 @@ table.sermons {
     padding: 0 10px;
     margin-left: 10px;
   }
+}
+
+table.photos {
+  margin-top: 10px;
+
+  td {
+    vertical-align: top;
+    padding-top: 10px;
+  }
+
+  .well {
+    margin-right: 10px;
+    margin-top: -10px;
+
+    width: 100px;
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+.thumbs a {
+  @extend .well;
+  @extend .well-small;
+
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .cke.cke_chrome {

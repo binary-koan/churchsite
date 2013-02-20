@@ -13,6 +13,9 @@
     = f.label :description, class: 'control-label'
     .controls = f.text_area :description, class: 'input-xxlarge', rows: 5
   .control-group
+    = f.label :content, class: 'control-label'
+    .controls = f.cktext_area :content
+  .control-group
     = f.label :podcast_ogg, "OGG Podcast", class: 'control-label'
     .controls
       = f.file_field :podcast_ogg, accept: 'audio/ogg'

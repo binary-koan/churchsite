@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title = $config.title
+    title = @title ? @title + ' - ' + $config.title : $config.title
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
@@ -17,25 +17,26 @@ body
               a(href="/") Home
             - if $config.use_news?
               li class=cp(controller: 'pages', action: 'news')
-                a(href="/news") News
+                a(href="/news") = $config.news_name
             - if $config.use_community?
               li.dropdown
                 a.dropdown-toggle(href="#" data-toggle="dropdown")
-                  | Community&nbsp;
+                  = $config.community_name
+                  | &nbsp;
                   b.caret
                 ul.dropdown-menu
                   - CommunityPage.all.sort(title: 1).each do |page|
-                    li: a(href="/community/#{page.identifier}")
+                    li: a(href="/activities/#{page.identifier}")
                       - if page.image
                         img src=page.image.url
                       - else
                         | page.title
             - if $config.use_sermons?
               li class=cp(controller: 'pages', action: 'sermons')
-                a(href='/podcast') Podcasts
+                a(href='/word') = $config.sermons_name
             - if $config.use_about?
               li class=cp(controller: 'pages', action: 'about')
-                a(href="/about") About
+                a(href="/about") = $config.about_name
           - if user_signed_in?
             ul.nav.pull-right
               li: a(href="/admin")

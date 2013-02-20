@@ -10,15 +10,20 @@ table(class='sermons #{'compact' if compact}')
           - else
             = sermon.description
       - unless compact
+        td.read
+          - if sermon.content and not sermon.content.empty?
+            a.btn(href="/word/#{sermon._id}")
+              i.icon-newspaper
+              | Read
         td.player
           - if sermon.podcast_mp3.url or sermon.podcast_ogg.url
             audio(preload='auto' controls)
               source src=sermon.podcast_mp3.url
               source src=sermon.podcast_ogg.url
-        td.download
-          - if sermon.podcast_mp3.url
-            a.btn(href=sermon.podcast_mp3.url target='_blank')
-              i.icon-download
+        /td.download
+        /  - if sermon.podcast_mp3.url
+        /    a.btn(href=sermon.podcast_mp3.url target='_blank')
+        /      i.icon-download
       - if editable
         td.controls
           = link_to edit_sermon_path(sermon) do

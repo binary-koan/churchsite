@@ -1,6 +1,9 @@
 .row.title-box: .span12
   #title-zone
-    h1 = $config.title
+    .headings
+      h1 = $config.title
+      - if $config.church_type and not $config.church_type.empty?
+        h2.church-type: span = $config.church_type
     p.lead = $config.tagline
   #leader-box.media
     a.pull-right

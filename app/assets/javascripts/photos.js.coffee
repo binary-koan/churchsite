@@ -1,0 +1,2 @@
+$ ->
+  $('.thumbs a').touchTouch()

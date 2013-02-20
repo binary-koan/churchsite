@@ -16,16 +16,29 @@ class PagesController < ApplicationController
     end
 
     @news_items = NewsItem.and({ :date.gte => @start_date}, { :date.lte => end_date })
+    @title = $config.news_name
   end
   
   def community
     @page = CommunityPage.where(identifier: params[:id]).first
+    @title = @page.title
+  end
+
+  def photos
+    @photos = Photo.all.sort date: 1
+    @title = $config.photos_name
   end
 
   def sermons
     @sermons = Sermon.paginate page: params[:page], per_page: 10
+    @title = $config.sermons_name
+  end
+
+  def sermon
+    @sermon = Sermon.find params[:id]
   end
 
   def about
+    @title = $config.about_name
   end
 end

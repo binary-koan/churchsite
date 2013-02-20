@@ -1,0 +1,22 @@
+= form_for @photo, html: { class: 'form-horizontal' } do |f|
+  - if @photo.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@photo.errors.count, "error")} prohibited this photo from being saved:"
+      ul
+        - @photo.errors.full_messages.each do |message|
+          li = message
+
+  .control-group
+    = f.label :caption, class: 'control-label'
+    .controls = f.text_field :caption, class: 'input-xxlarge'
+  .control-group
+    = f.label :image, class: 'control-label'
+    .controls
+      img.image-preview src=@photo.image.thumb.url style="width:200px;height:200px"
+      br
+      = f.file_field :image, accept: 'image/*'
+      p.help-block Note that the preview won't update until you click 'Save'
+
+  .control-group: .controls
+    = f.submit 'Save', class: 'btn btn-primary'
+    = link_to 'Back to List', photos_path, class: 'btn btn-link'

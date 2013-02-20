@@ -1,0 +1,7 @@
+.row
+  .span12
+    h1 Photos
+
+    .thumbs
+      - @photos.each do |photo|
+        a href=photo.image.url style="background-image:url(#{photo.image.thumb.url})" title=photo.caption

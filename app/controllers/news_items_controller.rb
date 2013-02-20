@@ -4,6 +4,7 @@ class NewsItemsController < ApplicationController
   # GET /news_items
   # GET /news_items.json
   def index
+    @news_item = NewsItem.new
     today = Date.today
     @start_date = today - today.cwday
     @this_week = true

@@ -1,12 +1,13 @@
 Churchsite::Application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
 
   root to: 'pages#home'
   get "news" => 'pages#news'
   get "news/:date" => 'pages#news'
-  get "podcast" => 'pages#sermons'
+  get "word" => 'pages#sermons'
+  get "word/:id" => 'pages#sermon'
   get "about" => 'pages#about'
-  get "community/:id" => 'pages#community'
+  get "activities/:id" => 'pages#community'
+  get "gallery" => 'pages#photos'
 
   get "admin" => 'admin#dashboard'
   get "admin/options"
@@ -21,8 +22,9 @@ Churchsite::Application.routes.draw do
     resources :community_pages
     #TODO: Shouldn't be here but form_for needs option_path
     resources :options
+    resources :sermons
+    resources :photos
   end
-  resources :sermons, :path => "/admin/podcasts"
 
   mount Ckeditor::Engine => "/ckeditor"
 

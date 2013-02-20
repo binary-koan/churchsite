@@ -11,6 +11,9 @@
     = f.label :title, class: 'control-label'
     .controls = f.text_field :title, class: 'input-xxlarge'
   .control-group
+    = f.label :church_type, class: 'control-label'
+    .controls = f.text_field :church_type, class: 'input-xxlarge'
+  .control-group
     = f.label :tagline, class: 'control-label'
     .controls = f.text_field :tagline, class: 'input-xxlarge'
   .control-group
@@ -19,15 +22,23 @@
       label.checkbox for="option_use_news"
         | News
         = f.check_box :use_news
+      = f.text_field :news_name
       label.checkbox for="option_use_community"
-        | Community Pages
+        | Activities
         = f.check_box :use_community
+      = f.text_field :community_name
+      label.checkbox for="option_use_sermons"
+        | Sermons
+        = f.check_box :use_sermons
+      = f.text_field :sermons_name
+      label.checkbox for="option_use_photos"
+        | Photos
+        = f.check_box :use_photos
+      = f.text_field :photos_name
       label.checkbox for="option_use_about"
         | About Page
         = f.check_box :use_about
-      label.checkbox for="option_use_sermons"
-        | Podcasts
-        = f.check_box :use_sermons
+      = f.text_field :about_name
 
   legend Leader
   .control-group

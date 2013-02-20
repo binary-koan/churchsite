@@ -1,6 +1,8 @@
 .row
   .span6
     h1 News
+    h4 Add News
+    == render 'news_items/form'
     == render 'partials/news', editable: true
   .span3.offset3
     #news-date-picker

@@ -1,0 +1,22 @@
+.row
+  .span12
+    h1 Photos
+
+    = link_to new_photo_path, class: 'btn' do
+      i.icon-plus-squared
+      | Add Photo
+
+    table.photos
+      - @photos.each do |photo|
+        tr
+          td
+            .well.well-small: img src=photo.image.thumb.url
+          td.fill = photo.caption
+          td.user-controls
+            = link_to edit_photo_path(photo) do
+              i.icon-pencil
+              | Edit
+            | &nbsp;
+            = link_to photo, :confirm => 'Are you sure?', :method => :delete do
+              i.icon-trash
+              | Delete
