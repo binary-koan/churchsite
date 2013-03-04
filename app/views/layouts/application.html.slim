@@ -1,10 +1,11 @@
 doctype html
 html
   head
-    title = @title ? @title + ' - ' + $config.title : $config.title
+    title = @title ? @title + ' - ' + $config.title : $config.title + ' - ' + $config.tagline
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
+    meta name="description" content="A modern and vibrant church community based in Lincoln (near Christchurch), New Zealand"
     = csrf_meta_tags
 body
   .navbar.navbar-fixed-top
@@ -31,6 +32,9 @@ body
                         img src=page.image.url
                       - else
                         | page.title
+            - if $config.use_photos?
+              li class=cp(controller: 'pages', action: 'photos')
+                a(href='/gallery') = $config.photos_name
             - if $config.use_sermons?
               li class=cp(controller: 'pages', action: 'sermons')
                 a(href='/word') = $config.sermons_name
