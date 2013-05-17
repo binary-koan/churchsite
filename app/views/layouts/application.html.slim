@@ -28,10 +28,10 @@ body
                 ul.dropdown-menu
                   - CommunityPage.all.sort(title: 1).each do |page|
                     li: a(href="/activities/#{page.identifier}")
-                      - if page.image
+                      - if page.image.url
                         img src=page.image.url
                       - else
-                        | page.title
+                        = page.title
             - if $config.use_photos?
               li class=cp(controller: 'pages', action: 'photos')
                 a(href='/gallery') = $config.photos_name
