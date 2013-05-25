@@ -1,18 +1,7 @@
-# README for a newly created project.
+# Churchsite
 
-There are a couple of things you should do first, before you can use all of Git's power:
+## Simple Rails setup for churches
 
-  * Add a remote to this project: in the Cloud9 IDE command line, you can execute the following commands
-    `git remote add [remote name] [remote url (eg. 'git@github.com:/ajaxorg/node_chat')]` [Enter]
-  * Create new files inside your project
-  * Add them to to Git by executing the following command
-    `git add [file1, file2, file3, ...]` [Enter]
-  * Create a commit which can be pushed to the remote you just added
-    `git commit -m 'added new files'` [Enter]
-  * Push the commit the remote
-    `git push [remote name] master` [Enter]
+In use for the [Lincoln Union Church](http://www.lincolnchurch.org.nz) website.
 
-That's it! If this doesn't work for you, please visit the excellent resources from [Github.com](http://help.github.com) and the [Pro Git](http://http://progit.org/book/) book.
-If you can't find your answers there, feel free to ask us via Twitter (@cloud9ide), [mailing list](groups.google.com/group/cloud9-ide) or IRC (#cloud9ide on freenode).
-
-Happy coding!
+ChurchSite is a [Ruby on Rails](http://rubyonrails.org/) app that includes the ability to display and modify various things that a church might want on their website: news, community activities, photos, podcasts, etc. In terms of core features it's basically complete, but I still consider it beta-quality software. I'm currently fixing bugs and glitches as the Lincoln community find them.
