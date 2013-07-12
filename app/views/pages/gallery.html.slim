@@ -1,0 +1,13 @@
+.row
+  .span12
+    a(href="/gallery"): h1 = @title
+    h4 = @photos.first.gallery
+
+    .thumbs
+      - @photos.each.with_index do |photo, i|
+        a href="#photo#{i}" data-toggle="lightbox"
+          img src=photo.image.thumb.url
+        .lightbox.hide.fade id="photo#{i}"
+          .lightbox-content
+            img src=photo.image.url
+            .lightbox-caption = photo.caption

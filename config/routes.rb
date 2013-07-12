@@ -8,6 +8,9 @@ Churchsite::Application.routes.draw do
   get "about" => 'pages#about'
   get "activities/:id" => 'pages#community'
   get "gallery" => 'pages#photos'
+  get "gallery/:gallery" => 'pages#gallery'
+
+  get "events_in/:year/:month" => 'pages#events_in'
 
   get "admin" => 'admin#dashboard'
   get "admin/options"

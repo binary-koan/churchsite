@@ -1,15 +1,15 @@
 class NewsItemsController < ApplicationController
+  include NewsItemsHelper
+
   before_filter :authenticate_user!
 
   # GET /news_items
   # GET /news_items.json
   def index
-    @news_item = NewsItem.new
-    today = Date.today
-    @start_date = today - today.cwday
-    @this_week = true
-
-    @news_items = NewsItem.where(:date.gte => @start_date)
+    @news_item = new_item
+    @date = Time.now.midnight
+    @news_items = news_items_from monday_before @date
+    @news_title = "Upcoming"
 
     respond_to do |format|
       format.html # index.html.erb
@@ -20,13 +20,11 @@ class NewsItemsController < ApplicationController
   # GET /news_items/1
   # GET /news_items/1.json
   def show
-    today = Date.today
-    this_week_start = today - today.cwday
-    @start_date = Date.parse(params[:id])
-    end_date = @start_date + 7.days
-    @this_week = @start_date == this_week_start
+    redirect_to :index unless params[:id] =~ /(\d{4})(\d\d)(\d\d)/
 
-    @news_items = NewsItem.and({ :date.gte => @start_date}, { :date.lte => end_date })
+    @news_item = new_item
+    @date = Time.local $1.to_i, $2.to_i, $3.to_i
+    @news_items, @news_title = week_items_from @date
 
     respond_to do |format|
       format.html # show.html.erb

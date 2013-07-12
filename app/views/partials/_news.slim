@@ -1,12 +1,18 @@
-- if @this_week
-  h4 This Week
-- else
-  h4
-    | Week of&nbsp;
-    = @start_date.strftime "%-d %b %Y"
+h4 = @news_title
 #news
   - if @news_items.count == 0
     p: em Nothing to show
-  - @news_items.each do |item|
-    - @news_item = item
-    == render 'partials/news_display', editable: editable
+  - else
+    table
+      - @news_items.each do |list|
+        - @news_item = list[:items].shift
+        - highlight = (@news_item.date.localtime.yday == @date.yday and @news_item.date.localtime.year == @date.year) \
+          ? 'highlight' : ''
+        tr class=highlight
+          td.title = list[:title]
+          == render 'partials/news_display', editable: editable
+        - list[:items].each do |item|
+          tr class=highlight
+            td.title
+            - @news_item = item
+            == render 'partials/news_display', editable: editable

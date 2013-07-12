@@ -1,12 +1,13 @@
-p
-  - if editable
+td.time
+  = @news_item.date.localtime.strftime "%l:%M %p"
+  | &nbsp;&mdash;&nbsp;
+td.news-item
+  p: strong
+    = @news_item.title
+  == h(@news_item.content).split("\n").join("<br />")
+  == render 'news_items/form' if editable
+- if editable
+  td
     a.news-edit-btn: i.icon-pencil
     = link_to @news_item, method: 'delete', confirm: 'Are you sure?' do
       i.icon-trash
-  span.news-item
-    strong
-      | &nbsp;
-      = @news_item.title
-      | &nbsp;&mdash;&nbsp;
-    = @news_item.content
-== render 'news_items/form' if editable

@@ -33,20 +33,23 @@ end
 # To use debugger
 # gem 'debugger'
 
-gem "capybara", :group => [:test]
-gem "cucumber-rails", :group => [:test]
-gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
+gem 'capybara', :group => [:test]
+gem 'cucumber-rails', :group => [:test]
+gem 'rspec-rails', '>= 2.0.1', :group => [:development, :test]
 
-gem "devise"
-gem "carrierwave"
+gem 'devise'
+gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'will_paginate_mongoid'
 gem 'mini_magick'
 gem 'ckeditor', '~> 4.0.2'
 
-gem "jquery-rails"
-gem "slim"
-gem "slim-rails"
+gem 'jquery-rails'
+gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-timepicker-rails'
 
-gem "bson_ext"
-gem "mongoid", ">= 2.0.0.beta.19"
+gem 'slim'
+gem 'slim-rails'
+
+gem 'bson_ext'
+gem 'mongoid', '>= 2.0.0.beta.19'

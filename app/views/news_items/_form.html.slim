@@ -10,6 +10,12 @@
   br
   = f.text_area :content, class: 'input-xlarge', rows: 3, placeholder: 'Content ...'
   br
-  = f.date_select :date, { order: [:day, :month, :year], use_month_names: Date::ABBR_MONTHNAMES }, { class: 'input-small' }
+  .input-append.date.datepicker
+    = f.text_field :picked_date, class: 'input-small'
+    span.add-on: i.icon-calendar
+  .input-append.bootstrap-timepicker
+    = f.text_field :picked_time, class: 'timepicker input-small'
+    span.add-on: i.icon-clock
+
   br
   = f.submit 'Save', class: 'btn btn-primary'

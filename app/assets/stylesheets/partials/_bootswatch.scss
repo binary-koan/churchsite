@@ -586,11 +586,18 @@ table.photos {
 
   display: inline-block;
   width: 200px;
-  height: 200px;
   margin: 10px;
 
   background-repeat: no-repeat;
   background-position: center;
+
+  img {
+    display: inline-block;
+  }
+  
+  p {
+    margin: 10px 0 0 0;
+  }
 }
 
 .cke.cke_chrome {
@@ -600,6 +607,58 @@ table.photos {
 .popover {
   width: auto;
   @include border-radius(0);
+}
+
+// NEWS
+
+#news table {
+  td {
+    vertical-align: top;
+  }
+  
+  td.title {
+    //font-weight: bold;
+    text-align: right;
+    border-right: 3px solid $grayLight;
+    padding: 5px 5px 5px 10px;
+  }
+  
+  td.time {
+    font-style: italic;
+    padding: 5px 0 5px 5px;
+  }
+
+  td.news-item {
+    padding: 5px 10px 5px 0;
+    
+    p {
+      margin: 0;
+    }
+  }
+
+  tr.highlight td {
+    background: $grayLighter;
+  }
+
+  tr.highlight td.title {
+    border-right-color: $gray;
+  }
+}
+
+// PHOTOS
+
+.gallery {
+  display: inline-block;
+  margin-right: 10px;
+
+  img {
+    display: block;
+    padding-bottom: 5px;
+  }
+
+  .user-controls {
+    text-align: right;
+  }
 }
 
 // RESPONSIVE STYLES

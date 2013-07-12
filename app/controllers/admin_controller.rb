@@ -1,13 +1,15 @@
 class AdminController < ApplicationController
+  include NewsItemsHelper
+
   before_filter :authenticate_user!
 
   def dashboard
     @news_item = NewsItem.new
 
-    today = Date.today
-    last_sunday = today - today.cwday
-    @news_items = NewsItem.where(:date.gte => last_sunday).sort date: -1
-    @this_week = true
+    start_date, _ = week_of Time.now.midnight
+    @news_items = news_items_from start_date
+    @news_title = "Upcoming"
+    @date = Time.now
 
     @sermons = Sermon.paginate page: params[:page], per_page: 10
   end

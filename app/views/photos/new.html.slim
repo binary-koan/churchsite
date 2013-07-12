@@ -2,4 +2,4 @@
   .span12
     h1 New Photo
 
-    == render 'form'
+    == render 'form', gallery: params[:gallery], return_to: params[:return_to]

@@ -1,22 +1,39 @@
 class PagesController < ApplicationController
+  include NewsItemsHelper
+
   def home
   end
 
   def news
-    today = Date.today
-    this_week_start = today - today.cwday
-    if params[:date]
-      @start_date = Date.parse(params[:date])
-      end_date = @start_date + 7.days
-      @this_week = @start_date == this_week_start
+    if params[:date] and params[:date] =~ /(\d{4})(\d\d)(\d\d)/
+      @date = Time.local $1.to_i, $2.to_i, $3.to_i
+      @news_items, @news_title = week_items_from @date
     else
-      @start_date = this_week_start
-      end_date = today
-      @this_week = true
+      @date = Time.now.midnight
+      @news_items = news_items_from_week @date
+      @news_title = "This Week"
     end
 
-    @news_items = NewsItem.and({ :date.gte => @start_date}, { :date.lte => end_date })
     @title = $config.news_name
+  end
+
+  def events_in
+    month = params[:month].to_i
+    year = params[:year].to_i
+
+    start_date = Time.new year, month, 1
+    end_date = Time.new year, month + 1, 1
+    end_date -= 1.day
+
+    news_items = NewsItem.and({ :date.gte => start_date}, { :date.lt => end_date }).sort date: 1
+    days = Set.new
+    news_items.each do |item|
+      days << item.date.localtime.mday
+    end
+
+    respond_to do |format|
+      format.json { render json: days.to_a }
+    end
   end
   
   def community
@@ -25,7 +42,16 @@ class PagesController < ApplicationController
   end
 
   def photos
-    @photos = Photo.all.sort date: 1
+    galleries = Photo.all.distinct(:gallery).sort
+    @photos = []
+    galleries.each do |gallery|
+      @photos << [gallery, Photo.where(gallery: gallery).limit(4)]
+    end
+    @title = $config.photos_name
+  end
+
+  def gallery
+    @photos = Photo.where gallery_id: params[:gallery]
     @title = $config.photos_name
   end
 

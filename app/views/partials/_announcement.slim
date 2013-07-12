@@ -1,0 +1,7 @@
+p: a.btn.btn-announcement
+  i.icon-pencil
+  | Change Announcement
+= form_for $config do |f|
+  = f.text_area :news_announcement, placeholder: 'Announcement ...', class: 'input-xlarge', rows: 3
+  br
+  = f.submit "Save", class: 'btn btn-primary'

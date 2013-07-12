@@ -4,15 +4,16 @@
     p.lead Logged in as #{current_user.name}
 .row
   - offset = 'offset3'
-  - offset = nil if $config.use_news? and $config.use_community?
+  - offset = nil if $config.use_news? and $config.use_sermons?
   - if $config.use_news?
     div class="span6 #{offset}"
       .well
         h3 News
+        == render 'partials/announcement'
         h4 Add News
         == render 'news_items/form'
         == render 'partials/news', editable: true
-        p: a href="/admin/news_items" See Older
+        p: a href="/admin/news_items" See More
   - if $config.use_sermons?
     div class="span6 #{offset}"
       .well

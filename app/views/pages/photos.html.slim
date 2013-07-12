@@ -1,7 +1,14 @@
 .row
   .span12
-    h1 Photos
+    h1 = @title
 
-    .thumbs
-      - @photos.each do |photo|
-        a href=photo.image.url style="background-image:url(#{photo.image.thumb.url})" title=photo.caption
+    .thumbs: .galleries
+      - @photos.each do |info|
+        - gallery, photos = info[0], info[1]
+        a href="/gallery/#{photos.first.gallery_id}"
+          - if photos.length < 4
+            img src=photos.first.image.thumb.url
+          - else
+            - photos.each do |photo|
+              img src=photo.image.thumb.url style="width:100px;height:100px"
+          p: strong = gallery

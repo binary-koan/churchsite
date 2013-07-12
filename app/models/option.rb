@@ -20,6 +20,8 @@ class Option
   field :photos_name, type: String, default: "Photos"
   field :sermons_name, type: String, default: "From the Minister"
 
+  field :news_announcement, type: String
+
   field :title, type: String, default: "Our Parish"
   field :church_type, type: String
   field :tagline, type: String, default: "Something catchy or just descriptive"

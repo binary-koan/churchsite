@@ -1,22 +1,22 @@
 .row
   .span12
-    h1 Photos
+    h1 Galleries
 
-    = link_to new_photo_path, class: 'btn' do
+    p = link_to new_photo_path(gallery: true), class: 'btn' do
       i.icon-plus-squared
-      | Add Photo
+      | Add Gallery
 
-    table.photos
-      - @photos.each do |photo|
-        tr
-          td
-            .well.well-small: img src=photo.image.thumb.url
-          td.fill = photo.caption
-          td.user-controls
-            = link_to edit_photo_path(photo) do
+    .galleries
+      - @photos.each do |info|
+        - gallery, photo = info[0], info[1]
+        .gallery.well.well-small
+          img src=photo.image.thumb.url
+          p: strong = gallery
+          .user-controls
+            = link_to "/admin/photos/#{photo.gallery_id}" do
               i.icon-pencil
               | Edit
             | &nbsp;
-            = link_to photo, :confirm => 'Are you sure?', :method => :delete do
+            = link_to photo_path(photo, gallery: true), :confirm => 'Are you sure?', :method => :delete do
               i.icon-trash
               | Delete

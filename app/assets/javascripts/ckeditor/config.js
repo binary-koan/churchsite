@@ -3,7 +3,7 @@
  * For licensing, see LICENSE.html or http://ckeditor.com/license
  */
 
-CKEDITOR.stylesSet.add( 'my_styles',
+CKEDITOR.stylesSet.add( 'custom_styles',
 [
   { name : 'Well', element : 'div', attributes : { 'class' : 'well' } }
 ]);

@@ -1,9 +1,31 @@
-p#notice = notice
+.row
+  .span12
+    - if @photos.length > 0
+      - gallery = @photos.first.gallery
+      h1 Photos
+      h4 = gallery
 
-p
-  strong Caption:
-  = @photo.caption
+      = link_to new_photo_path(gallery_name: gallery, return_to: params[:id]), class: 'btn btn-primary' do
+        i.icon-plus-squared
+        | Add Photo
+      | &nbsp;
+      = link_to photo_path(@photos.first, gallery: true), confirm: 'Are you sure?', method: 'delete', class: 'btn' do
+        i.icon-trash
+        | Delete Gallery
 
-= link_to 'Edit', edit_photo_path(@photo)
-'|
-= link_to 'Back', photos_path
+      table.photos
+        - @photos.each do |photo|
+          tr
+            td
+              .well.well-small: img src=photo.image.thumb.url
+            td.fill = photo.caption
+            td.user-controls
+              = link_to edit_photo_path(photo, return_to: params[:id]) do
+                i.icon-pencil
+                | Edit
+              | &nbsp;
+              = link_to photo_path(return_to: params[:id]), :confirm => 'Are you sure?', :method => :delete do
+                i.icon-trash
+                | Delete
+    - else
+      p: em No photos found with this gallery name
