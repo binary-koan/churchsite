@@ -1,1 +1,1 @@
-# $config = Option.first || Option.create!
+$config = Option.first || Option.create!
