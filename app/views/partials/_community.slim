@@ -1,15 +1,14 @@
-p: a.btn(href=new_community_page_path)
+.row: p.span6.offset3(style='text-align: center'): a.btn(href=new_community_page_path)
   i.icon-plus-squared
   | New Page
-- CommunityPage.each do |page|
-  div style="width:270px"
-    - if page.image
-      img src=page.image.url
-    h5
-      = page.title
-      = link_to page, :confirm => 'Are you sure?', :method => :delete, class: 'pull-right' do
-        i.icon-trash
-        | Delete
-      = link_to edit_community_page_path(page), class: 'pull-right' do
+.row: .span6.offset3: ul.no-decoration
+  - CommunityPage.each do |page|
+    li.well.well-small(style='text-align: right')
+      .pull-left(style='margin-top: 5px') = page.title
+      = link_to edit_community_page_path(page), class: 'btn' do
         i.icon-pencil
         | Edit
+      | &nbsp;
+      = link_to page, :confirm => 'Are you sure?', :method => :delete, class: 'btn' do
+        i.icon-trash
+        | Delete

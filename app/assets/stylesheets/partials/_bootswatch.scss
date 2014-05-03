@@ -725,3 +725,14 @@ table.photos {
 @-ms-viewport{
     width: device-width;
 }
+
+// MISC
+
+ul.no-decoration {
+  margin-left: 0;
+  list-style-type: none;
+
+  li.well-small {
+    margin-bottom: 10px;
+  }
+}
