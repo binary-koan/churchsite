@@ -1,4 +1,4 @@
-= form_for @news_item do |f|
+= form_for @news_item, html: { class: 'form-horizontal' } do |f|
   - if @news_item.errors.any?
     #error_explanation
       h2 = "#{pluralize(@news_item.errors.count, "error")} prohibited this news_item from being saved:"
@@ -6,16 +6,14 @@
         - @news_item.errors.full_messages.each do |message|
           li = message
 
-  = f.text_field :title, class: 'input-xlarge', placeholder: 'Title ...'
-  br
-  = f.text_area :content, class: 'input-xlarge', rows: 3, placeholder: 'Content ...'
-  br
-  .input-append.date.datepicker
-    = f.text_field :picked_date, class: 'input-small'
-    span.add-on: i.icon-calendar
-  .input-append.bootstrap-timepicker
-    = f.text_field :picked_time, class: 'timepicker input-small'
-    span.add-on: i.icon-clock
+  .form-group: .col-sm-12 = f.text_field :title, class: 'form-control', placeholder: 'Title ...'
+  .form-group: .col-sm-12 = f.text_area :content, class: 'form-control', rows: 3, placeholder: 'Content ...'
+  .form-group
+    .col-sm-5: .input-group.date.datepicker
+      = f.text_field :picked_date, class: 'form-control'
+      span.add-on.input-group-addon: span.glyphicon.glyphicon-calendar
+    .col-sm-5: .input-group.bootstrap-timepicker
+      = f.text_field :picked_time, class: 'timepicker form-control'
+      span.add-on.input-group-addon: span.glyphicon.glyphicon-time
 
-  br
-  = f.submit 'Save', class: 'btn btn-primary'
+  .form-group: .col-sm-12 = f.submit 'Save', class: 'btn btn-primary'

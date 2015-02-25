@@ -7,8 +7,9 @@
 body { margin-top: 60px; }
 
 @import 'bootswatch/journal/bootswatch';
-@import 'partials/custom';
 
 @import 'partials/datepicker';
 @import 'partials/audioplayer';
 @import 'partials/touchtouch';
+
+@import 'partials/custom';
