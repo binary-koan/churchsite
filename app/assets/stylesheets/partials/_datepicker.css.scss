@@ -1,6 +1,3 @@
-@import 'partials/variables';
-@import 'twitter/bootstrap/mixins';
-
 // Bootstrap
 
 .input-append.datepicker, .input-append.bootstrap-timepicker {
@@ -12,15 +9,15 @@
 .datepicker table tr td.day {
   &.today, &.today:hover {
     background: transparent;
-    color: $black;
+    color: black;
 
     &.current-week {
-      background: $grayLighter;
+      background: $gray-lighter;
     }
   }
 
   &.current-week, &.active {
-    background: $grayLighter;
+    background: $gray-lighter;
     border-radius: 0;
 
     &:nth-child(1) {
@@ -34,14 +31,14 @@
   }
 
   &.active, &.active:hover {
-    @include buttonBackground($grayDarker, $black);
+    background: $gray-darker;
   }
 
   &.eventful:after {
     position: absolute;
     width: 0;
     height: 0;
-    border: 3px solid $grayDark;
+    border: 3px solid $gray-dark;
     border-radius: 3px;
     content: "";
   }
@@ -50,49 +47,49 @@
 // datePicker
 
 table.jCalendar {
-  //border: 1px solid $grayLight;
-  //background: $grayLighter;
+  //border: 1px solid $gray-light;
+  //background: $gray-lighter;
   border-collapse: separate;
   border-spacing: 2px;
   margin: 10px auto;
 }
 table.jCalendar th {
-  background: $black;
-  color: $white;
-  font-weight: $headingsFontWeight;
+  background: black;
+  color: white;
+  font-weight: $headings-font-weight;
   padding: 3px 5px;
 }
 
 table.jCalendar td {
-  background: $grayLight;
-  color: $black;
+  background: $gray-light;
+  color: black;
   padding: 3px 5px;
   text-align: center;
 }
 table.jCalendar td.other-month {
-  background: $grayLight;
-  color: $grayDark;
+  background: $gray-light;
+  color: $gray-dark;
 }
 table.jCalendar td.today {
-  background: $grayDark;
-  color: $white;
+  background: $gray-dark;
+  color: white;
 }
 table.jCalendar td.selected {
-  background: $grayDarker;
-  color: $white;
+  background: $gray-darker;
+  color: white;
 }
 table.jCalendar td.selected.dp-hover {
   background: $gray;
-  color: $white;
+  color: white;
 }
 table.jCalendar td.dp-hover,
 table.jCalendar tr.activeWeekHover td {
-  background: $grayLighter;
-  color: $black;
+  background: $gray-lighter;
+  color: black;
 }
 table.jCalendar tr.selectedWeek td {
-  background: $grayDarker;
-  color: $white;
+  background: $gray-darker;
+  color: white;
 }
 table.jCalendar td.disabled, table.jCalendar td.disabled.dp-hover {
   background: #bbb;
@@ -112,8 +109,8 @@ table.jCalendar td.unselectable.dp-hover {
 div.dp-popup {
   position: relative;
   background: transparent;
-  font-size: $baseFontSize;
-  font-family: $baseFontFamily;
+  font-size: $font-size-base;
+  font-family: $font-family-base;
   padding: 2px;
   line-height: 1.2em;
 }
@@ -137,7 +134,7 @@ a#dp-close:hover {
   text-decoration: underline;
 }
 div.dp-popup a {
-  color: $grayDarker;
+  color: $gray-darker;
   text-decoration: none;
   padding: 3px 2px 0;
 }

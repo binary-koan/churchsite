@@ -9,7 +9,7 @@
     .galleries
       - @photos.each do |info|
         - gallery, photo = info[0], info[1]
-        .gallery.well.well-small
+        .gallery.well.well-sm
           img src=photo.image.thumb.url
           p: strong = gallery
           .user-controls

@@ -1,15 +1,12 @@
-@import 'partials/variables';
-@import 'twitter/bootstrap/mixins';
-
 .audioplayer
   {
   height: 36px;
-  color: $textColor;
-  @include gradient-vertical($btnBackground, $btnBackgroundHighlight);
+  color: $text-color;
+  background: $btn-default-bg;
   @include box-shadow(inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05));
-  border: 1px solid $grayLight;
+  border: 1px solid $gray-light;
   border-color: rgba(0, 0, 0, 0.15);
-  border-radius: $baseBorderRadius;
+  border-radius: $border-radius-base;
   position: relative;
   z-index: 1;
 }
@@ -79,13 +76,13 @@
 .audioplayer-bar
   {
   height: 14px; /* 14 */
-  background-color: $grayLight;
+  background-color: $gray-light;
   cursor: pointer;
   z-index: 1;
   top: 12px;
   left: 110px; /* 110 */
   right: 70px; /* 70 */
-  @include border-radius($baseBorderRadius);
+  border-radius: $border-radius-base;
 }
 .audioplayer-bar div
   {
@@ -94,7 +91,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  @include border-radius($baseBorderRadius);
+  border-radius: $border-radius-base;
 }
 .audioplayer-bar-loaded
   {
@@ -103,7 +100,7 @@
 }
 .audioplayer-bar-played
   {
-  background: $grayDark;
+  background: $gray-dark;
   z-index: 2;
 }
 .audioplayer *,

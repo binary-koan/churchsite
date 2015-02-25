@@ -4,6 +4,9 @@
 # up again. This script gets executed directly, so it could be python, php,
 # ruby, etc.
 
+echo "Copying uploads back into public directory"
+cp -r "${OPENSHIFT_DATA_DIR}/backups/uploads" "${OPENSHIFT_REPO_DIR}/public/"
+
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 function ruby_with_nodejs_context {

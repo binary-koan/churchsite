@@ -1,23 +1,22 @@
 Churchsite::Application.routes.draw do
+  root 'pages#home'
+  get "news", to: 'pages#news'
+  get "news/:date", to: 'pages#news'
+  get "word", to: 'pages#sermons'
+  get "word/:id", to: 'pages#sermon'
+  get "about", to: 'pages#about'
+  get "activities/:id", to: 'pages#community'
+  get "gallery", to: 'pages#photos'
+  get "gallery/:gallery", to: 'pages#gallery'
 
-  root to: 'pages#home'
-  get "news" => 'pages#news'
-  get "news/:date" => 'pages#news'
-  get "word" => 'pages#sermons'
-  get "word/:id" => 'pages#sermon'
-  get "about" => 'pages#about'
-  get "activities/:id" => 'pages#community'
-  get "gallery" => 'pages#photos'
-  get "gallery/:gallery" => 'pages#gallery'
+  get "events_in/:year/:month", to: 'pages#events_in'
 
-  get "events_in/:year/:month" => 'pages#events_in'
-
-  get "admin" => 'admin#dashboard'
+  get "admin", to: 'admin#dashboard'
   get "admin/options"
   get "admin/about"
   get "admin/users"
-  post "users/confirm" => 'admin#confirm_user'
-  delete "users/deny" => 'admin#deny_user'
+  post "users/confirm", to: 'admin#confirm_user'
+  delete "users/deny", to: 'admin#deny_user'
 
   scope '/admin' do
     resources :news_items

@@ -1,5 +1,6 @@
 Churchsite::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
+  config.eager_load = true
 
   # Code is not reloaded between requests
   config.cache_classes = true
@@ -19,6 +20,11 @@ Churchsite::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
+
+  config.assets.configure do |env|
+    env.js_compressor  = :uglifier # or :closure, :yui
+    env.css_compressor = :sass   # or :yui
+  end
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH

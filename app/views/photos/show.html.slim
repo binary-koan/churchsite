@@ -17,7 +17,7 @@
         - @photos.each do |photo|
           tr
             td
-              .well.well-small: img src=photo.image.thumb.url
+              .well.well-sm: img src=photo.image.thumb.url
             td.fill = photo.caption
             td.user-controls
               = link_to edit_photo_path(photo, return_to: params[:id]) do

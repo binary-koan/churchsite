@@ -1,0 +1,335 @@
+// ERROR MESSAGES
+// -----------------------------------------------------
+
+#error_explanation {
+  @extend .alert;
+  @extend .alert-danger;
+
+  h2 {
+    font-size: $font-size-base;
+  }
+}
+
+// CHURCH DISPLAY
+// ------------------------------------------------------
+
+.church-image {
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  margin: 0 -15px 10px -15px;
+}
+
+.church-location {
+  @extend .well;
+  padding: 0;
+
+  width: 64px;
+  height: 64px;
+  font-size: 47px;
+  text-align: center;
+  background-image: image-url("roadmap.svg");
+
+  i:before {
+    padding-top: 8px;
+    color: $gray;
+  }
+}
+
+// HOMEPAGE
+// -------------------------------------------------------
+
+.title-box {
+  margin: 20px 0;
+}
+
+#title-zone {
+  float: left;
+}
+
+.headings {
+  h1 {
+    float: left;
+  }
+
+  h2 {
+    display: inline-block;
+    min-height: 52px;
+    padding-top: 19px;
+    padding-left: 10px;
+  }
+}
+
+.church-type {
+  margin-top: -13px;
+
+  span {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 16px;
+    min-height: 16px;
+    margin-bottom: 0;
+    @extend .well;
+    @extend .well-sm;
+  }
+}
+
+#leader-box {
+  @extend .well;
+  @extend .well-sm;
+  margin-top: 10px;
+  float: right;
+
+  a.pull-right {
+    margin-left: 20px;
+  }
+
+  .pull-right {
+    margin-left: 0;
+  }
+
+  h4 {
+    margin-bottom: 5px;
+  }
+}
+
+table.fill {
+  width: 100%;
+}
+
+td.fill {
+  width: 50%;
+}
+
+td.user-controls {
+  width: 50%;
+  text-align: right;
+}
+
+table.sermons {
+  width: 100%;
+  margin-top: 20px;
+  border-bottom: 1px solid $gray-light;
+
+  &.compact {
+    width: 530px;
+  }
+
+  td {
+    border-top: 1px solid $gray-light;
+    padding: 20px 0;
+  }
+
+  td.description {
+    width: 100%;
+  }
+
+  td.player {
+    min-width: 350px;
+  }
+
+  td.controls {
+    min-width: 150px;
+    text-align: right;
+  }
+
+  td.read .btn {
+    height: 30px;
+    line-height: 30px;
+    margin-right: 10px;
+    padding: 0 10px 6px 10px;
+    text-align: center;
+    min-width: 60px;
+
+    i {
+      font-size: 18px;
+      line-height: 38px;
+    }
+  }
+
+  td.download .btn {
+    height: 36px;
+    font-size: 18px;
+    line-height: 38px;
+    padding: 0 10px;
+    margin-left: 10px;
+  }
+}
+
+table.photos {
+  margin-top: 10px;
+
+  td {
+    vertical-align: top;
+    padding-top: 10px;
+  }
+
+  .well {
+    margin-right: 10px;
+    margin-top: -10px;
+
+    width: 100px;
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+.thumbs a {
+  @extend .well;
+  @extend .well-sm;
+
+  display: inline-block;
+  width: 200px;
+  margin: 10px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+
+  img {
+    display: inline-block;
+  }
+  
+  p {
+    margin: 10px 0 0 0;
+  }
+}
+
+.cke.cke_chrome {
+  margin-bottom: 10px;
+}
+
+.popover {
+  width: auto;
+  border-radius: 0;
+}
+
+// NEWS
+
+#news table {
+  td {
+    vertical-align: top;
+  }
+  
+  td.title {
+    //font-weight: bold;
+    text-align: right;
+    border-right: 3px solid $gray-light;
+    padding: 5px 5px 5px 10px;
+  }
+  
+  td.time {
+    font-style: italic;
+    padding: 5px 0 5px 5px;
+  }
+
+  td.news-item {
+    padding: 5px 10px 5px 0;
+    
+    p {
+      margin: 0;
+    }
+  }
+
+  tr.highlight td {
+    background: $gray-lighter;
+  }
+
+  tr.highlight td.title {
+    border-right-color: $gray;
+  }
+}
+
+// PHOTOS
+
+.gallery {
+  display: inline-block;
+  margin-right: 10px;
+
+  img {
+    display: block;
+    padding-bottom: 5px;
+  }
+
+  .user-controls {
+    text-align: right;
+  }
+}
+
+// RESPONSIVE STYLES
+// --------------------------------------------------------
+
+@media(max-width: 979px) {
+  #title-zone {
+    float: none;
+  }
+
+  #leader-box {
+    float: none;
+
+    .pull-left, .pull-right {
+      margin-bottom: 0;
+    }
+
+    a.pull-right {
+      float: right; // Because Bootstrap clears the float on small screens
+    }
+
+    i.pull-right {
+      display: inline;
+      margin-right: -0.4em;
+      margin-left: 0.2em;
+    }
+  }
+}
+
+@media(max-width: 767px) {
+  body {
+    padding: 0;
+  }
+
+  // Probably won't work for any other popovers - should probably add a separate class
+  .popover {
+    position: relative;
+    border: none;
+    background: none;
+    @include box-shadow(none);
+
+    // Override whatever position it should be in on larger screens
+    top: 0 !important;
+    left: 0 !important;
+
+    .arrow {
+      display: none;
+    }
+  }
+
+  .church-image {
+    margin-left: 0;
+    margin-right: 0;
+    height: 250px;
+  }
+
+  .navbar p {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+// Play nice with IE10 snap
+@-ms-viewport{
+    width: device-width;
+}
+
+// MISC
+
+ul.no-decoration {
+  margin-left: 0;
+  list-style-type: none;
+
+  li.well-sm {
+    margin-bottom: 10px;
+  }
+}

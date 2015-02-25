@@ -3,7 +3,7 @@
   | New Page
 .row: .span6.offset3: ul.no-decoration
   - CommunityPage.each do |page|
-    li.well.well-small(style='text-align: right')
+    li.well.well-sm(style='text-align: right')
       .pull-left(style='margin-top: 5px') = page.title
       = link_to edit_community_page_path(page), class: 'btn' do
         i.icon-pencil
