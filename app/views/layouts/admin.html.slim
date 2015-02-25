@@ -9,35 +9,39 @@ html
       = $config.title
       |  - Administration
   body
-    .navbar.navbar-inverse.navbar-fixed-top
-      .navbar-inner
-        .container
-          a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse"): i.icon-dot-3
-          .nav-collapse
-            ul.nav
-              li: a(href="/")
-                i.icon-left-open
-                | Back To Site
-              li.divider-vertical
-              li(class=cp(controller: 'admin', action: 'dashboard')): a(href="/admin") Dashboard
-              li(class=cp(controller: 'admin', action: 'options')): a(href="/admin/options") Options
-              li(class=cp(controller: 'churches', action: 'index')): a(href="/admin/churches") Churches
-              li.dropdown
-                a.dropdown-toggle(data-toggle='dropdown')
-                  | Site Content&nbsp;
-                  b.caret
-                ul.dropdown-menu
-                  li(class=cp(controller: 'news_items', action: 'index')): a(href="/admin/news_items") News Items
-                  li(class=cp(controller: 'community_pages', action: 'index')): a(href="/admin/community_pages") Activities
-                  li(class=cp(controller: 'photos', action: 'index')): a(href="/admin/photos") Photos
-                  li(class=cp(controller: 'sermons', action: 'index')): a(href="/admin/sermons") Sermons
-                  li(class=cp(controller: 'admin', action: 'about')): a(href="/admin/about") About Page
-              li(class=cp(controller: 'admin', action: 'users')): a(href="/admin/users")
-                | Users
-                - users_count = User.where(confirmed_at: nil).count
-                - if users_count > 0
-                  span.badge.badge-important = users_count
-            ul.nav.pull-right
-              li = link_to "Log Out", '/users/sign_out', method: 'delete'
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#admin-menu"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        #admin-menu.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li: a(href="/")
+              span.glyphicon.glyphicon-arrow-left>
+              | Back To Site
+            li.divider-vertical
+            li(class=cp(controller: 'admin', action: 'dashboard')): a(href="/admin") Dashboard
+            li(class=cp(controller: 'admin', action: 'options')): a(href="/admin/options") Options
+            li(class=cp(controller: 'churches', action: 'index')): a(href="/admin/churches") Churches
+            li.dropdown
+              a.dropdown-toggle(data-toggle='dropdown' href='#')
+                | Site Content&nbsp;
+                b.caret
+              ul.dropdown-menu
+                li(class=cp(controller: 'news_items', action: 'index')): a(href="/admin/news_items") News Items
+                li(class=cp(controller: 'community_pages', action: 'index')): a(href="/admin/community_pages") Activities
+                li(class=cp(controller: 'photos', action: 'index')): a(href="/admin/photos") Photos
+                li(class=cp(controller: 'sermons', action: 'index')): a(href="/admin/sermons") Sermons
+                li(class=cp(controller: 'admin', action: 'about')): a(href="/admin/about") About Page
+            li(class=cp(controller: 'admin', action: 'users')): a(href="/admin/users")
+              | Users
+              - users_count = User.where(confirmed_at: nil).count
+              - if users_count > 0
+                span.badge.badge-important< = users_count
+          ul.nav.navbar-nav.navbar-right
+            li = link_to "Log Out", '/users/sign_out', method: 'delete'
     .container
       == yield

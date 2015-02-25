@@ -7,15 +7,15 @@
       = devise_error_messages!
       = f.hidden_field :reset_password_token
 
-      .control-group
+      .form-group
         = f.label :password, "New password", class: 'control-label'
         .controls = f.password_field :password, :autofocus => true
 
-      .control-group
+      .form-group
         = f.label :password_confirmation, "Confirm new password", class: 'control-label'
         .controls = f.password_field :password_confirmation
 
-      .control-group: .controls = f.submit "Change Password", class: 'btn btn-primary'
+      .form-group: .controls = f.submit "Change Password", class: 'btn btn-primary'
 
     form.form-horizontal
       legend Cancel Your Account

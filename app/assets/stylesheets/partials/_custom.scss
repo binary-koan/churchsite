@@ -6,7 +6,9 @@
   @extend .alert-danger;
 
   h2 {
+    font-family: $font-family-base;
     font-size: $font-size-base;
+    margin: 0 0 0.5em 0;
   }
 }
 
@@ -324,6 +326,14 @@ table.photos {
 }
 
 // MISC
+
+.well > h3:first-child {
+  margin-top: 0;
+}
+
+.navbar {
+  font-size: $font-size-base;
+}
 
 ul.no-decoration {
   margin-left: 0;

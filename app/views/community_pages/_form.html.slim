@@ -6,12 +6,12 @@
         - @community_page.errors.full_messages.each do |message|
           li = message
 
-  .control-group
+  .form-group
     = f.label :title, class: 'control-label'
     .controls = f.text_field :title, class: 'input-xxlarge'
-  .control-group
+  .form-group
     = f.label :content, class: 'control-label'
     .controls = f.cktext_area :content
-  .control-group: .controls
+  .form-group: .controls
     = f.submit 'Save', class: 'btn btn-primary'
     = link_to "Back to List", community_pages_path, class: 'btn btn-link'

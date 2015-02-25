@@ -3,7 +3,7 @@ class NewsItem
 
   field :title, type: String
   field :content, type: String
-  field :owner, type: Moped::BSON::ObjectId
+  field :owner, type: BSON::ObjectId
   attr_accessor :picked_date#, type: String, default: -> { Time.now.strftime('%d/%m/%Y') }
   attr_accessor :picked_time#, type: String
 

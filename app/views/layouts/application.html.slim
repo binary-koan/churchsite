@@ -7,13 +7,17 @@ html
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     meta name="description" content="A modern and vibrant church community based in Lincoln (near Christchurch), New Zealand"
     = csrf_meta_tags
-body
-  .navbar.navbar-fixed-top
-    .navbar-inner
-      .container
-        a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse"): i.icon-dot-3
-        .nav-collapse
-          ul#main-menu.nav
+  body
+    nav.navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#main-menu"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        #main-menu.collapse.navbar-collapse
+          ul.nav.navbar-nav
             li class=cp(controller: 'pages', action: 'home')
               a(href="/") Home
             - if $config.use_news?
@@ -24,7 +28,7 @@ body
                 a.dropdown-toggle(href="#" data-toggle="dropdown")
                   = $config.community_name
                   | &nbsp;
-                  b.caret
+                  span.caret
                 ul.dropdown-menu
                   - CommunityPage.all.sort(title: 1).each do |page|
                     li: a(href="/activities/#{page.identifier}")
@@ -39,9 +43,9 @@ body
               li class=cp(controller: 'pages', action: 'about')
                 a(href="/about") = $config.about_name
           - if user_signed_in?
-            ul.nav.pull-right
+            ul.nav.navbar-nav.navbar-right
               li: a(href="/admin")
                 | Logged In
                 i.icon-right-open
-  .container
-    = yield
+    .container
+      = yield

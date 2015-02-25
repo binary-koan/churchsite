@@ -7,16 +7,16 @@
           li = message
 
   legend Basics
-  .control-group
+  .form-group
     = f.label :title, class: 'control-label'
     .controls = f.text_field :title, class: 'input-xxlarge'
-  .control-group
+  .form-group
     = f.label :church_type, class: 'control-label'
     .controls = f.text_field :church_type, class: 'input-xxlarge'
-  .control-group
+  .form-group
     = f.label :tagline, class: 'control-label'
     .controls = f.text_field :tagline, class: 'input-xxlarge'
-  .control-group
+  .form-group
     = f.label :use_news, "Enable Sections", class: 'control-label'
     .controls
       label.checkbox for="option_use_news"
@@ -41,15 +41,15 @@
       = f.text_field :about_name
 
   legend Leader
-  .control-group
+  .form-group
     = f.label :leader_title, "Title", class: 'control-label'
     .controls
       = f.text_field :leader_title, class: 'input-xxlarge'
       p.help-block For example: Minister, Pastor, etc.
-  .control-group
+  .form-group
     = f.label :leader_name, "Name", class: 'control-label'
     .controls = f.text_field :leader_name, class: 'input-xxlarge'
-  .control-group
+  .form-group
     = f.label :leader_image, "Picture", class: 'control-label'
     .controls
       img.image-preview src=$config.leader_image.url style="width:100px;height:100px"
@@ -57,7 +57,7 @@
       = f.file_field :leader_image, accept: 'image/*'
       p.help-block We recommend this is at least 128&times;128px
       p.help-block Note that the preview won't update until you click 'Save'
-  .control-group
+  .form-group
     label.control-label Contact Methods
     .controls
       label.checkbox
@@ -70,13 +70,13 @@
         | Address
         = f.check_box :leader_use_address
       p.help-block These will be displayed on the front page of the website
-  .control-group
+  .form-group
     = f.label :leader_phone, "Phone Number", class: 'control-label'
     .controls = f.text_field :leader_phone, class: 'input-xxlarge'
-  .control-group
+  .form-group
     = f.label :leader_email, "Email Address", class: 'control-label'
     .controls = f.email_field :leader_email, class: 'input-xxlarge'
-  .control-group
+  .form-group
     = f.label :leader_address, "Physical Address", class: 'control-label'
     .controls = f.text_area :leader_address, class: 'input-xxlarge', rows: 4
-  .control-group: .controls = f.submit 'Save', class: 'btn btn-primary'
+  .form-group: .controls = f.submit 'Save', class: 'btn btn-primary'

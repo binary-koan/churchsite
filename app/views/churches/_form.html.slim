@@ -6,10 +6,10 @@
         - @church.errors.full_messages.each do |message|
           li = message
 
-  .control-group
+  .form-group
     = f.label :name, "Name or Location", class: 'control-label'
     .controls = f.text_field :name, class: 'input-xxlarge'
-  .control-group
+  .form-group
     = f.label :image, class: 'control-label'
     .controls
       img.image-preview src=@church.image.url style="max-height:150px"
@@ -17,17 +17,17 @@
       = f.file_field :image, accept: 'image/*'
       p.help-block We recommend this is at least 400px high
       p.help-block Note that the preview won't update until you click 'Save'
-  .control-group
+  .form-group
     = f.label :services_description, "Description of services", class: 'control-label'
     .controls = f.text_field :services_description, class: 'input-xxlarge'
-  .control-group
+  .form-group
     = f.label :address, class: 'control-label'
     .controls = f.text_area :address, class: 'input-xxlarge', rows: 4
-  .control-group
+  .form-group
     = f.label :map_address, "Map Address", class: 'control-label'
     .controls
       = f.text_field :map_address, class: 'input-xxlarge'
       p.help-block The address you would put in to find it on Google Maps
-  .control-group: .controls
+  .form-group: .controls
     = f.submit 'Save', class: 'btn btn-primary'
     = link_to "Back to List", churches_path, class: 'btn btn-link'

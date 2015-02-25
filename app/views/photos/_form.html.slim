@@ -11,16 +11,16 @@
 
   - if gallery
     h4 Gallery
-    .control-group
+    .form-group
       = f.label :gallery, 'Name', class: 'control-label'
       .controls = f.text_field :gallery, class: 'input-xxlarge'
     h4 Initial photo
     p.help-block You need to have at least one photo in every gallery.
 
-  .control-group
+  .form-group
     = f.label :caption, class: 'control-label'
     .controls = f.text_field :caption, class: 'input-xxlarge'
-  .control-group
+  .form-group
     = f.label :image, class: 'control-label'
     .controls
       img.image-preview src=@photo.image.thumb.url style="width:200px;height:200px"
@@ -28,6 +28,6 @@
       = f.file_field :image, accept: 'image/*'
       p.help-block Note that the preview won't update until you click 'Save'
 
-  .control-group: .controls
+  .form-group: .controls
     = f.submit 'Save', class: 'btn btn-primary'
     = link_to 'Back to List', "/admin/photos/#{return_to}", class: 'btn btn-link'

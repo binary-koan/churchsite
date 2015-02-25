@@ -3,10 +3,10 @@
     h1 = $config.title
     p.lead Logged in as #{current_user.name}
 .row
-  - offset = 'offset3'
+  - offset = 'col-md-offset-3'
   - offset = nil if $config.use_news? and $config.use_sermons?
   - if $config.use_news?
-    div class="span6 #{offset}"
+    div class="col-md-6 #{offset}"
       .well
         h3 News
         == render 'partials/announcement'
@@ -15,7 +15,7 @@
         == render 'partials/news', editable: true
         p: a href="/admin/news_items" See More
   - if $config.use_sermons?
-    div class="span6 #{offset}"
+    div class="col-md-6 #{offset}"
       .well
         h3 Sermons
         = link_to new_sermon_path, class: 'btn' do
