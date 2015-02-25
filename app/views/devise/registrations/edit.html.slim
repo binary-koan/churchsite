@@ -2,11 +2,14 @@
   .col-md-8.col-md-offset-2
     h1 Your Account
 
-    = devise_error_messages!
+    - if flash[:notice]
+        .alert.alert-info = flash[:notice]
 
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal well' }) do |f|
       legend Edit
       = f.hidden_field :reset_password_token
+
+      = devise_error_messages!
 
       .form-group
         = f.label :current_password, "Current Password", class: 'col-sm-4 control-label'
