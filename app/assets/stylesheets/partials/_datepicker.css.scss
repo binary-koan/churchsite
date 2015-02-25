@@ -8,10 +8,15 @@
 
 .datepicker table tr td.day {
   &.today, &.today:hover {
-    background: transparent;
-    color: black;
+    background: white;
+    font-weight: bold;
+    color: $gray-dark;
 
-    &.current-week {
+    &.active {
+      background: $gray-light;
+    }
+
+    &.current-week, &:hover {
       background: $gray-lighter;
     }
   }
@@ -30,8 +35,8 @@
     }
   }
 
-  &.active, &.active:hover {
-    background: $gray-darker;
+  &.active.active, &.active.active:hover {
+    background: $gray;
   }
 
   &.eventful:after {

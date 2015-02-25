@@ -1,13 +1,17 @@
 td.time
   = @news_item.date.localtime.strftime "%l:%M %p"
   | &nbsp;&mdash;&nbsp;
-td.news-item
+td.news-item.news-display
   p: strong
     = @news_item.title
   == h(@news_item.content).split("\n").join("<br />")
-  == render 'news_items/form' if editable
 - if editable
-  td
-    a.news-edit-btn: i.icon-pencil
-    = link_to @news_item, method: 'delete', confirm: 'Are you sure?' do
-      i.icon-trash
+  td.news-item.news-editor(style='display:none')
+    == render 'news_items/form'
+  td.controls
+    a.btn.btn-default.news-edit-btn>(href='#')
+      .glyphicon.glyphicon-pencil
+      span.sr-only Edit
+    = link_to @news_item, method: 'delete', confirm: 'Are you sure?', class: 'btn btn-default' do
+      .glyphicon.glyphicon-trash
+      span.sr-only Delete

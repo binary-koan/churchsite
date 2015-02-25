@@ -35,11 +35,13 @@ $ ->
     $(this).toggleClass 'active'
     $(this).parent().next().toggle()
 
-  $('.news-edit-btn').parent().parent().find('form').hide()
-  $('.news-edit-btn').click ->
+  $('.news-edit-btn').click (e) ->
+    e.preventDefault()
     $el = $(this)
+    $el.toggleClass('active')
     $el.next().toggle()
-    $el.parent().parent().find('form').toggle()
+    $el.parent().parent().find('.news-display').toggle()
+    $el.parent().parent().find('.news-editor').toggle()
 
   # Viewing
   $datePicker = $('.news-date-picker')

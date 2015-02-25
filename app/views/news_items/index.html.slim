@@ -1,10 +1,11 @@
 .row
-  .span6
+  .col-md-6
     h1 News
     == render 'partials/announcement'
     h4 Add News
     - if @news_item
       == render 'news_items/form'
-    == render 'partials/news', editable: true
-  .span3.offset3
-    .news-date-picker data-date=(Time.now.strftime('%d/%m/%Y')) data-date-format="dd/mm/yyyy"
+.row
+  .col-md-9 == render 'partials/news', editable: true
+  .col-md-3
+    .news-date-picker data-date=(@date.strftime('%d/%m/%Y')) data-date-format="dd/mm/yyyy"

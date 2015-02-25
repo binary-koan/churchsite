@@ -216,23 +216,31 @@ table.photos {
   }
   
   td.title {
-    //font-weight: bold;
     text-align: right;
     border-right: 3px solid $gray-light;
     padding: 5px 5px 5px 10px;
+    min-width: 140px;
   }
   
   td.time {
     font-style: italic;
     padding: 5px 0 5px 5px;
+    min-width: 90px;
   }
 
   td.news-item {
     padding: 5px 10px 5px 0;
+    width: 100%;
     
     p {
       margin: 0;
     }
+  }
+
+  td.controls {
+    min-width: 100px;
+    text-align: right;
+    padding: 5px;
   }
 
   tr.highlight td {
