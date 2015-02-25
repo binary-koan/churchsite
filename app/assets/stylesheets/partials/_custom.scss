@@ -335,6 +335,10 @@ table.photos {
 
 // MISC
 
+.cke_reset_all, .cke_reset_all * {
+  box-sizing: content-box;
+}
+
 .well > h3:first-child {
   margin-top: 0;
 }
@@ -358,6 +362,7 @@ table.photos {
 
 ul.no-decoration {
   margin-left: 0;
+  padding-left: 0;
   list-style-type: none;
 
   li.well-sm {
