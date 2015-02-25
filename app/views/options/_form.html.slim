@@ -8,17 +8,17 @@
 
   legend Basics
   .form-group
-    = f.label :title, class: 'control-label'
-    .controls = f.text_field :title, class: 'input-xxlarge'
+    = f.label :title, class: 'col-sm-3 control-label'
+    .col-sm-9 = f.text_field :title, class: 'input-xxlarge'
   .form-group
-    = f.label :church_type, class: 'control-label'
-    .controls = f.text_field :church_type, class: 'input-xxlarge'
+    = f.label :church_type, class: 'col-sm-3 control-label'
+    .col-sm-9 = f.text_field :church_type, class: 'input-xxlarge'
   .form-group
-    = f.label :tagline, class: 'control-label'
-    .controls = f.text_field :tagline, class: 'input-xxlarge'
+    = f.label :tagline, class: 'col-sm-3 control-label'
+    .col-sm-9 = f.text_field :tagline, class: 'input-xxlarge'
   .form-group
-    = f.label :use_news, "Enable Sections", class: 'control-label'
-    .controls
+    = f.label :use_news, "Enable Sections", class: 'col-sm-3 control-label'
+    .col-sm-9
       label.checkbox for="option_use_news"
         | News
         = f.check_box :use_news
@@ -42,16 +42,16 @@
 
   legend Leader
   .form-group
-    = f.label :leader_title, "Title", class: 'control-label'
-    .controls
+    = f.label :leader_title, "Title", class: 'col-sm-3 control-label'
+    .col-sm-9
       = f.text_field :leader_title, class: 'input-xxlarge'
       p.help-block For example: Minister, Pastor, etc.
   .form-group
-    = f.label :leader_name, "Name", class: 'control-label'
-    .controls = f.text_field :leader_name, class: 'input-xxlarge'
+    = f.label :leader_name, "Name", class: 'col-sm-3 control-label'
+    .col-sm-9 = f.text_field :leader_name, class: 'input-xxlarge'
   .form-group
-    = f.label :leader_image, "Picture", class: 'control-label'
-    .controls
+    = f.label :leader_image, "Picture", class: 'col-sm-3 control-label'
+    .col-sm-9
       img.image-preview src=$config.leader_image.url style="width:100px;height:100px"
       br
       = f.file_field :leader_image, accept: 'image/*'
@@ -59,7 +59,7 @@
       p.help-block Note that the preview won't update until you click 'Save'
   .form-group
     label.control-label Contact Methods
-    .controls
+    .col-sm-9
       label.checkbox
         | Email
         = f.check_box :leader_use_email
@@ -71,12 +71,12 @@
         = f.check_box :leader_use_address
       p.help-block These will be displayed on the front page of the website
   .form-group
-    = f.label :leader_phone, "Phone Number", class: 'control-label'
-    .controls = f.text_field :leader_phone, class: 'input-xxlarge'
+    = f.label :leader_phone, "Phone Number", class: 'col-sm-3 control-label'
+    .col-sm-9 = f.text_field :leader_phone, class: 'input-xxlarge'
   .form-group
-    = f.label :leader_email, "Email Address", class: 'control-label'
-    .controls = f.email_field :leader_email, class: 'input-xxlarge'
+    = f.label :leader_email, "Email Address", class: 'col-sm-3 control-label'
+    .col-sm-9 = f.email_field :leader_email, class: 'input-xxlarge'
   .form-group
-    = f.label :leader_address, "Physical Address", class: 'control-label'
-    .controls = f.text_area :leader_address, class: 'input-xxlarge', rows: 4
-  .form-group: .controls = f.submit 'Save', class: 'btn btn-primary'
+    = f.label :leader_address, "Physical Address", class: 'col-sm-3 control-label'
+    .col-sm-9 = f.text_area :leader_address, class: 'input-xxlarge', rows: 4
+  .form-group: .col-sm-9 = f.submit 'Save', class: 'btn btn-primary'

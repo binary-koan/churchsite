@@ -7,11 +7,11 @@
           li = message
 
   .form-group
-    = f.label :title, class: 'control-label'
-    .controls = f.text_field :title, class: 'input-xxlarge'
+    = f.label :title, class: 'col-sm-3 control-label'
+    .col-sm-9 = f.text_field :title, class: 'input-xxlarge'
   .form-group
-    = f.label :content, class: 'control-label'
-    .controls = f.cktext_area :content
-  .form-group: .controls
+    = f.label :content, class: 'col-sm-3 control-label'
+    .col-sm-9 = f.cktext_area :content
+  .form-group: .col-sm-9
     = f.submit 'Save', class: 'btn btn-primary'
     = link_to "Back to List", community_pages_path, class: 'btn btn-link'

@@ -25,7 +25,7 @@ table(class='sermons #{'compact' if compact}')
         /    a.btn(href=sermon.podcast_mp3.url target='_blank')
         /      i.icon-download
       - if editable
-        td.controls
+        td.col-sm-9
           = link_to edit_sermon_path(sermon) do
             i.icon-pencil
             | Edit

@@ -70,7 +70,7 @@ module Churchsite
     # Devise layout config
     config.to_prepare do
       Devise::SessionsController.layout "authenticate"
-      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "authenticate" }
+      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "admin" : "authenticate" }
       Devise::ConfirmationsController.layout "authenticate"
       Devise::UnlocksController.layout "authenticate"
       Devise::PasswordsController.layout "authenticate"

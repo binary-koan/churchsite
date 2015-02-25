@@ -18,5 +18,8 @@ module ApplicationHelper
 
   def cp(path)
     "active" if current_page?(path)
+  rescue => err # If the path doesn't exist
+    p err
+    nil
   end
 end

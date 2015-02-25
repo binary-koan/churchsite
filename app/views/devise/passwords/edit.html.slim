@@ -6,13 +6,13 @@
       = f.hidden_field :reset_password_token
 
       .form-group
-        = f.label :password, "New password", class: 'control-label'
-        .controls = f.password_field :password, :autofocus => true
+        = f.label :password, "New password", class: 'col-sm-3 control-label'
+        .col-sm-9 = f.password_field :password, :autofocus => true
 
       .form-group
-        = f.label :password_confirmation, "Confirm new password", class: 'control-label'
-        .controls = f.password_field :password_confirmation
+        = f.label :password_confirmation, "Confirm new password", class: 'col-sm-3 control-label'
+        .col-sm-9 = f.password_field :password_confirmation
 
-      .form-group: .controls = f.submit "Change Password"
+      .form-group: .col-sm-9 = f.submit "Change Password"
 
     = render "devise/shared/links"

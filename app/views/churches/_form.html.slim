@@ -7,27 +7,27 @@
           li = message
 
   .form-group
-    = f.label :name, "Name or Location", class: 'control-label'
-    .controls = f.text_field :name, class: 'input-xxlarge'
+    = f.label :name, "Name or Location", class: 'col-sm-3 control-label'
+    .col-sm-9 = f.text_field :name, class: 'input-xxlarge'
   .form-group
-    = f.label :image, class: 'control-label'
-    .controls
+    = f.label :image, class: 'col-sm-3 control-label'
+    .col-sm-9
       img.image-preview src=@church.image.url style="max-height:150px"
       br
       = f.file_field :image, accept: 'image/*'
       p.help-block We recommend this is at least 400px high
       p.help-block Note that the preview won't update until you click 'Save'
   .form-group
-    = f.label :services_description, "Description of services", class: 'control-label'
-    .controls = f.text_field :services_description, class: 'input-xxlarge'
+    = f.label :services_description, "Description of services", class: 'col-sm-3 control-label'
+    .col-sm-9 = f.text_field :services_description, class: 'input-xxlarge'
   .form-group
-    = f.label :address, class: 'control-label'
-    .controls = f.text_area :address, class: 'input-xxlarge', rows: 4
+    = f.label :address, class: 'col-sm-3 control-label'
+    .col-sm-9 = f.text_area :address, class: 'input-xxlarge', rows: 4
   .form-group
-    = f.label :map_address, "Map Address", class: 'control-label'
-    .controls
+    = f.label :map_address, "Map Address", class: 'col-sm-3 control-label'
+    .col-sm-9
       = f.text_field :map_address, class: 'input-xxlarge'
       p.help-block The address you would put in to find it on Google Maps
-  .form-group: .controls
+  .form-group: .col-sm-9
     = f.submit 'Save', class: 'btn btn-primary'
     = link_to "Back to List", churches_path, class: 'btn btn-link'

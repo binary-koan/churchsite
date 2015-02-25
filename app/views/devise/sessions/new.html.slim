@@ -1,23 +1,24 @@
 .row
   .col-md-6.col-md-offset-3
-    == form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "well"}) do |f|
+    == form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "well form-horizontal" }) do |f|
       legend Sign In
       == devise_error_messages!
     
       .form-group
-        == f.label :email, class: 'control-label'
-        == f.email_field :email, class: 'form-control', :autofocus => true
+        == f.label :email, class: 'col-sm-3 control-label'
+        .col-sm-9 == f.email_field :email, class: 'form-control', :autofocus => true
     
       .form-group
-        == f.label :password, class: 'control-label'
-        == f.password_field :password, class: 'form-control'
+        == f.label :password, class: 'col-sm-3 control-label'
+        .col-sm-9 == f.password_field :password, class: 'form-control'
     
       - if devise_mapping.rememberable?
-        .checkbox
-          label for="#{resource_name}_remember_me"
-            == f.check_box :remember_me
-            | Remember Me
+        .form-group: .col-sm-9.col-sm-offset-3
+          .checkbox
+            label for="#{resource_name}_remember_me"
+              == f.check_box :remember_me
+              | Remember Me
     
-      .form-group: .controls == f.submit "Sign in", class: 'btn btn-primary'
+      .form-group: .col-sm-9.col-sm-offset-3 == f.submit "Sign in", class: 'btn btn-primary'
     
     == render "devise/shared/links"

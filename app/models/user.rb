@@ -32,7 +32,8 @@ class User
   field :confirmation_sent_at, :type => Time
   field :unconfirmed_email,    :type => String # Only if using reconfirmable
 
-  def send_on_create_confirmation_instructions
+  def send_devise_notification(*args)
+    puts "User model: Not sending notification [#{args.join(', ')}]"
     # Don't send an email, accounts are confirmed manually
   end
 

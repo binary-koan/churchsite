@@ -1,55 +1,35 @@
 .row
-  .span6.offset3
+  .col-md-8.col-md-offset-2
     h1 Your Account
 
-    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f|
-      legend Change Your Password
-      = devise_error_messages!
+    = devise_error_messages!
+
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal well' }) do |f|
+      legend Edit
       = f.hidden_field :reset_password_token
 
       .form-group
-        = f.label :password, "New password", class: 'control-label'
-        .controls = f.password_field :password, :autofocus => true
+        = f.label :current_password, "Current Password", class: 'col-sm-4 control-label'
+        .col-sm-8
+          = f.password_field :current_password, class: 'form-control', :autofocus => true
+          p.help-block: em We need this to make sure you're the one changing things
 
       .form-group
-        = f.label :password_confirmation, "Confirm new password", class: 'control-label'
-        .controls = f.password_field :password_confirmation
+        = f.label :email, "New Email Address", class: 'col-sm-4 control-label'
+        .col-sm-8 = f.email_field :email, :autofocus => true, class: 'form-control'
 
-      .form-group: .controls = f.submit "Change Password", class: 'btn btn-primary'
+      .form-group
+        = f.label :password, "New Password", class: 'col-sm-4 control-label'
+        .col-sm-8 = f.password_field :password, class: 'form-control'
 
-    form.form-horizontal
-      legend Cancel Your Account
-      = button_to "Cancel Your Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: 'btn'
+      .form-group
+        = f.label :password_confirmation, "Confirm New Password", class: 'col-sm-4 control-label'
+        .col-sm-8 = f.password_field :password_confirmation, class: 'form-control'
 
-    = render "devise/shared/links"
-/
-/
-/<h2>Edit <%= resource_name.to_s.humanize %></h2>
-/
-/<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-/  <%= devise_error_messages! %>
-/
-/  <div><%= f.label :email %><br />
-/  <%= f.email_field :email, :autofocus => true %></div>
-/
-/  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-/    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-/  <% end %>
-/
-/  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-/  <%= f.password_field :password, :autocomplete => "off" %></div>
-/
-/  <div><%= f.label :password_confirmation %><br />
-/  <%= f.password_field :password_confirmation %></div>
-/
-/  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-/  <%= f.password_field :current_password %></div>
-/
-/  <div><%= f.submit "Update" %></div>
-/<% end %>
-/
-/<h3>Cancel my account</h3>
-/
-/<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
-/
-/<%= link_to "Back", :back %>
+      .form-group
+        .col-sm-8.col-sm-offset-4 = f.submit "Update", class: 'btn btn-primary'
+
+    form.well
+      legend Delete
+      .form-buttons
+        = button_to "Permanently Delete Your Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: 'btn btn-default'

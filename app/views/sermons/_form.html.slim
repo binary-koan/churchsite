@@ -7,17 +7,17 @@
           li = message
 
   .form-group
-    = f.label :date, class: 'control-label'
-    .controls = f.date_select :date, { order: [:day, :month, :year], use_month_names: Date::ABBR_MONTHNAMES }, { class: 'input-small' }
+    = f.label :date, class: 'col-sm-3 control-label'
+    .col-sm-9 = f.date_select :date, { order: [:day, :month, :year], use_month_names: Date::ABBR_MONTHNAMES }, { class: 'input-small' }
   .form-group
-    = f.label :description, class: 'control-label'
-    .controls = f.text_area :description, class: 'input-xxlarge', rows: 5
+    = f.label :description, class: 'col-sm-3 control-label'
+    .col-sm-9 = f.text_area :description, class: 'input-xxlarge', rows: 5
   .form-group
-    = f.label :content, class: 'control-label'
-    .controls = f.cktext_area :content
+    = f.label :content, class: 'col-sm-3 control-label'
+    .col-sm-9 = f.cktext_area :content
   .form-group
-    = f.label :podcast_ogg, "OGG Podcast", class: 'control-label'
-    .controls
+    = f.label :podcast_ogg, "OGG Podcast", class: 'col-sm-3 control-label'
+    .col-sm-9
       = f.file_field :podcast_ogg, accept: 'audio/ogg'
       p.help-block Podcast in the OGG audio format.
       p.help-block
@@ -41,8 +41,8 @@
         .modal-footer
           button.btn(data-dismiss='modal') Close
   .form-group
-    = f.label :podcast_mp3, "MP3 Podcast", class: 'control-label'
-    .controls
+    = f.label :podcast_mp3, "MP3 Podcast", class: 'col-sm-3 control-label'
+    .col-sm-9
       = f.file_field :podcast_mp3, accept: 'audio/mp3'
       p.help-block Podcast again in the MP3 audio format.
       p.help-block
@@ -65,6 +65,6 @@
             li Finally, use the file picker on this webpage to find the file you just saved
         .modal-footer
           button.btn(data-dismiss='modal') Close
-  .form-group: .controls
+  .form-group: .col-sm-9
     = f.submit 'Save', class: 'btn btn-primary'
     = link_to "Back to List", sermons_path, class: 'btn btn-link'
