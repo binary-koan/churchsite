@@ -44,8 +44,13 @@ html
                 a(href="/about") = $config.about_name
           - if user_signed_in?
             ul.nav.navbar-nav.navbar-right
-              li: a(href="/admin")
-                | Logged In
-                i.icon-right-open
+              li.dropdown
+                a.dropdown-toggle(data-toggle='dropdown' href='#')
+                  = current_user.name
+                  b.caret<
+                ul.dropdown-menu
+                  li: a(href="/admin") Admin Dashboard
+                  li = link_to "Account Settings", '/users/edit'
+                  li = link_to "Sign Out", '/users/sign_out', method: 'delete'
     .container
       = yield
