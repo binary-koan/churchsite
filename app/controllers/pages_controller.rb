@@ -51,7 +51,7 @@ class PagesController < ApplicationController
   end
 
   def gallery
-    @photos = Photo.where gallery_id: params[:gallery]
+    @photos = Photo.where(gallery_id: params[:gallery]).asc :order
     @title = $config.photos_name
   end
 
