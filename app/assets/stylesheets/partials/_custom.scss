@@ -170,8 +170,6 @@ table.photos {
     margin-right: 10px;
     margin-top: -10px;
 
-    width: 100px;
-
     img {
       width: 100px;
       height: 100px;
@@ -337,6 +335,15 @@ table.photos {
 
 .cke_reset_all, .cke_reset_all * {
   box-sizing: content-box;
+}
+
+.row.padded {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+h1 .glyphicon {
+  font-size: 21px;
 }
 
 .well > h3:first-child {

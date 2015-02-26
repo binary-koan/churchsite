@@ -20,10 +20,13 @@ class PhotosController < ApplicationController
   # GET /photos/1.json
   def show
     @photos = Photo.where(gallery_id: params[:id]).sort date: -1
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @photos }
+    if @photos.length == 0
+      redirect_to photos_path
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @photos }
+      end
     end
   end
 
@@ -47,10 +50,14 @@ class PhotosController < ApplicationController
   # POST /photos.json
   def create
     @photo = Photo.new(params[:photo])
+    if params[:gallery_id] and params[:gallery]
+      @photo.gallery_id = params[:gallery_id]
+      @photo.gallery = params[:gallery]
+    end
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to "/admin/photos/#{params[:gallery]}" }
+        format.html { redirect_to "/admin/photos/#{params[:gallery_id]}" }
         format.json { render json: @photo, status: :created, location: @photo }
       else
         format.html { render action: "new" }
@@ -87,7 +94,7 @@ class PhotosController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to "/admin/photos/#{params[:return_to]}" }
+      format.html { redirect_to "/admin/photos/#{params[:gallery_id]}" }
       format.json { head :no_content }
     end
   end

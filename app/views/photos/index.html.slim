@@ -2,21 +2,13 @@
   .span12
     h1 Galleries
 
-    p = link_to new_photo_path(gallery: true), class: 'btn' do
-      i.icon-plus-squared
+    p = link_to new_photo_path(new_gallery: true), class: 'btn btn-default' do
+      span.glyphicon.glyphicon-plus>
       | Add Gallery
 
     .galleries
       - @photos.each do |info|
         - gallery, photo = info[0], info[1]
-        .gallery.well.well-sm
+        = link_to "/admin/photos/#{photo.gallery_id}", class: 'gallery well well-sm' do
           img src=photo.image.thumb.url
-          p: strong = gallery
-          .user-controls
-            = link_to "/admin/photos/#{photo.gallery_id}" do
-              i.icon-pencil
-              | Edit
-            | &nbsp;
-            = link_to photo_path(photo, gallery: true), :confirm => 'Are you sure?', :method => :delete do
-              i.icon-trash
-              | Delete
+          strong = gallery

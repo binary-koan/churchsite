@@ -1,5 +1,11 @@
 .row
   .span12
-    h1 New Photo
+    - if params[:new_gallery]
+      h1 New Gallery
+    - else
+      h1
+      	= link_to params[:gallery], photo_path(params[:gallery_id])
+      	span.glyphicon.glyphicon-menu-right<>
+      	| New Photo
 
-    == render 'form', gallery: params[:gallery], return_to: params[:return_to]
+    == render 'form', new_gallery: params[:new_gallery], gallery: params[:gallery], gallery_id: params[:gallery_id]
