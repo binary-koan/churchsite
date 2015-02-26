@@ -21,6 +21,8 @@ Churchsite::Application.routes.draw do
   scope '/admin' do
     resources :news_items
     resources :churches
+    get 'community_pages/reorder'
+    post 'community_pages/reorder'
     resources :community_pages
     #TODO: Shouldn't be here but form_for needs option_path
     resources :options

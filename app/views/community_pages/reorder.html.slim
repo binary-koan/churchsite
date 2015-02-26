@@ -1,0 +1,9 @@
+.row: .col-md-12
+  h1 Reorder pages
+  ul#community-pages.no-decoration.sortable
+    - CommunityPage.asc(:order).each do |page|
+      li.well.well-sm(data-document-id=page._id.to_s)
+        span.glyphicon.glyphicon-resize-vertical>
+        = page.title
+  button.btn.btn-primary Save Order
+  a.btn.btn-link(href=community_pages_path) Back to List

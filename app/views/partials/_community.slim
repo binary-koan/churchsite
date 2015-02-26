@@ -1,15 +1,18 @@
 p
-  a.btn.btn-default(href=new_community_page_path)
+  a.btn.btn-primary>(href=new_community_page_path)
     span.glyphicon.glyphicon-plus>
     | New Page
+  a.btn.btn-default(href=community_pages_reorder_path)
+    span.glyphicon.glyphicon-resize-vertical
+    | Change Page Order
 ul.no-decoration
-  - CommunityPage.each do |page|
-    li.well.well-sm(style='text-align: right')
+  - CommunityPage.asc(:order).each do |page|
+    li.well.well-sm(style='text-align: right' data-order=page.order data-document-id=page._id.to_s)
       .pull-left(style='margin-top: 9px; margin-left: 5px') = page.title
       = link_to edit_community_page_path(page), class: 'btn btn-default' do
         .glyphicon.glyphicon-pencil
         | Edit
       | &nbsp;
       = link_to page, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-default' do
-        .glyphicon.glyphicon-pencil
+        .glyphicon.glyphicon-trash
         | Delete

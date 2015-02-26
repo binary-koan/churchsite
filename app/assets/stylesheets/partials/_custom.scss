@@ -333,6 +333,10 @@ table.photos {
 
 // MISC
 
+ul.sortable li {
+  cursor: move;
+}
+
 .cke_reset_all, .cke_reset_all * {
   box-sizing: content-box;
 }

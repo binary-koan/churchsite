@@ -43,6 +43,7 @@ class CommunityPagesController < ApplicationController
   # POST /community_pages.json
   def create
     @community_page = CommunityPage.new(params[:community_page])
+    @community_page.order = CommunityPage.count
 
     respond_to do |format|
       if @community_page.save
@@ -75,11 +76,37 @@ class CommunityPagesController < ApplicationController
   # DELETE /community_pages/1.json
   def destroy
     @community_page = CommunityPage.find(params[:id])
+
+    order = @community_page.order
+    CommunityPage.where(:order.gt => @community_page.order).find_and_modify(
+      '$inc' => { :order => -1 }
+    )
+
     @community_page.destroy
 
     respond_to do |format|
       format.html { redirect_to community_pages_url }
       format.json { head :no_content }
+    end
+  end
+
+  # GET or POST /community_pages/reorder
+  def reorder
+    if request.post?
+      docs = params[:data]
+      docs.each do |id, order|
+        doc = CommunityPage.find id
+        doc.order = order
+        doc.save
+      end
+      respond_to do |format|
+        format.html { redirect_to community_pages_url }
+        format.json { render updated: docs.length }
+      end
+    else
+      respond_to do |format|
+        format.html
+      end
     end
   end
 end
