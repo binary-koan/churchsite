@@ -9,7 +9,7 @@
       span.glyphicon.glyphicon-plus>
       | Add Photo
     a.btn.btn-default> href="/admin/photos/#{params[:id]}/reorder"
-      span.glyphicon.glyphicon-resize-vertical>
+      span.glyphicon.glyphicon-move>
       | Reorder Photos
     = link_to photo_path(@photos.first, gallery: true), confirm: 'Are you sure?', method: 'delete', class: 'btn btn-default' do
       span.glyphicon.glyphicon-trash>
@@ -17,13 +17,12 @@
 
 .row
   .col-md-12
-    table.photos
+    ul.card-flow
       - @photos.each do |photo|
-        tr
-          td.image-preview
-            .well.well-sm: img src=photo.image.thumb.url
-          td.fill = photo.caption
-          td.user-controls
+        li.well.well-sm
+          img src=photo.image.thumb.url
+          p.caption = photo.caption
+          .form-buttons
             = link_to edit_photo_path(photo, gallery_id: params[:id]), class: 'btn btn-default' do
               span.glyphicon.glyphicon-pencil>
               | Edit

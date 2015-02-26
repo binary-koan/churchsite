@@ -1,9 +1,10 @@
 .row: .col-md-12
   h1 == breadcrumb @gallery => photo_path(@gallery_id), "Reorder Photos" => nil
-  ul#photos.no-decoration.sortable
+  ul#photos.card-flow.sortable
     - @photos.each do |photo|
       li.well.well-sm(data-document-id=photo._id.to_s)
-        span.glyphicon.glyphicon-resize-vertical>
-        = photo.caption
+        p: span.glyphicon.glyphicon-move
+        img src=photo.image.thumb.url
+        div = photo.caption
   button.btn.btn-primary Save Order
   a.btn.btn-link(href=photo_path(@gallery_id)) Back to List

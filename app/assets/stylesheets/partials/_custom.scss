@@ -380,3 +380,21 @@ ul.no-decoration {
     margin-bottom: 10px;
   }
 }
+
+ul.card-flow {
+  @extend ul.no-decoration;
+
+  li {
+    display: inline-block;
+    margin-right: 10px;
+
+    p, div {
+      text-align: center;
+    }
+
+    img {
+      display: block;
+      margin-bottom: 10px;
+    }
+  }
+}
