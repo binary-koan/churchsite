@@ -1,10 +1,7 @@
 - gallery = @photos.first.gallery
 .row
   .col-md-12
-    h1
-      = link_to "Galleries", photos_path
-      span.glyphicon.glyphicon-menu-right<>
-      = gallery
+    h1 == breadcrumb "Galleries" => photos_path, gallery => nil
 
 .row.padded
   .col-md-12
