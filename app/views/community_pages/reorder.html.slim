@@ -1,5 +1,5 @@
 .row: .col-md-12
-  h1 Reorder pages
+  h1 Reorder Pages
   ul#community-pages.no-decoration.sortable
     - CommunityPage.asc(:order).each do |page|
       li.well.well-sm(data-document-id=page._id.to_s)

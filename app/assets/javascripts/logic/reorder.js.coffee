@@ -22,3 +22,4 @@ setup_reorder = (element_id, url) ->
 
 $ ->
   setup_reorder 'community-pages'
+  setup_reorder 'photos'

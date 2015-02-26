@@ -8,10 +8,12 @@
 
 .row.padded
   .col-md-12
-    = link_to new_photo_path(gallery: gallery, gallery_id: params[:id]), class: 'btn btn-primary' do
+    a.btn.btn-primary> href=new_photo_path(gallery: gallery, gallery_id: params[:id])
       span.glyphicon.glyphicon-plus>
       | Add Photo
-    | &nbsp;
+    a.btn.btn-default> href="/admin/photos/#{params[:id]}/reorder"
+      span.glyphicon.glyphicon-resize-vertical>
+      | Reorder Photos
     = link_to photo_path(@photos.first, gallery: true), confirm: 'Are you sure?', method: 'delete', class: 'btn btn-default' do
       span.glyphicon.glyphicon-trash>
       | Delete Gallery

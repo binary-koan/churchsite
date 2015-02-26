@@ -1,0 +1,12 @@
+.row: .col-md-12
+  h1
+    = link_to @gallery, photo_path(@gallery_id)
+    span.glyphicon.glyphicon-menu-right<>
+    | Reorder photos
+  ul#photos.no-decoration.sortable
+    - @photos.each do |photo|
+      li.well.well-sm(data-document-id=photo._id.to_s)
+        span.glyphicon.glyphicon-resize-vertical>
+        = photo.caption
+  button.btn.btn-primary Save Order
+  a.btn.btn-link(href=photo_path(@gallery_id)) Back to List

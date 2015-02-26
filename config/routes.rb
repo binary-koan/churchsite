@@ -27,6 +27,8 @@ Churchsite::Application.routes.draw do
     #TODO: Shouldn't be here but form_for needs option_path
     resources :options
     resources :sermons
+    get 'photos/:id/reorder', to: 'photos#reorder'
+    post 'photos/:id/reorder', to: 'photos#reorder'
     resources :photos
   end
 

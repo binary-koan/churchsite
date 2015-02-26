@@ -16,10 +16,10 @@ class PhotosController < ApplicationController
     end
   end
 
-  # GET /photos/1
-  # GET /photos/1.json
+  # GET /photos/:gallery_id
+  # GET /photos/:gallery_id.json
   def show
-    @photos = Photo.where(gallery_id: params[:id]).sort date: -1
+    @photos = Photo.where(gallery_id: params[:id]).asc :order
     if @photos.length == 0
       redirect_to photos_path
     else
@@ -96,6 +96,30 @@ class PhotosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to "/admin/photos/#{params[:gallery_id]}" }
       format.json { head :no_content }
+    end
+  end
+
+  # GET or POST /photos/:gallery_id/reorder
+  def reorder
+    if request.post?
+      docs = params[:data]
+      docs.each do |id, order|
+        doc = Photo.find id
+        doc.order = order
+        doc.save
+      end
+      respond_to do |format|
+        format.html { redirect_to photos_url }
+        format.json { render updated: docs.length }
+      end
+    else
+      @photos = Photo.where(gallery_id: params[:id]).asc :order
+      @gallery = @photos.first.gallery
+      @gallery_id = params[:id]
+
+      respond_to do |format|
+        format.html
+      end
     end
   end
 end
