@@ -30,7 +30,7 @@ html
                   | &nbsp;
                   span.caret
                 ul.dropdown-menu
-                  - CommunityPage.all.sort(title: 1).each do |page|
+                  - CommunityPage.asc(:order).each do |page|
                     li: a(href="/activities/#{page.identifier}")
                       = page.title
             - if $config.use_photos?
