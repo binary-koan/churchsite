@@ -5,12 +5,15 @@ class Sermon
   field :content, type: String
   mount_uploader :podcast_ogg, AudioUploader
   mount_uploader :podcast_mp3, AudioUploader
+  attr_accessor :picked_date
 
   before_save do |document|
-    if document[:'date(1i)']
-      document.date = Date.new document[:'date(1i)'].to_i, document[:'date(2i)'].to_i, document[:'date(3i)'].to_i
-    elsif not document.date
-      document.date = Date.today
+    if document.picked_date
+      break unless document.picked_date =~ /^(\d\d)\/(\d\d)\/(\d{4})$/
+      year, month, day = $3.to_i, $2.to_i, $1.to_i
+
+      time = Time.local year, month, day
+      document[:date] = time
     end
   end
 end

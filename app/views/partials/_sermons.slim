@@ -12,25 +12,27 @@ table(class='sermons #{'compact' if compact}')
       - unless compact
         td.read
           - if sermon.content and not sermon.content.empty?
-            a.btn(href="/word/#{sermon._id}")
-              i.icon-newspaper
-              | Read
-        td.player
-          - if sermon.podcast_mp3.url or sermon.podcast_ogg.url
+            a.btn.btn-primary(href="/word/#{sermon._id}")
+              span.glyphicon.glyphicon-arrow-right>
+              | Read Online
+        - if sermon.podcast_mp3.url or sermon.podcast_ogg.url
+          td.player
             audio(preload='auto' controls)
               source src=sermon.podcast_mp3.url
               source src=sermon.podcast_ogg.url
+        - else
+          td
         /td.download
         /  - if sermon.podcast_mp3.url
         /    a.btn(href=sermon.podcast_mp3.url target='_blank')
         /      i.icon-download
       - if editable
-        td.col-sm-9
-          = link_to edit_sermon_path(sermon) do
-            i.icon-pencil
+        td.controls
+          = link_to edit_sermon_path(sermon), class: 'btn btn-default' do
+            span.glyphicon.glyphicon-pencil>
             | Edit
           | &nbsp;
-          = link_to sermon, :confirm => 'Are you sure?', :method => :delete do
-            i.icon-trash
+          = link_to sermon, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-default' do
+            span.glyphicon.glyphicon-trash>
             | Delete
 = will_paginate @sermons

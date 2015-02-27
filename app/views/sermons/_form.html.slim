@@ -8,10 +8,13 @@
 
   .form-group
     = f.label :date, class: 'col-sm-3 control-label'
-    .col-sm-9 = f.date_select :date, { order: [:day, :month, :year], use_month_names: Date::ABBR_MONTHNAMES }, { class: 'input-small' }
+    .col-sm-5
+      .input-group.date.datepicker
+        = f.text_field :picked_date, class: 'form-control', value: @sermon.date.strftime('%d/%m/%Y')
+        span.add-on.input-group-addon: span.glyphicon.glyphicon-calendar
   .form-group
     = f.label :description, class: 'col-sm-3 control-label'
-    .col-sm-9 = f.text_area :description, class: 'input-xxlarge', rows: 5
+    .col-sm-9 = f.text_area :description, class: 'form-control', rows: 5
   .form-group
     = f.label :content, class: 'col-sm-3 control-label'
     .col-sm-9 = f.cktext_area :content
@@ -21,8 +24,8 @@
       = f.file_field :podcast_ogg, accept: 'audio/ogg'
       p.help-block Podcast in the OGG audio format.
       p.help-block
-        a(href='#oggFileModal' data-toggle='modal') Learn how to make this sort of file
-      #oggFileModal.modal.hide.fade
+        a(href='#' data-toggle='modal' data-target='#oggFileModal') Learn how to make this sort of file
+      #oggFileModal.modal.fade: .modal-dialog: .modal-content
         .modal-header
           h3 Make an OGG file
         .modal-body
@@ -33,21 +36,21 @@
           p.lead Do this each time
           ol
             li Record your sound in any format
-            li Open Audacity and click <em>File</em> <i class="icon-right-open-big"></i> <em>Open ...</em>
+            li Open Audacity and click <em>File</em> <span class="glyphicon glyphicon-menu-right"></span> <em>Open ...</em>
             li Find your recorded sound file and click <em>Open</em>
-            li Click <em>File</em> <i class="icon-right-open-big"></i> <em>Export ...</em>
+            li Click <em>File</em> <span class="glyphicon glyphicon-menu-right"></span> <em>Export ...</em>
             li Choose <em>MP4 (AAC) files (FFmpeg)</em> under <em>Save as type</em> and click <em>Save</em>
             li Finally, use the file picker on this webpage to find the file you just saved
         .modal-footer
-          button.btn(data-dismiss='modal') Close
+          button.btn.btn-default(data-dismiss='modal') Close
   .form-group
     = f.label :podcast_mp3, "MP3 Podcast", class: 'col-sm-3 control-label'
     .col-sm-9
       = f.file_field :podcast_mp3, accept: 'audio/mp3'
       p.help-block Podcast again in the MP3 audio format.
       p.help-block
-        a(href='#mp3FileModal' data-toggle='modal') Learn how to make this sort of file
-      #mp3FileModal.modal.hide.fade
+        a(href='#' data-toggle='modal' data-target='#mp3FileModal') Learn how to make this sort of file
+      #mp3FileModal.modal.fade: .modal-dialog: .modal-content
         .modal-header
           h3 Make an MP3 file
         .modal-body
@@ -58,13 +61,13 @@
           p.lead Do this each time
           ol
             li Record your sound in any format
-            li Open Audacity and click <em>File</em> <i class="icon-right-open-big"></i> <em>Open ...</em>
+            li Open Audacity and click <em>File</em> <span class="glyphicon glyphicon-menu-right"></span> <em>Open ...</em>
             li Find your recorded sound file and click <em>Open</em>
-            li Click <em>File</em> <i class="icon-right-open-big"></i> <em>Export ...</em>
+            li Click <em>File</em> <span class="glyphicon glyphicon-menu-right"></span> <em>Export ...</em>
             li Choose <em>MP3 Files</em> under <em>Save as type</em> and click <em>Save</em>
             li Finally, use the file picker on this webpage to find the file you just saved
         .modal-footer
-          button.btn(data-dismiss='modal') Close
-  .form-group: .col-sm-9
+          button.btn.btn-default(data-dismiss='modal') Close
+  .form-group: .col-sm-9.col-sm-offset-3
     = f.submit 'Save', class: 'btn btn-primary'
     = link_to "Back to List", sermons_path, class: 'btn btn-link'

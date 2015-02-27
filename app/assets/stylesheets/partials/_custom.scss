@@ -131,22 +131,8 @@ table.sermons {
   }
 
   td.controls {
-    min-width: 150px;
+    min-width: 190px;
     text-align: right;
-  }
-
-  td.read .btn {
-    height: 30px;
-    line-height: 30px;
-    margin-right: 10px;
-    padding: 0 10px 6px 10px;
-    text-align: center;
-    min-width: 60px;
-
-    i {
-      font-size: 18px;
-      line-height: 38px;
-    }
   }
 
   td.download .btn {
@@ -397,4 +383,9 @@ ul.card-flow {
       margin-bottom: 10px;
     }
   }
+}
+
+form .form-control.form-control-inline {
+  display: inline-block;
+  width: auto;
 }

@@ -1,9 +1,9 @@
 .row
-  .span12
+  .col-md-12
     h1 Sermons
 
-    = link_to new_sermon_path, class: 'btn' do
-      i.icon-plus-squared
+    = link_to new_sermon_path, class: 'btn btn-primary' do
+      span.glyphicon.glyphicon-plus>
       | Add Sermon
 
     = render 'partials/sermons', editable: true, compact: false
