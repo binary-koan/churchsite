@@ -8,7 +8,7 @@
 
   .form-group
     = f.label :name, "Name or Location", class: 'col-sm-3 control-label'
-    .col-sm-9 = f.text_field :name, class: 'input-xxlarge'
+    .col-sm-9 = f.text_field :name, class: 'form-control'
   .form-group
     = f.label :image, class: 'col-sm-3 control-label'
     .col-sm-9
@@ -19,15 +19,15 @@
       p.help-block Note that the preview won't update until you click 'Save'
   .form-group
     = f.label :services_description, "Description of services", class: 'col-sm-3 control-label'
-    .col-sm-9 = f.text_field :services_description, class: 'input-xxlarge'
+    .col-sm-9 = f.text_field :services_description, class: 'form-control'
   .form-group
     = f.label :address, class: 'col-sm-3 control-label'
-    .col-sm-9 = f.text_area :address, class: 'input-xxlarge', rows: 4
+    .col-sm-9 = f.text_area :address, class: 'form-control', rows: 4
   .form-group
     = f.label :map_address, "Map Address", class: 'col-sm-3 control-label'
     .col-sm-9
-      = f.text_field :map_address, class: 'input-xxlarge'
+      = f.text_field :map_address, class: 'form-control'
       p.help-block The address you would put in to find it on Google Maps
-  .form-group: .col-sm-9
+  .form-group: .col-sm-9.col-sm-offset-3
     = f.submit 'Save', class: 'btn btn-primary'
     = link_to "Back to List", churches_path, class: 'btn btn-link'
