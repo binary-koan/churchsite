@@ -389,3 +389,18 @@ form .form-control.form-control-inline {
   display: inline-block;
   width: auto;
 }
+
+// Keep the BS2.x timepicker limping along ...
+.bootstrap-timepicker-widget {
+  .icon-chevron-up {
+    @extend .glyphicon;
+    @extend .glyphicon-menu-up;
+  }
+  .icon-chevron-down {
+    @extend .glyphicon;
+    @extend .glyphicon-menu-down;
+  }
+  input {
+    @extend .form-control;
+  }
+}
