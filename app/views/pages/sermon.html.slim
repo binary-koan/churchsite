@@ -1,5 +1,5 @@
 .row
-  .span12
-    h4 = @sermon.date.strftime "%-d %b %Y"
+  .col-md-12
+  	h1 == breadcrumb $config.sermons_name => '/word', @sermon.date.strftime("%-d %b %Y") => nil
 
     == @sermon.content
