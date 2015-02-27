@@ -10,7 +10,7 @@
     = f.label :date, class: 'col-sm-3 control-label'
     .col-sm-5
       .input-group.date.datepicker
-        = f.text_field :picked_date, class: 'form-control', value: @sermon.date.strftime('%d/%m/%Y')
+        = f.text_field :picked_date, class: 'form-control', value: @sermon.date.localtime.strftime('%d/%m/%Y')
         span.add-on.input-group-addon: span.glyphicon.glyphicon-calendar
   .form-group
     = f.label :description, class: 'col-sm-3 control-label'

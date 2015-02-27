@@ -10,10 +10,11 @@
   .form-group: .col-sm-12 = f.text_area :content, class: 'form-control', rows: 3, placeholder: 'Content ...'
   .form-group
     .col-sm-5: .input-group.date.datepicker
-      = f.text_field :picked_date, class: 'form-control'
+      - p @news_item.date.localtime
+      = f.text_field :picked_date, class: 'form-control', value: @news_item.date.localtime.strftime('%d/%m/%Y')
       span.add-on.input-group-addon: span.glyphicon.glyphicon-calendar
     .col-sm-5: .input-group.bootstrap-timepicker
-      = f.text_field :picked_time, class: 'timepicker form-control'
+      = f.text_field :picked_time, class: 'timepicker form-control', value: @news_item.date.localtime.strftime('%I:%M %p')
       span.add-on.input-group-addon: span.glyphicon.glyphicon-time
 
   .form-group: .col-sm-12 = f.submit 'Save', class: 'btn btn-primary'
