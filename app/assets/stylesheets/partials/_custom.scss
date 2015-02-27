@@ -26,6 +26,10 @@
 
     > .active > a {
       background: white;
+
+      &:hover {
+        background: white;
+      }
     }
 
     .dropdown-menu {
@@ -70,6 +74,10 @@
   background-position: center;
   height: 300px;
   margin: 0 -15px 10px -15px;
+}
+
+.church:first-child .church-image {
+  margin-left: 0;
 }
 
 .church-location {
