@@ -12,8 +12,42 @@
   }
 }
 
+// COMPONENTS
+// ------------------------------------------------------
+
+.navbar.navbar-default {
+  border: none;
+}
+
+.navbar .navbar-text {
+  font-family: $font-family-base;
+  font-weight: normal;
+  color: $text-color;
+}
+
+.navbar.navbar-sm {
+  min-height: 30px;
+  margin-bottom: 0;
+
+  .container {
+    padding: 0;
+  }
+}
+
+.navbar.navbar-sm .navbar-text {
+  margin: 10px 0;
+}
+
 // CHURCH DISPLAY
 // ------------------------------------------------------
+
+.church {
+  margin-bottom: 10px;
+
+  h4 {
+    margin-bottom: 5px;
+  }
+}
 
 .church-image {
   background-size: cover;
@@ -42,56 +76,54 @@
 // -------------------------------------------------------
 
 .title-box {
-  margin: 20px 0;
-}
-
-#title-zone {
-  float: left;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .headings {
+  h1, h2 {
+    display: inline-block;
+  }
+
   h1 {
-    float: left;
+    font-size: $font-size-base * 4;
+    margin-bottom: 0;
   }
 
   h2 {
-    display: inline-block;
-    min-height: 52px;
-    padding-top: 19px;
-    padding-left: 10px;
+    position: relative;
+    left: 6px;
+    margin: 0;
+    font-size: $font-size-base * 1.25;
   }
 }
 
-.church-type {
-  margin-top: -13px;
-
-  span {
-    display: inline-block;
-    font-size: 16px;
-    line-height: 16px;
-    min-height: 16px;
-    margin-bottom: 0;
-    @extend .well;
-    @extend .well-sm;
-  }
-}
-
-#leader-box {
+.leader-box {
   @extend .well;
   @extend .well-sm;
-  margin-top: 10px;
-  float: right;
+  margin-top: 15px;
 
-  a.pull-right {
-    margin-left: 20px;
+  img {
+    float: right;
+    display: inline-block;
+    margin: 5px 0 5px 5px;
   }
 
-  .pull-right {
-    margin-left: 0;
+  h6 {
+    margin: 5px 0;
   }
 
   h4 {
-    margin-bottom: 5px;
+    margin: 5px 0;
+  }
+
+  .glyphicon {
+    display: inline-block;
+    margin-right: 5px;
+
+    &.glyphicon-phone {
+      margin-right: 1px;
+    }
   }
 }
 

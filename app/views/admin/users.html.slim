@@ -1,5 +1,5 @@
 .row
-  .span12
+  .col-md-12
     h1 Users
     - users = User.where confirmed_at: nil
     - if users.length > 0
@@ -18,7 +18,7 @@
               = link_to '/users/deny?email=' + user.email, method: 'delete', confirm: 'Are you sure?', class: 'btn btn-link' do
                 i.icon-cancel
                 | Deny
-    h3 Other Users
+      h3 Active Users
     table.fill
       - User.where(:confirmed_at.lte => DateTime.now).each do |user|
         tr
@@ -26,3 +26,6 @@
             strong = user.name
             | &nbsp;&mdash;&nbsp;
             = user.email
+          td.user-controls
+            - if user == current_user
+              = link_to "Account Settings", '/users/edit', class: 'btn btn-default'

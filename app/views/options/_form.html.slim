@@ -6,49 +6,49 @@
         - $config.errors.full_messages.each do |message|
           li = message
 
-  legend Basics
+  legend.col-sm-9.col-sm-offset-3 Basics
   .form-group
-    = f.label :title, class: 'col-sm-3 control-label'
-    .col-sm-9 = f.text_field :title, class: 'input-xxlarge'
+    = f.label :title, "Church Name", class: 'col-sm-3 control-label'
+    .col-sm-9 = f.text_field :title, class: 'form-control'
   .form-group
-    = f.label :church_type, class: 'col-sm-3 control-label'
-    .col-sm-9 = f.text_field :church_type, class: 'input-xxlarge'
+    = f.label :church_type, "Denomination", class: 'col-sm-3 control-label'
+    .col-sm-9 = f.text_field :church_type, class: 'form-control'
   .form-group
     = f.label :tagline, class: 'col-sm-3 control-label'
-    .col-sm-9 = f.text_field :tagline, class: 'input-xxlarge'
+    .col-sm-9 = f.text_field :tagline, class: 'form-control'
   .form-group
     = f.label :use_news, "Enable Sections", class: 'col-sm-3 control-label'
     .col-sm-9
-      label.checkbox for="option_use_news"
-        | News
+      .checkbox: label for="option_use_news"
         = f.check_box :use_news
-      = f.text_field :news_name
-      label.checkbox for="option_use_community"
-        | Activities
+        | News
+      = f.text_field :news_name, class: 'form-control'
+      .checkbox: label for="option_use_community"
         = f.check_box :use_community
-      = f.text_field :community_name
-      label.checkbox for="option_use_sermons"
-        | Sermons
+        | Activities
+      = f.text_field :community_name, class: 'form-control'
+      .checkbox: label for="option_use_sermons"
         = f.check_box :use_sermons
-      = f.text_field :sermons_name
-      label.checkbox for="option_use_photos"
-        | Photos
+        | Sermons
+      = f.text_field :sermons_name, class: 'form-control'
+      .checkbox: label for="option_use_photos"
         = f.check_box :use_photos
-      = f.text_field :photos_name
-      label.checkbox for="option_use_about"
-        | About Page
+        | Photos
+      = f.text_field :photos_name, class: 'form-control'
+      .checkbox: label for="option_use_about"
         = f.check_box :use_about
-      = f.text_field :about_name
+        | About Page
+      = f.text_field :about_name, class: 'form-control'
 
-  legend Leader
+  legend.col-sm-9.col-sm-offset-3 Leader
   .form-group
     = f.label :leader_title, "Title", class: 'col-sm-3 control-label'
     .col-sm-9
-      = f.text_field :leader_title, class: 'input-xxlarge'
+      = f.text_field :leader_title, class: 'form-control'
       p.help-block For example: Minister, Pastor, etc.
   .form-group
     = f.label :leader_name, "Name", class: 'col-sm-3 control-label'
-    .col-sm-9 = f.text_field :leader_name, class: 'input-xxlarge'
+    .col-sm-9 = f.text_field :leader_name, class: 'form-control'
   .form-group
     = f.label :leader_image, "Picture", class: 'col-sm-3 control-label'
     .col-sm-9
@@ -58,25 +58,25 @@
       p.help-block We recommend this is at least 128&times;128px
       p.help-block Note that the preview won't update until you click 'Save'
   .form-group
-    label.control-label Contact Methods
+    label.control-label.col-sm-3 Contact Methods
     .col-sm-9
-      label.checkbox
-        | Email
+      .checkbox: label
         = f.check_box :leader_use_email
-      label.checkbox
-        | Phone
+        | Email
+      .checkbox: label
         = f.check_box :leader_use_phone
-      label.checkbox
-        | Address
+        | Phone
+      .checkbox: label
         = f.check_box :leader_use_address
+        | Address
       p.help-block These will be displayed on the front page of the website
   .form-group
     = f.label :leader_phone, "Phone Number", class: 'col-sm-3 control-label'
-    .col-sm-9 = f.text_field :leader_phone, class: 'input-xxlarge'
+    .col-sm-9 = f.text_field :leader_phone, class: 'form-control'
   .form-group
     = f.label :leader_email, "Email Address", class: 'col-sm-3 control-label'
-    .col-sm-9 = f.email_field :leader_email, class: 'input-xxlarge'
+    .col-sm-9 = f.email_field :leader_email, class: 'form-control'
   .form-group
     = f.label :leader_address, "Physical Address", class: 'col-sm-3 control-label'
-    .col-sm-9 = f.text_area :leader_address, class: 'input-xxlarge', rows: 4
-  .form-group: .col-sm-9 = f.submit 'Save', class: 'btn btn-primary'
+    .col-sm-9 = f.text_area :leader_address, class: 'form-control', rows: 4
+  .form-group: .col-sm-9.col-sm-offset-3 = f.submit 'Save', class: 'btn btn-primary'
