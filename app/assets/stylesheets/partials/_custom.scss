@@ -17,6 +17,21 @@
 
 .navbar.navbar-default {
   border: none;
+  background: $gray-lighter;
+  
+  .navbar-nav {
+    > li > a:hover, > .open > a {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    > .active > a {
+      background: white;
+    }
+
+    .dropdown-menu {
+      border-top: none;
+    }
+  }
 }
 
 .navbar .navbar-text {
@@ -28,6 +43,7 @@
 .navbar.navbar-sm {
   min-height: 30px;
   margin-bottom: 0;
+  background: transparent;
 
   .container {
     padding: 0;
