@@ -1,9 +1,11 @@
 .row
-  .span6
+  .col-md-12
     h1 News
     - if $config.news_announcement and not $config.news_announcement.empty?
       p
         == h($config.news_announcement).split("\n").join '<br />'
+.row
+  .col-md-9
     == render 'partials/news', editable: false
-  .span3.offset3
+  .col-md-3
     .news-date-picker data-date=(@date.strftime('%d/%m/%Y'))

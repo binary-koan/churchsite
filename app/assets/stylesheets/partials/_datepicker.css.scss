@@ -8,12 +8,12 @@
 
 .datepicker table tr td.day {
   &.today, &.today:hover {
-    background: white;
-    font-weight: bold;
-    color: $gray-dark;
+    background: $gray-light;
+    color: $gray-darker;
 
     &.active {
       background: $gray-light;
+      color: white;
     }
 
     &.current-week, &:hover {
