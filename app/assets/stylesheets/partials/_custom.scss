@@ -90,9 +90,9 @@
   text-align: center;
   background-image: image-url("roadmap.svg");
 
-  i:before {
-    padding-top: 8px;
-    color: $gray;
+  .glyphicon:before {
+    display: inline-block;
+    margin-top: 7px;
   }
 }
 

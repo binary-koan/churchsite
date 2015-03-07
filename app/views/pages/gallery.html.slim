@@ -2,7 +2,7 @@
   .col-md-12
     h1 == breadcrumb @title => '/gallery', @photos.first.gallery => nil
 
-    .thumbs
+    .gallery.thumbs
       - @photos.each.with_index do |photo, i|
         a href=photo.image.url title=photo.caption
           img src=photo.image.thumb.url

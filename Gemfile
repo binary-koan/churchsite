@@ -61,4 +61,5 @@ gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 
 # TZInfo Windows fix
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+# Causes error on OpenShift
+#gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]

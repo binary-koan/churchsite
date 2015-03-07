@@ -8,7 +8,7 @@
     p: em = church.services_description
     .media
       a.pull-left href="http://maps.google.com/?q=#{URI::escape(church.map_address)}" target="_blank"
-        .church-location: i.icon-location
+        .church-location: span.glyphicon.glyphicon-map-marker
       .media-body
         address == h(church.address).gsub "\n", '<br>'
     - if editable

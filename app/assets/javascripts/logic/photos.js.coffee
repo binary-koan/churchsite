@@ -1,5 +1,5 @@
 $ ->
-  $('.thumbs').magnificPopup
+  $('.gallery.thumbs').magnificPopup
     delegate: 'a'
     type: 'image'
     gallery:
