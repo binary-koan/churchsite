@@ -264,6 +264,7 @@ DEPENDENCIES
   jquery-rails
   mini_magick
   mongoid (~> 4.0.0)
+  nokogiri
   protected_attributes
   rails (~> 4.2.0)
   rails-observers

@@ -14,6 +14,7 @@ group :assets do
   gem 'uglifier', '>= 1.3.0'
 end
 
+gem 'nokogiri'
 gem 'capybara', :group => [:test]
 gem 'cucumber-rails', :group => [:test]
 gem 'rspec-rails', '>= 2.0.1', :group => [:development, :test]
