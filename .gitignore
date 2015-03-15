@@ -17,4 +17,7 @@
 /log/*.log
 /tmp
 
+# Ignore development assets and local bundler gems
 /assets/dev
+/vendor/bundle
+
