@@ -1,11 +1,7 @@
 source 'http://rubygems.org'
 
-#ruby '1.9.3'
 gem 'rails', '~> 4.2.0'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -17,21 +13,6 @@ group :assets do
 
   gem 'uglifier', '>= 1.3.0'
 end
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
 
 gem 'capybara', :group => [:test]
 gem 'cucumber-rails', :group => [:test]
@@ -52,7 +33,7 @@ gem 'slim'
 gem 'slim-rails'
 
 gem 'bson_ext'
-gem 'mongoid', '>= 2.0.0.beta.19'
+gem 'mongoid', '~> 4.0.0'
 
 # For the transition from Rails 3-4. May not be needed
 gem 'protected_attributes'
@@ -62,4 +43,4 @@ gem 'actionpack-action_caching'
 
 # TZInfo Windows fix
 # Causes error on OpenShift
-#gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+gem 'tzinfo-data'

@@ -23,4 +23,7 @@ Churchsite::Application.configure do
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
+
+  # Use a different directory for assets in development (allowing precompilation for production)
+  config.assets.prefix = '/assets/dev'
 end
