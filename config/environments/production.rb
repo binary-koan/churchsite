@@ -52,7 +52,7 @@ Churchsite::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Don't precompile assets - that should be done locally
-  config.assets.precompile += []
+  config.assets.precompile = []
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false

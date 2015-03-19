@@ -76,7 +76,13 @@ production:
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-        - <%= ENV['OPENSHIFT_MONGODB_DB_HOST'] + ':' + ENV['OPENSHIFT_MONGODB_DB_PORT'] %>
+        - <%=
+            if ENV['OPENSHIFT_MONGODB_DB_HOST']
+              ENV['OPENSHIFT_MONGODB_DB_HOST'] + ':' + ENV['OPENSHIFT_MONGODB_DB_PORT']
+            else
+              "localhost:27017"
+            end
+          %>
       username: <%= ENV['OPENSHIFT_MONGODB_DB_USERNAME'] %>
       password: <%= ENV['OPENSHIFT_MONGODB_DB_PASSWORD'] %>
 test:

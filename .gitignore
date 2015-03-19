@@ -18,6 +18,5 @@
 /tmp
 
 # Ignore development assets and local bundler gems
-/assets/dev
+/public/dev-assets
 /vendor/bundle
-

@@ -25,5 +25,5 @@ Churchsite::Application.configure do
   config.active_support.deprecation = :log
 
   # Use a different directory for assets in development (allowing precompilation for production)
-  config.assets.prefix = '/assets/dev'
+  config.assets.prefix = '/dev-assets'
 end
