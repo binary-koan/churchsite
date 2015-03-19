@@ -3,17 +3,16 @@
  * For licensing, see LICENSE.html or http://ckeditor.com/license
  */
 
-CKEDITOR.stylesSet.add( 'custom_styles',
+/*CKEDITOR.stylesSet.add( 'custom_styles',
 [
   { name : 'Well', element : 'div', attributes : { 'class' : 'well' } }
-]);
+]);*/
 
 CKEDITOR.editorConfig = function (config) {
   // Define changes to default configuration here.
   // For the complete reference:
   // http://docs.ckeditor.com/#!/api/CKEDITOR.config
 
-  config.skin = 'moono-light';
   config.contentsCss = '/assets/editor.css';
 
   config.format_tags = 'p;h1;h2;h3;h4;h5;h6;plead';
