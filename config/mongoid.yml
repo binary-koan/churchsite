@@ -72,7 +72,7 @@ development:
 production:
   sessions:
     default:
-      database: <%= ENV['OPENSHIFT_APP_NAME'] %>
+      database: <%= ENV['OPENSHIFT_APP_NAME'] or 'churchsite' %>
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
@@ -80,11 +80,13 @@ production:
             if ENV['OPENSHIFT_MONGODB_DB_HOST']
               ENV['OPENSHIFT_MONGODB_DB_HOST'] + ':' + ENV['OPENSHIFT_MONGODB_DB_PORT']
             else
-              "localhost:27017"
+              '127.0.0.1:27017'
             end
           %>
+      <% if ENV['OPENSHIFT_MONGODB_DB_USERNAME'] %>
       username: <%= ENV['OPENSHIFT_MONGODB_DB_USERNAME'] %>
       password: <%= ENV['OPENSHIFT_MONGODB_DB_PASSWORD'] %>
+      <% end %>
 test:
   sessions:
     default:
