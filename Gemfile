@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 4.2.0'
+gem 'rack', '~> 1.5.0'
+gem 'rails', '~> 4.1.0'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 # Gems used only for assets and not required
@@ -26,7 +27,7 @@ gem 'will_paginate_mongoid'
 gem 'mini_magick'
 gem 'ckeditor', '~> 4.1.1'
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 3.1.0'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-timepicker-rails'
 
