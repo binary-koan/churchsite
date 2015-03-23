@@ -14,6 +14,7 @@
 # Ignore locally uploaded files
 /public/uploads
 
-# Ignore development assets and local bundler gems
+# Ignore assets and local bundler gems
+/public/assets
 /public/dev-assets
 /vendor/bundle
