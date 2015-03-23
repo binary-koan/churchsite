@@ -11,6 +11,9 @@
 /log/*.log
 /tmp
 
+# Ignore locally uploaded files
+/public/uploads
+
 # Ignore development assets and local bundler gems
 /public/dev-assets
 /vendor/bundle
