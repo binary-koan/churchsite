@@ -1,0 +1,9 @@
+/*
+ * application.css + specific styles for CKEditor content
+ *= require ../application
+ *= require_self
+ */
+
+body {
+  padding: 20px;
+}

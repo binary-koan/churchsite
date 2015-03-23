@@ -42,7 +42,7 @@ class ChurchesController < ApplicationController
   # POST /churches
   # POST /churches.json
   def create
-    @church = Church.new(params[:church])
+    @church = Church.new(church_params)
 
     respond_to do |format|
       if @church.save
@@ -61,7 +61,7 @@ class ChurchesController < ApplicationController
     @church = Church.find(params[:id])
 
     respond_to do |format|
-      if @church.update_attributes(params[:church])
+      if @church.update_attributes(church_params)
         format.html { redirect_to action: 'index', notice: 'Church was successfully updated.' }
         format.json { head :no_content }
       else
@@ -82,4 +82,9 @@ class ChurchesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def church_params
+      params.require(:church).permit(:image, :name, :services_description, :address, :map_address)
+    end
 end

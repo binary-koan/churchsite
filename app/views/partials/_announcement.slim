@@ -2,6 +2,6 @@ p: button.btn.btn-default.btn-announcement
   span.glyphicon.glyphicon-pencil>
   | Change Announcement
 = form_for $config do |f|
-  = f.text_area :news_announcement, placeholder: 'Announcement ...', class: 'input-xlarge', rows: 3
+  = f.text_area :news_announcement, placeholder: 'Announcement ...', class: 'form-control', rows: 3
   br
   = f.submit "Save", class: 'btn btn-primary'

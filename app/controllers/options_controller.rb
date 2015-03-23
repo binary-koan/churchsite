@@ -42,7 +42,7 @@ class OptionsController < ApplicationController
   # POST /options
   # POST /options.json
   def create
-    @option = Option.new(params[:option])
+    @option = Option.new(option_params)
 
     respond_to do |format|
       if @option.save
@@ -61,7 +61,7 @@ class OptionsController < ApplicationController
     @option = Option.find(params[:id])
 
     respond_to do |format|
-      if @option.update_attributes(params[:option])
+      if @option.update_attributes(option_params)
         $config = Option.first
 
         format.html { redirect_to request.referer, notice: 'Option was successfully updated.' }
@@ -84,4 +84,16 @@ class OptionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def option_params
+      params.require(:option).permit(
+        :use_news, :use_community, :use_about, :use_photos, :use_sermons,
+        :news_name, :community_name, :about_name, :photos_name, :sermons_name,
+        :news_announcement, :title, :church_type, :tagline, :about_page,
+        :leader_title, :leader_name, :leader_phone,
+        :leader_use_email, :leader_use_phone, :leader_use_address,
+        :leader_email, :leader_address, :leader_image
+      )
+    end
 end

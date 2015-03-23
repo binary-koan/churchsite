@@ -42,7 +42,7 @@ class CommunityPagesController < ApplicationController
   # POST /community_pages
   # POST /community_pages.json
   def create
-    @community_page = CommunityPage.new(params[:community_page])
+    @community_page = CommunityPage.new(community_page_params)
     @community_page.order = CommunityPage.count
 
     respond_to do |format|
@@ -62,7 +62,7 @@ class CommunityPagesController < ApplicationController
     @community_page = CommunityPage.find(params[:id])
 
     respond_to do |format|
-      if @community_page.update_attributes(params[:community_page])
+      if @community_page.update_attributes(community_page_params)
         format.html { redirect_to community_pages_url, notice: 'Community page was successfully updated.' }
         format.json { head :no_content }
       else
@@ -109,4 +109,9 @@ class CommunityPagesController < ApplicationController
       end
     end
   end
+
+  private
+    def community_page_params
+      params.require(:community_page).permit(:title, :content, :identifier, :order)
+    end
 end

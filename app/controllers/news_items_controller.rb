@@ -51,7 +51,7 @@ class NewsItemsController < ApplicationController
   # POST /news_items
   # POST /news_items.json
   def create
-    @news_item = NewsItem.new(params[:news_item])
+    @news_item = NewsItem.new(news_item_params)
 
     respond_to do |format|
       if @news_item.save
@@ -70,7 +70,7 @@ class NewsItemsController < ApplicationController
     @news_item = NewsItem.find(params[:id])
 
     respond_to do |format|
-      if @news_item.update_attributes(params[:news_item])
+      if @news_item.update_attributes(news_item_params)
         format.html { redirect_to request.referer, notice: 'News item was successfully updated.' }
         format.json { head :no_content }
       else
@@ -91,4 +91,9 @@ class NewsItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def news_item_params
+      params.require(:news_item).permit(:title, :content, :owner, :picked_date, :picked_time)
+    end
 end

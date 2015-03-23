@@ -42,7 +42,7 @@ class SermonsController < ApplicationController
   # POST /sermons
   # POST /sermons.json
   def create
-    @sermon = Sermon.new(params[:sermon])
+    @sermon = Sermon.new(sermon_params)
 
     respond_to do |format|
       if @sermon.save
@@ -61,7 +61,7 @@ class SermonsController < ApplicationController
     @sermon = Sermon.find(params[:id])
 
     respond_to do |format|
-      if @sermon.update_attributes(params[:sermon])
+      if @sermon.update_attributes(sermon_params)
         format.html { redirect_to action: 'index', notice: 'Sermon was successfully updated.' }
         format.json { head :no_content }
       else
@@ -82,4 +82,9 @@ class SermonsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def sermon_params
+      params.require(:sermon).permit(:description, :content, :podcast_ogg, :podcast_mp3, :picked_date)
+    end
 end
