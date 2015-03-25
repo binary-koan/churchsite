@@ -14,5 +14,8 @@ if Object.const_defined?("Ckeditor")
     # Allowed attachment file types for upload.
     # Set to nil or [] (empty array) for all file types
     # config.attachment_file_types = ["doc", "docx", "xls", "odt", "ods", "pdf", "rar", "zip", "tar", "swf"]
+
+    # Don't need to precompile every language
+    config.assets_languages = ['en']
   end
 end

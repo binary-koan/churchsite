@@ -8,29 +8,27 @@
   { name : 'Well', element : 'div', attributes : { 'class' : 'well' } }
 ]);*/
 
-/*CKEDITOR.editorConfig = function (config) {
+CKEDITOR.editorConfig = function (config) {
+  config.language = 'en';
+
   // Define changes to default configuration here.
   // For the complete reference:
   // http://docs.ckeditor.com/#!/api/CKEDITOR.config
-
-  config.contentsCss = '/assets/editor.css';
 
   config.format_tags = 'p;h1;h2;h3;h4;h5;h6;plead';
   config.format_plead = { name: 'Lead Paragraph', element : 'p', attributes : { 'class' : 'lead' } };
 
   // The toolbar groups arrangement, optimized for two toolbar rows.
   config.toolbar = [
-    { name: 'maximize', items: ['Maximize'] },
     { name: 'clipboard', items: ['Undo', 'Redo', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord']},
+    { name: 'format', items: ['Format', 'FontSize'] },
+    { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'TextColor', 'BGColor'] },
+    { name: 'indent', items: ['Indent', 'Outdent', 'NumberedList', 'BulletedList'] },
+    { name: 'alignment', items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] },
+    { name: 'insert', items: ['Link', 'Unlink', 'Image', 'Table', 'SpecialChar'] },
     { name: 'editing', items: ['Find', 'Replace'] },
     { name: 'spelling', items: ['Scayt'] },
-    { name: 'links', items: ['Link', 'Unlink'] },
-    { name: 'insert', items: ['Image', 'Table', 'HorizontalRule', 'SpecialChar'] },
-    { name: 'paragraph', items: ['NumberedList', 'BulletedList', 'Blockquote'] },
-    { name: 'indent', items: ['Indent', 'Outdent'] },
-    { name: 'alignment', items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] },
-    { name: 'format', items: ['Format'] },
-    { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'TextColor', 'BGColor'] }
+    { name: 'maximize', items: ['Maximize'] }
   ];
 
   //
@@ -117,4 +115,3 @@
     }
   });
 };
-*/
