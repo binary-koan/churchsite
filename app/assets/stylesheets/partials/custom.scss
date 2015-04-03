@@ -318,7 +318,7 @@ table.photos {
 
 .popover {
   width: auto;
-  border-radius: 0;
+  max-width: 300px;
 }
 
 // NEWS
@@ -387,10 +387,6 @@ table.photos {
 
 .sermon .introduction {
   font-weight: bold;
-
-  p:first-child {
-    margin-bottom: 0;
-  }
 }
 
 // RESPONSIVE STYLES
