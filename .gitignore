@@ -15,6 +15,5 @@
 /public/uploads
 
 # Ignore assets and local bundler gems
-/public/assets
 /public/dev-assets
 /vendor/bundle
