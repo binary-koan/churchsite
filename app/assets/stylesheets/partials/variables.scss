@@ -16,7 +16,13 @@ $padding-base-horizontal: 12px;
 $padding-small-vertical: 3px;
 $padding-small-horizontal: 10px;
 
-$btn-default-bg: #999;
+$btn-default-bg: #555;
 $btn-default-border: $btn-default-bg;
-$btn-primary-bg: darken(#EB6864, 10%);
+$btn-primary-bg: darken($brand-primary, 5%);
 $btn-primary-border: $btn-primary-bg;
+
+$navbar-inverse-bg: darken($brand-primary, 10%);
+$navbar-inverse-border: transparent;
+$navbar-inverse-link-hover-bg: $brand-primary;
+$navbar-inverse-link-active-bg: white;
+$navbar-inverse-link-active-color: black;

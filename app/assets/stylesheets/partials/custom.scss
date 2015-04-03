@@ -15,12 +15,28 @@
 // COMPONENTS
 // ------------------------------------------------------
 
-.navbar .navbar-nav {
-  font-size: 14px;
-  font-weight: 400;
+.navbar.navbar-fixed-top {
+  border: none;
 
-  .dropdown-menu {
+  .navbar-nav {
     font-size: 14px;
+    font-weight: 400;
+
+    .dropdown-toggle {
+      z-index: $zindex-dropdown + 1;
+    }
+
+    .dropdown.open > .dropdown-toggle {
+      background-color: white;
+    }
+
+    .dropdown-menu {
+      margin-left: -1px;
+      margin-right: -1px;
+      border-top: none;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+      font-size: 14px;
+    }
   }
 }
 
@@ -39,10 +55,6 @@
       &:hover {
         background: white;
       }
-    }
-
-    .dropdown-menu {
-      border-top: none;
     }
   }
 }
