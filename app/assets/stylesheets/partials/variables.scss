@@ -4,3 +4,14 @@
 $font-family-sans-serif: "Source Sans Pro", sans-serif;
 $font-family-serif: "Lora", serif;
 $font-family-base: $font-family-serif;
+
+$padding-base-vertical: 4px;
+$padding-base-horizontal: 12px;
+
+$padding-small-vertical: 3px;
+$padding-small-horizontal: 10px;
+
+$btn-default-bg: #999;
+$btn-default-border: $btn-default-bg;
+$btn-primary-bg: darken(#EB6864, 10%);
+$btn-primary-border: $btn-primary-bg;

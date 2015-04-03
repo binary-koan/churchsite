@@ -403,6 +403,10 @@ h1 .glyphicon {
   text-align: center;
 }
 
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
 .form-horizontal .form-group .datepicker {
   padding: 0;
 }
