@@ -15,8 +15,12 @@
           p.help-block: em We need this to make sure you're the one changing things
 
       .form-group
-        = f.label :email, "New Email Address", class: 'col-sm-4 control-label'
-        .col-sm-8 = f.email_field :email, :autofocus => true, class: 'form-control'
+        = f.label :email, "Email Address", class: 'col-sm-4 control-label'
+        .col-sm-8 = f.email_field :email, class: 'form-control'
+
+      .form-group
+        = f.label :name, "Name", class: 'col-sm-4 control-label'
+        .col-sm-8 = f.text_field :name, class: 'form-control'
 
       .form-group
         = f.label :password, "New Password", class: 'col-sm-4 control-label'
