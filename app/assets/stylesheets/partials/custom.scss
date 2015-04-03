@@ -15,6 +15,15 @@
 // COMPONENTS
 // ------------------------------------------------------
 
+.navbar .navbar-nav {
+  font-size: 14px;
+  font-weight: 400;
+
+  .dropdown-menu {
+    font-size: 14px;
+  }
+}
+
 .navbar.navbar-default {
   border: none;
   background: $gray-lighter;
@@ -110,15 +119,23 @@
   }
 
   h1 {
-    font-size: $font-size-base * 4;
+    font-size: $font-size-base * 2;
     margin-bottom: 0;
   }
 
   h2 {
     position: relative;
-    left: 6px;
     margin: 0;
-    font-size: $font-size-base * 1.25;
+    font-size: $font-size-base;
+  }
+}
+
+@media(min-width: $screen-sm) {
+  .headings h1 {
+    font-size: $font-size-base * 3.5;
+  }
+  .headings h2 {
+    left: 6px;
   }
 }
 
@@ -147,6 +164,18 @@
 
     &.glyphicon-phone {
       margin-right: 1px;
+    }
+  }
+
+  dl.dl-horizontal {
+    margin-bottom: 0;
+
+    dt {
+      width: 60px;
+    }
+
+    dd {
+      margin-left: 70px;
     }
   }
 }
