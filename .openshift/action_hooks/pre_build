@@ -20,9 +20,3 @@
 #   echo "  Restoring stored assets"
 #   ln -s "${STORED_ASSETS}" "${LIVE_ASSETS}"
 # fi
-
-echo "Backing up uploads directory"
-mkdir -p "${OPENSHIFT_DATA_DIR}/backups"
-if [ -d "${OPENSHIFT_REPO_DIR}/public/uploads" ]; then
-  cp -r "${OPENSHIFT_REPO_DIR}/public/uploads" "${OPENSHIFT_DATA_DIR}/backups/"
-fi
