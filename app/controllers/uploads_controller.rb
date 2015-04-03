@@ -45,7 +45,7 @@ class UploadsController < ApplicationController
     def send_file(uploader, last_modified)
       content = uploader.read
       if stale?(etag: content, last_modified: last_modified, public: true)
-        send_data content, type: $config.leader_image.file.content_type, disposition: "inline"
+        send_data content, type: uploader.file.content_type, disposition: "inline"
         expires_in 0, public: true
       end
     end
