@@ -2,13 +2,15 @@ table(class='sermons #{'compact' if compact}')
   - @sermons.each do |sermon|
     tr
       td.description
-        strong = sermon.date.strftime "%-d %b %Y"
-        br
-        span
-          - if compact
-            = sermon.description.length > 100 ? sermon.description[0..100] + '...' : sermon.description
-          - else
-            = sermon.description
+        h5
+          => sermon.date.strftime("%-d %B %Y")
+          | &mdash;
+          =< sermon.title
+        p: strong =
+        - if compact
+          == sermon.pretty_description true
+        - else
+          == sermon.pretty_description
       - unless compact
         td.read
           - if sermon.content and not sermon.content.empty?

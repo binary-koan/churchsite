@@ -1,6 +1,8 @@
 .row
   .col-md-12
-    h1 == breadcrumb @title => '/gallery', @photos.first.gallery => nil
+    h1
+      == breadcrumb @title => '/gallery'
+      div = @photos.first.gallery
 
     .gallery.thumbs
       - @photos.each.with_index do |photo, i|

@@ -8,12 +8,16 @@
 
   .form-group
     = f.label :date, class: 'col-sm-3 control-label'
-    .col-sm-5
-      .input-group.date.datepicker
-        = f.text_field :picked_date, class: 'form-control', value: @sermon.date.strftime('%d/%m/%Y')
-        span.add-on.input-group-addon: span.glyphicon.glyphicon-calendar
+    .col-sm-9: .input-group.date
+      = f.text_field :picked_date, class: 'form-control', value: @sermon.date.strftime('%d/%m/%Y')
+      - date_description = 'This will accept almost any date, including things like "last sunday" or "may 14th"'
+      span.add-on.input-group-addon data-toggle='tooltip' data-placement='bottom' title=date_description
+        span.glyphicon.glyphicon-calendar
   .form-group
-    = f.label :description, class: 'col-sm-3 control-label'
+    = f.label :title, class: 'col-sm-3 control-label'
+    .col-sm-9 = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :description, 'Introduction', class: 'col-sm-3 control-label'
     .col-sm-9 = f.text_area :description, class: 'form-control', rows: 5
   .form-group
     = f.label :content, class: 'col-sm-3 control-label'

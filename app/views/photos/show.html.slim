@@ -1,7 +1,9 @@
 - gallery = @photos.first.gallery
 .row
   .col-md-12
-    h1 == breadcrumb "Galleries" => photos_path, gallery => nil
+    h1
+      == breadcrumb "Galleries" => photos_path
+      div = gallery
 
 .row.padded
   .col-md-12
@@ -20,8 +22,8 @@
     ul.card-flow
       - @photos.each do |photo|
         li.well.well-sm
-          img src="/#{photo.image.thumb.url}""
-          p.caption = photo.caption
+          img src="/#{photo.image.thumb.url}"
+          p.caption = photo.caption.length > 40 ? photo.caption[0..40] + '...' : photo.caption
           .form-buttons
             = link_to edit_photo_path(photo, gallery_id: params[:id]), class: 'btn btn-default' do
               span.glyphicon.glyphicon-pencil>

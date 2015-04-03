@@ -85,6 +85,6 @@ class SermonsController < ApplicationController
 
   private
     def sermon_params
-      params.require(:sermon).permit(:description, :content, :podcast_ogg, :podcast_mp3, :picked_date)
+      params.require(:sermon).permit(:title, :description, :content, :podcast_ogg, :podcast_mp3, :picked_date)
     end
 end

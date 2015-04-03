@@ -1,5 +1,7 @@
 .row: .col-md-12
-  h1 == breadcrumb @gallery => photo_path(@gallery_id), "Reorder Photos" => nil
+  h1
+    == breadcrumb @gallery => photo_path(@gallery_id)
+    div Reorder Photos
   ul#photos.card-flow.sortable
     - @photos.each do |photo|
       li.well.well-sm(data-document-id=photo._id.to_s)

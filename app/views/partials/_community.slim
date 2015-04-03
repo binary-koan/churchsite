@@ -8,7 +8,7 @@ p
 ul.no-decoration
   - CommunityPage.asc(:order).each do |page|
     li.well.well-sm(style='text-align: right' data-order=page.order data-document-id=page._id.to_s)
-      .pull-left(style='margin-top: 9px; margin-left: 5px') = page.title
+      .pull-left(style='margin-top: 5px; margin-left: 5px') = page.title
       = link_to edit_community_page_path(page), class: 'btn btn-default' do
         .glyphicon.glyphicon-pencil
         | Edit

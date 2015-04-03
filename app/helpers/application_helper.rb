@@ -29,14 +29,10 @@ module ApplicationHelper
   # eg
   #   breadcrumb('First bit' => first_path, 'Second bit' => second_path, 'Current page' => nil)
   def breadcrumb(trail)
-    bits = []
+    html = "<div class='breadcrumbs'>"
     trail.each do |title, href|
-      if href
-        bits << "<a href='#{href}'>#{title}</a>"
-      else
-        bits << title
-      end
+      html += "<a href='#{href}'>#{title} <span class='glyphicon glyphicon-menu-right'></span></a> "
     end
-    bits.join " <span class='glyphicon glyphicon-menu-right'></span> "
+    html + '</div>'
   end
 end

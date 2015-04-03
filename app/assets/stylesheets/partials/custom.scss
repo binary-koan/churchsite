@@ -15,6 +15,14 @@
 // COMPONENTS
 // ------------------------------------------------------
 
+h1 {
+  margin-left: -3px;
+
+  .breadcrumbs {
+    margin-left: 3px;
+  }
+}
+
 .navbar.navbar-fixed-top {
   border: none;
 
@@ -77,6 +85,18 @@
 
 .navbar.navbar-sm .navbar-text {
   margin: 10px 0;
+}
+
+// BREADCRUMBS
+// ------------------------------------------------------
+
+.breadcrumbs {
+  @extend h4;
+  margin-bottom: 5px;
+
+  .glyphicon {
+    font-size: 16px;
+  }
 }
 
 // CHURCH DISPLAY
@@ -217,6 +237,10 @@ table.sermons {
   td {
     border-top: 1px solid $gray-light;
     padding: 20px 0;
+
+    h5, p {
+      margin: 0;
+    }
   }
 
   td.description {
@@ -289,6 +313,7 @@ table.photos {
 }
 
 // NEWS
+// -------------------------------------------------------
 
 #news table {
   td {
@@ -345,6 +370,17 @@ table.photos {
 
   .user-controls {
     text-align: right;
+  }
+}
+
+// SERMONS
+// -------------------------------------------------------
+
+.sermon .introduction {
+  font-weight: bold;
+
+  p:first-child {
+    margin-bottom: 0;
   }
 }
 
@@ -428,10 +464,6 @@ ul.sortable li {
   padding-bottom: 10px;
 }
 
-h1 .glyphicon {
-  font-size: 21px;
-}
-
 .well > h3:first-child {
   margin-top: 0;
 }
@@ -473,6 +505,7 @@ ul.card-flow {
   li {
     display: inline-block;
     margin-right: 10px;
+    max-width: 220px;
 
     p, div {
       text-align: center;
