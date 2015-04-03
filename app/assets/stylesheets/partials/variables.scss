@@ -1,9 +1,13 @@
-//@import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Lora:400,700,400italic,700italic');
-@import url(/fonts/stylesheet.css);
+@import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Alegreya:400,700,400italic,700italic');
+//@import url(/fonts/stylesheet.css);
+
+$font-size-base: 16px;
 
 $font-family-sans-serif: "Source Sans Pro", sans-serif;
-$font-family-serif: "Lora", serif;
+$font-family-serif: "Alegreya", serif;
 $font-family-base: $font-family-serif;
+
+$headings-font-weight: 600;
 
 $padding-base-vertical: 4px;
 $padding-base-horizontal: 12px;
