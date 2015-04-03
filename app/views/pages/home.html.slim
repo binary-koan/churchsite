@@ -3,7 +3,7 @@
     .headings
       h1 = $config.title
       - if $config.church_type and not $config.church_type.empty?
-        h2.church-type = '(' + $config.church_type + ')'
+        h2.church-type = $config.church_type
     p.lead = $config.tagline
   .col-md-3.leader-box
     img src=$config.leader_image.url style="width:64px;height:64px"
@@ -18,7 +18,7 @@
         span.glyphicon.glyphicon-envelope.pull-right
       | Contact
     .popover.hide
-      dl.list-horizontal
+      dl.dl-horizontal
         - if $config.leader_use_email? and $config.leader_email
           dt Email
           dd: a(href="mailto:#{$config.leader_email}") = $config.leader_email
@@ -30,5 +30,3 @@
           dd == h($config.leader_address).gsub "\n", "<br>"
 .row
   == render 'churches/display', editable: false
-
-== render 'partials/footer'
