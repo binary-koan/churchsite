@@ -87,6 +87,14 @@ h1 {
   margin: 10px 0;
 }
 
+.row.messages {
+  margin-top: 20px;
+
+  .alert {
+    margin-bottom: 0;
+  }
+}
+
 // BREADCRUMBS
 // ------------------------------------------------------
 
