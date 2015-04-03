@@ -3,7 +3,7 @@ table(class='sermons #{'compact' if compact}')
     tr
       td.description
         h5
-          => sermon.date.strftime("%-d %B %Y")
+          => sermon.date.strftime("%-d %b %Y")
           | &mdash;
           =< sermon.title
         p: strong =

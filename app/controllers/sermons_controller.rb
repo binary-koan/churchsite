@@ -4,7 +4,7 @@ class SermonsController < ApplicationController
   # GET /sermons
   # GET /sermons.json
   def index
-    @sermons = Sermon.paginate page: params[:page], per_page: 10
+    @sermons = Sermon.order_by(:date.desc).paginate page: params[:page], per_page: 10
 
     respond_to do |format|
       format.html # index.html.erb
