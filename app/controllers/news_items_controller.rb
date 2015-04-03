@@ -8,8 +8,8 @@ class NewsItemsController < ApplicationController
   def index
     @news_item = new_item
     @date = Time.now.midnight
-    @news_items = news_items_from monday_before @date
-    @news_title = "Upcoming"
+    @news_items = news_items_from_week @date
+    @news_title = "This Week"
 
     respond_to do |format|
       format.html # index.html.erb

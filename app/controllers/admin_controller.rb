@@ -6,9 +6,8 @@ class AdminController < ApplicationController
   def dashboard
     @news_item = NewsItem.new
 
-    start_date, _ = week_of Time.now.midnight
-    @news_items = news_items_from start_date
-    @news_title = "Upcoming"
+    @news_items = news_items_from_week Time.now
+    @news_title = "This Week"
     @date = Time.now
 
     @sermons = Sermon.paginate page: params[:page], per_page: 10
