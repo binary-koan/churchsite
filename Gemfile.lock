@@ -32,6 +32,7 @@ GEM
       execjs
       json
     bcrypt (3.1.10)
+    bcrypt (3.1.10-x64-mingw32)
     bootstrap-datepicker-rails (1.4.0)
       railties (>= 3.0)
     bootstrap-sass (3.3.4.1)
@@ -179,6 +180,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   bootstrap-datepicker-rails
