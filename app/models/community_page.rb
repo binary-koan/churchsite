@@ -6,6 +6,6 @@ class CommunityPage
   field :order, type: Integer, default: 0
 
   before_save do |document|
-    document.identifier = Rack::Utils.escape document.title.downcase.gsub(/\s+/, '_')
+    document.identifier = Rack::Utils.escape document.title.downcase.gsub(/[\s+]/, '_').gsub(/[^A-Za-z0-9_]+/, '')
   end
 end
