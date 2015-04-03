@@ -20,7 +20,7 @@
     ul.card-flow
       - @photos.each do |photo|
         li.well.well-sm
-          img src=photo.image.thumb.url
+          img src="/#{photo.image.thumb.url}""
           p.caption = photo.caption
           .form-buttons
             = link_to edit_photo_path(photo, gallery_id: params[:id]), class: 'btn btn-default' do

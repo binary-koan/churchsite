@@ -12,7 +12,7 @@
   .form-group
     = f.label :image, class: 'col-sm-3 control-label'
     .col-sm-9
-      img.image-preview src=@church.image.url style="max-height:150px"
+      img.image-preview src="/#{@church.image.url}" style="max-height:150px"
       br
       = f.file_field :image, accept: 'image/*'
       p.help-block We recommend this is at least 400px high

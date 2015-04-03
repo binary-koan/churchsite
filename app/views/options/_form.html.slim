@@ -52,7 +52,7 @@
   .form-group
     = f.label :leader_image, "Picture", class: 'col-sm-3 control-label'
     .col-sm-9
-      img.image-preview src=$config.leader_image.url style="width:100px;height:100px"
+      img.image-preview src="/#{$config.leader_image.url}" style="width:100px;height:100px"
       br
       = f.file_field :leader_image, accept: 'image/*'
       p.help-block We recommend this is at least 128&times;128px

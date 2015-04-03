@@ -1,5 +1,6 @@
 class Photo
   include Mongoid::Document
+  include Mongoid::Timestamps::Updated
   field :gallery, type: String, default: "Default"
   field :gallery_id, type: String
   field :caption, type: String

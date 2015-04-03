@@ -2,6 +2,7 @@ require 'image_uploader'
 
 class Option
   include Mongoid::Document
+  include Mongoid::Timestamps::Updated
 
   field :use_news, type: Boolean, default: true
   field :use_community, type: Boolean, default: true

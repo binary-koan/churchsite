@@ -10,5 +10,5 @@
       - @photos.each do |info|
         - gallery, photo = info[0], info[1]
         = link_to "/admin/photos/#{photo.gallery_id}", class: 'gallery well well-sm' do
-          img src=photo.image.thumb.url
+          img src="/#{photo.image.thumb.url}"
           strong = gallery

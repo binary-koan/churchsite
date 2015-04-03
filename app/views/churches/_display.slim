@@ -2,7 +2,7 @@
 - church_span = 12 / (c == 0 ? 4 : c)
 - Church.each do |church|
   div class="col-md-#{church_span} church"
-    .church-image style="background-image:url(#{church.image.url})"
+    .church-image style="background-image:url(/#{church.image.url})"
     h4
       = church.name
     p: em = church.services_description
