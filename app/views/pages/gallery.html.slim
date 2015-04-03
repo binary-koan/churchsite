@@ -6,5 +6,5 @@
 
     .gallery.thumbs
       - @photos.each.with_index do |photo, i|
-        a href=photo.image.url title=photo.caption
-          img src=photo.image.thumb.url
+        a href="/#{photo.image.url}" title=photo.caption
+          img src="/#{photo.image.thumb.url}"
