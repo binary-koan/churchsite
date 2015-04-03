@@ -31,12 +31,10 @@ $ ->
   date = $datePicker.data 'date'
 
   load_month = (year, month) ->
-    console.log "Loading month #{year}-#{month}"
     $.getJSON "/events_in/#{year}/#{month}", (data) ->
       if data instanceof Array
         load_event_dates data
   load_event_dates = (data) ->
-    console.log data
     $days = $('td.day')
     start_index = 0
     end_index = $days.length
@@ -49,7 +47,6 @@ $ ->
     $days.each (i) ->
       return if i < start_index
       return false if i >= end_index
-      console.log data.indexOf parseInt $(this).text()
       if data.indexOf(parseInt $(this).text()) isnt -1
         $(this).addClass 'eventful'
   activate_current_week = ->
