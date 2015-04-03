@@ -9,7 +9,7 @@
   .form-group: .col-sm-12 = f.text_field :title, class: 'form-control', placeholder: 'Title ...'
   .form-group: .col-sm-12 = f.text_area :content, class: 'form-control', rows: 3, placeholder: 'Content ...'
   .form-group
-    .col-sm-5: .input-group.date.datepicker
+    .col-sm-5: .input-group.date
       - p @news_item.date.localtime
       = f.text_field :picked_date, class: 'form-control', value: @news_item.date.localtime.strftime('%d/%m/%Y')
       span.add-on.input-group-addon: span.glyphicon.glyphicon-calendar
