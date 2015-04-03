@@ -1,7 +1,6 @@
 $ ->
-  $('.timepicker').timepicker()
-  $('.timepicker').focus ->
-    $(this).timepicker 'showWidget'
+  # Description of date entry format
+  $('.input-group-addon[data-toggle=tooltip]').tooltip()
 
   # Editing
   $('.btn-announcement').parent().next().hide()

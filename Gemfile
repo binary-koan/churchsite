@@ -20,7 +20,7 @@ gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'will_paginate_mongoid'
 gem 'mini_magick'
-gem 'ckeditor', '~> 4.1.1'
+gem 'chronic'
 
 gem 'slim'
 gem 'slim-rails'
@@ -29,6 +29,7 @@ gem 'slim-rails'
 gem 'jquery-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-timepicker-rails'
+gem 'ckeditor', '~> 4.1.1'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

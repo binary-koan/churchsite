@@ -6,3 +6,7 @@
 .navbar-inverse .navbar-nav > li > a {
   transition: background-color 0.2s ease-in-out;
 }
+
+.tooltip-inner {
+    min-width: 360px; //the minimum width
+}
