@@ -16,3 +16,5 @@
 //= require ckeditor/init
 //= require jquery.placeholder
 //= require sortable
+//
+//= require_tree ./admin
