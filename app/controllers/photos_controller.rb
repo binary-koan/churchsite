@@ -57,7 +57,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to "/admin/photos/#{params[:gallery_id]}" }
+        format.html { redirect_to "/admin/photos/#{@photo.gallery_id}" }
         format.json { render json: @photo, status: :created, location: @photo }
       else
         format.html { render action: "new" }
