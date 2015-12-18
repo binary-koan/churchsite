@@ -18,10 +18,10 @@ html
             span.icon-bar
         #main-menu.collapse.navbar-collapse
           ul.nav.navbar-nav
-            li class=cp(controller: 'pages', action: 'home')
+            li class=cp(controller: 'site', action: 'home')
               a(href="/") Home
             - if $config.use_news?
-              li class=cp(controller: 'pages', action: 'news')
+              li class=cp(controller: 'site', action: 'news')
                 a(href="/news") = $config.news_name
             - if $config.use_community?
               li.dropdown
@@ -34,13 +34,13 @@ html
                     li: a(href="/activities/#{page.identifier}")
                       = page.title
             - if $config.use_photos?
-              li class=cp(controller: 'pages', action: 'photos')
+              li class=cp(controller: 'site', action: 'photos')
                 a(href='/gallery') = $config.photos_name
             - if $config.use_sermons?
-              li class=cp(controller: 'pages', action: 'sermons')
+              li class=cp(controller: 'site', action: 'sermons')
                 a(href='/word') = $config.sermons_name
             - if $config.use_about?
-              li class=cp(controller: 'pages', action: 'about')
+              li class=cp(controller: 'site', action: 'about')
                 a(href="/about") = $config.about_name
           - if user_signed_in?
             ul.nav.navbar-nav.navbar-right

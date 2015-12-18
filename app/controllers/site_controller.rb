@@ -1,7 +1,12 @@
-class PagesController < ApplicationController
+class SiteController < ApplicationController
   include NewsItemsHelper
 
   def home
+  end
+
+  def page
+    @page = Page.find(params[:id])
+    @title = page.title
   end
 
   def news
@@ -35,7 +40,7 @@ class PagesController < ApplicationController
       format.json { render json: days.to_a }
     end
   end
-  
+
   def community
     @page = CommunityPage.where(identifier: params[:id]).first
     @title = @page.title
