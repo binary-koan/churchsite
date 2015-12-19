@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
   include NewsItemsHelper
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def dashboard
     @news_item = NewsItem.new

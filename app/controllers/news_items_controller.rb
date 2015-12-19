@@ -1,7 +1,7 @@
 class NewsItemsController < ApplicationController
   include NewsItemsHelper
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   # GET /news_items
   # GET /news_items.json

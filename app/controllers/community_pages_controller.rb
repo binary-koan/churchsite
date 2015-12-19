@@ -1,5 +1,5 @@
 class CommunityPagesController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   # GET /community_pages
   # GET /community_pages.json

@@ -29,15 +29,19 @@ Rails.application.routes.draw do
   scope '/admin' do
     resources :news_items
     resources :churches
-    get 'community_pages/reorder'
-    post 'community_pages/reorder'
-    resources :community_pages
-    #TODO: Shouldn't be here but form_for needs option_path
+    resources :pages
     resources :options
     resources :sermons
-    get 'photos/:id/reorder', to: 'photos#reorder'
-    post 'photos/:id/reorder', to: 'photos#reorder'
-    resources :photos
+
+    resources :community_pages do
+      get :reorder
+      post :reorder
+    end
+
+    resources :photos do
+      get :reorder, on: :member
+      get :reorder, on: :member
+    end
   end
 
   mount Ckeditor::Engine => "/ckeditor"

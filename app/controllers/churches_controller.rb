@@ -1,5 +1,5 @@
 class ChurchesController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   # GET /churches
   # GET /churches.json
