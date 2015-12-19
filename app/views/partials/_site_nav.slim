@@ -32,3 +32,5 @@ nav.navbar.navbar-site
         - if $config.use_about?
           li class=cp(controller: 'site', action: 'about')
             a(href="/about") = $config.about_name
+      - if user_signed_in?
+        = render "partials/admin_nav"

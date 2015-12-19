@@ -1,21 +1,110 @@
 .navbar {
   border-radius: 0;
+
+  .collapse.navbar-collapse {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .navbar.navbar-site {
   @extend .navbar-default;
+
+  border: none;
+  background: $gray-lighter;
+
+  .navbar-nav {
+    font-size: 14px;
+    font-weight: 400;
+
+    > li > a:hover, > .open > a {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    > .active > a {
+      background: white;
+
+      &:hover {
+        background: white;
+      }
+    }
+
+    .dropdown-toggle {
+      z-index: $zindex-dropdown + 1;
+    }
+
+    .dropdown.open .dropdown-toggle {
+      background-color: white;
+    }
+
+    .dropdown-menu {
+      margin-left: -1px;
+      margin-right: -1px;
+      border-top: none;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+      font-size: 14px;
+    }
+  }
 }
 
-.navbar.navbar-admin {
-  @extend .navbar-inverse;
+.navbar .navbar-text {
+  font-family: $font-family-base;
+  font-weight: normal;
+  color: $text-color;
+}
 
+.navbar.navbar-sm {
   min-height: 30px;
   margin-bottom: 0;
-  border-width: 4px;
+  background: transparent;
 
-  .navbar-nav > li > a {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 3px;
+  .container {
+    padding: 0;
+  }
+}
+
+.navbar.navbar-sm .navbar-text {
+  margin: 10px 0;
+}
+
+.navbar.navbar-site .nav.nav-admin {
+  @extend .navbar-nav;
+  @extend .navbar-right;
+
+  margin: 9px;
+
+  li.dropdown {
+    &.open > .dropdown-toggle {
+      background-color: transparent;
+      color: black;
+    }
+
+    > .dropdown-toggle {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: $brand-primary;
+      border-radius: 3px;
+      color: white;
+    }
+
+    > ul.dropdown-menu {
+      margin-top: 5px;
+      border: 1px solid darken($brand-primary, 20%);
+      border-radius: 3px;
+      background-color: darken($brand-primary, 10%);
+
+      > li.text-muted > a {
+        font-style: italic;
+        color: rgba(255, 255, 255, .5);
+      }
+
+      > li > a {
+        color: white;
+      }
+
+      > li.divider {
+        background-color: darken($brand-primary, 20%);
+      }
+    }
   }
 }

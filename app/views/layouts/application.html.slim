@@ -3,23 +3,13 @@ html
   head
     title = @title ? @title + ' - ' + $config.title : $config.title + ' - ' + $config.tagline
     = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     meta name="description" content="A modern and vibrant church community based in Lincoln (near Christchurch), New Zealand"
     = csrf_meta_tags
   body
-    - if user_signed_in?
-      = render "partials/admin_nav"
     = render "partials/site_nav"
-          / - if user_signed_in?
-          /   ul.nav.navbar-nav.navbar-right
-          /     li.dropdown
-          /       a.dropdown-toggle(data-toggle='dropdown' href='#')
-          /         = current_user.name
-          /         b.caret<
-          /       ul.dropdown-menu
-          /         li: a(href="/admin") Admin Dashboard
-          /         li = link_to "Account Settings", '/users/edit'
-          /         li = link_to "Sign Out", '/users/sign_out', method: 'delete'
+
     .container
       = yield
+    
+    = javascript_include_tag "application"

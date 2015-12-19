@@ -16,75 +16,9 @@
 // ------------------------------------------------------
 
 h1 {
-  margin-left: -3px;
-
   .breadcrumbs {
     margin-left: 3px;
   }
-}
-
-.navbar.navbar-fixed-top {
-  border: none;
-
-  .navbar-nav {
-    font-size: 14px;
-    font-weight: 400;
-
-    .dropdown-toggle {
-      z-index: $zindex-dropdown + 1;
-    }
-
-    .dropdown.open > .dropdown-toggle {
-      background-color: white;
-    }
-
-    .dropdown-menu {
-      margin-left: -1px;
-      margin-right: -1px;
-      border-top: none;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
-      font-size: 14px;
-    }
-  }
-}
-
-.navbar.navbar-default {
-  border: none;
-  background: $gray-lighter;
-
-  .navbar-nav {
-    > li > a:hover, > .open > a {
-      background: rgba(255, 255, 255, 0.5);
-    }
-
-    > .active > a {
-      background: white;
-
-      &:hover {
-        background: white;
-      }
-    }
-  }
-}
-
-.navbar .navbar-text {
-  font-family: $font-family-base;
-  font-weight: normal;
-  color: $text-color;
-}
-
-.navbar.navbar-sm {
-  min-height: 30px;
-  margin-bottom: 0;
-  background: transparent;
-
-  .container {
-    padding: 0;
-  }
-}
-
-.navbar.navbar-sm .navbar-text {
-  margin: 10px 0;
 }
 
 .row.messages {
