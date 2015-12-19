@@ -1,11 +1,34 @@
-.row
-  .col-md-6
-    h1 News
-    == render 'partials/announcement'
-    h4 Add News
-    - if @news_item
-      == render 'news_items/form'
-.row
-  .col-md-9 == render 'partials/news', editable: true
-  .col-md-3
-    .news-date-picker data-date=(@date.strftime('%d/%m/%Y')) data-date-format="dd/mm/yyyy"
+- if user_signed_in?
+  .row
+    .col-md-12
+      = link_to params.merge(editing: (@editing ? nil : true)), class: "btn btn-primary pull-right"
+        .glyphicon.glyphicon-wrench
+        = @editing ? "Go back to viewing" : "Edit this content"
+
+- if @editing
+  .row
+    .col-md-6
+      h1 News
+      == render 'partials/announcement'
+      h4 Add News
+      - if @news_item
+        == render 'news_items/form'
+  .row
+    .col-md-9 == render 'partials/news', editable: true
+    .col-md-3
+      .news-date-picker(
+        data-date=(@date.strftime('%d/%m/%Y'))
+        data-date-format="dd/mm/yyyy"
+      )
+- else
+  .row
+    .col-md-12
+      h1 News
+      - if $config.news_announcement and not $config.news_announcement.empty?
+        p
+          == h($config.news_announcement).split("\n").join '<br />'
+  .row
+    .col-md-9
+      == render 'partials/news', editable: false
+    .col-md-3
+      .news-date-picker data-date=(@date.strftime('%d/%m/%Y'))

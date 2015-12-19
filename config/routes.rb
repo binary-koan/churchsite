@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   root 'site#homepage'
-  get "news", to: 'site#news'
-  get "news/:date", to: 'site#news'
-  get "word", to: 'site#sermons'
-  get "word/:id", to: 'site#sermon'
-  get "about", to: 'site#about'
-  get "activities/:id", to: 'site#community'
-  get "gallery", to: 'site#photos'
-  get "gallery/:gallery", to: 'site#gallery'
+  # get "news", to: 'site#news'
+  # get "news/:date", to: 'site#news'
+  # get "word", to: 'site#sermons'
+  # get "word/:id", to: 'site#sermon'
+  # get "about", to: 'site#about'
+  # get "activities/:id", to: 'site#community'
+  # get "gallery", to: 'site#photos'
+  # get "gallery/:gallery", to: 'site#gallery'
 
   get "events_in/:year/:month", to: 'site#events_in'
 
@@ -26,21 +26,21 @@ Rails.application.routes.draw do
   post "users/confirm", to: 'admin#confirm_user'
   delete "users/deny", to: 'admin#deny_user'
 
+  resources :news_items, path: "news"
+  resources :sermons
+  resources :photos do
+    get :reorder, on: :member
+    get :reorder, on: :member
+  end
+
   scope '/admin' do
-    resources :news_items
     resources :churches
     resources :pages
     resources :options
-    resources :sermons
 
     resources :community_pages do
       get :reorder
       post :reorder
-    end
-
-    resources :photos do
-      get :reorder, on: :member
-      get :reorder, on: :member
     end
   end
 

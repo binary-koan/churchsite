@@ -476,3 +476,7 @@ form .form-control.form-control-inline {
     @extend .form-control;
   }
 }
+
+.mode-edit {
+  display: none;
+}

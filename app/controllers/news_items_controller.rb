@@ -11,6 +11,8 @@ class NewsItemsController < ApplicationController
     @news_items = news_items_from_week @date
     @news_title = "This Week"
 
+    @editing = user_signed_in? && params[:editing] == "true"
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @news_items }
