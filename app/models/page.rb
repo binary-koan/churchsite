@@ -11,10 +11,6 @@ class Page
 
   validates :type, inclusion: { in: TYPES }
 
-  before_validation do
-    byebug
-  end
-
   before_save do |document|
     document.identifier ||= document.title.parameterize
   end

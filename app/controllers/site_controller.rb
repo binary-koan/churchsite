@@ -1,7 +1,7 @@
 class SiteController < ApplicationController
   include NewsItemsHelper
 
-  def home
+  def homepage
   end
 
   def page

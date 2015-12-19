@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'site#home'
+  root 'site#homepage'
   get "news", to: 'site#news'
   get "news/:date", to: 'site#news'
   get "word", to: 'site#sermons'

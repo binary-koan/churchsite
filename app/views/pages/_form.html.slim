@@ -8,7 +8,7 @@
 
   .form-group
     = f.label :type, class: 'col-sm-2 control-label'
-    - options = options_for_select(Page::TYPES.map { |e| [e.humanize, e] })
+    - options = options_for_select(Page::TYPES.map { |e| [e.humanize, e] }, @page.type)
     .col-sm-10 = f.select :type, options, {}, class: 'form-control'
   .form-group
     = f.label :title, class: 'col-sm-2 control-label'

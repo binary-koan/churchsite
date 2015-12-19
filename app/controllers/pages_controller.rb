@@ -10,7 +10,7 @@ class PagesController < ApplicationController
   end
 
   def show
-    respond_with(@page)
+    redirect_to show_page_path
   end
 
   def new
@@ -45,5 +45,13 @@ class PagesController < ApplicationController
 
   def page_params
     params.require(:page).permit(:title, :content, :type)
+  end
+
+  def show_page_path
+    case @page.type
+    when "custom" then page_path(@page)
+    when "homepage" then root_path
+    else "/#{@page.type}"
+    end
   end
 end

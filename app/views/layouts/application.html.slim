@@ -12,4 +12,7 @@ html
     .container
       = yield
     
-    = javascript_include_tag "application"
+    - if user_signed_in?
+      = javascript_include_tag "admin"
+    - else
+      = javascript_include_tag "application"

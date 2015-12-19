@@ -8,7 +8,7 @@ nav.navbar.navbar-site
         span.icon-bar
     #main-menu.collapse.navbar-collapse
       ul.nav.navbar-nav
-        li class=cp(controller: 'site', action: 'home')
+        li class=cp(controller: 'site', action: 'homepage')
           a(href="/") Home
         - if $config.use_news?
           li class=cp(controller: 'site', action: 'news')
