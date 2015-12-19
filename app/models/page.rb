@@ -1,11 +1,21 @@
 class Page
   include Mongoid::Document
+
+  TYPES = %w{custom homepage news photos sermons}
+
   field :title, type: String
   field :content, type: String
   field :identifier, type: String
-  field :weight, type: Integer, default: 1000
+  field :order, type: Integer, default: 0
+  field :type, type: String
+
+  validates :type, inclusion: { in: TYPES }
+
+  before_validation do
+    byebug
+  end
 
   before_save do |document|
-    document.identifier = Rack::Utils.escape document.title.downcase.gsub(/[\s+]/, '_').gsub(/[^A-Za-z0-9_]+/, '')
+    document.identifier ||= document.title.parameterize
   end
 end

@@ -7,9 +7,13 @@
           li = message
 
   .form-group
+    = f.label :type, class: 'col-sm-2 control-label'
+    - options = options_for_select(Page::TYPES.map { |e| [e.humanize, e] })
+    .col-sm-10 = f.select :type, options, {}, class: 'form-control'
+  .form-group
     = f.label :title, class: 'col-sm-2 control-label'
     .col-sm-10 = f.text_field :title, class: 'form-control'
-  .form-group
+  .form-group#page_content_group
     = f.label :content, 'Page Content', class: 'col-sm-2 control-label'
     .col-sm-10 = f.cktext_area :content
   .form-group: .col-sm-10.col-sm-offset-2
