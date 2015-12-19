@@ -50,3 +50,5 @@ gem 'sdoc', '~> 0.4.0', :group => :doc
 # gem 'debugger', group: [:development, :test]
 
 gem 'tzinfo-data'
+
+gem 'byebug', group: [:development, :test]

@@ -1,0 +1,21 @@
+.navbar {
+  border-radius: 0;
+}
+
+.navbar.navbar-site {
+  @extend .navbar-default;
+}
+
+.navbar.navbar-admin {
+  @extend .navbar-inverse;
+
+  min-height: 30px;
+  margin-bottom: 0;
+  border-width: 4px;
+
+  .navbar-nav > li > a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 3px;
+  }
+}

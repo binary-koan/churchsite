@@ -45,6 +45,7 @@ GEM
     bson (2.3.0)
     bson_ext (1.5.1)
     builder (3.2.2)
+    byebug (8.2.1)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -149,7 +150,6 @@ GEM
       activesupport (>= 3.1, < 5.0)
       railties (>= 3.1, < 5.0)
       slim (~> 3.0)
-    spring (1.3.3)
     sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -189,6 +189,7 @@ DEPENDENCIES
   bootstrap-timepicker-rails
   bootswatch-rails (~> 3.2.3)
   bson_ext
+  byebug
   carrierwave
   carrierwave-mongoid
   chronic
@@ -204,8 +205,10 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   slim
   slim-rails
-  spring
   turbolinks
   tzinfo-data
   uglifier (>= 1.3.0)
   will_paginate_mongoid
+
+BUNDLED WITH
+   1.10.6
