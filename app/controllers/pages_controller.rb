@@ -1,16 +1,17 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :assign_page, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
 
   respond_to :html
 
+  def display
+    @page = Page.find_by(identifier: params[:id])
+    respond_with(@page)
+  end
+
   def index
     @pages = Page.all
     respond_with(@pages)
-  end
-
-  def show
-    respond_with(@page)
   end
 
   def new
@@ -39,8 +40,8 @@ class PagesController < ApplicationController
 
   private
 
-  def set_page
-    @page = Page.find_by(identifier: params[:id])
+  def assign_page
+    @page = Page.find(params[:id])
   end
 
   def page_params
