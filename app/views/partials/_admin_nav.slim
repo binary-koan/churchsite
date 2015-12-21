@@ -4,8 +4,7 @@ ul.nav.nav-admin
       | Logged in
       b.caret<
     ul.dropdown-menu
-      li.text-muted: a(href="/users/edit") = current_user.name
-      li.divider(role="separator")
+      li.section-title Site admin
       li(class=cp(controller: 'pages', action: 'index')): a(href="/admin/pages") Pages
       li(class=cp(controller: 'admin', action: 'options')): a(href="/admin/options") Options
       li(class=cp(controller: 'admin', action: 'users')): a(href="/admin/users")
@@ -14,5 +13,6 @@ ul.nav.nav-admin
         - if users_count > 0
           span.badge.badge-important< = users_count
       li.divider(role="separator")
+      li.section-title = current_user.name
       li = link_to "Account Settings", '/users/edit'
       li = link_to "Sign Out", '/users/sign_out', method: 'delete'

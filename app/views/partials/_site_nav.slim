@@ -9,31 +9,7 @@ nav.navbar.navbar-site
     #main-menu.collapse.navbar-collapse
       ul.nav.navbar-nav
         - @pages.each do |page|
-          li
+          li class=(@page == page ? "active" : "")
             a(href="/#{page.identifier}")= page.title
-        / li class=cp(controller: 'site', action: 'homepage')
-        /   a(href="/") Home
-        / - if $config.use_news?
-        /   li class=cp(controller: 'news_items', action: 'index')
-        /     a(href="/news") = $config.news_name
-        / - if $config.use_community?
-        /   li.dropdown
-        /     a.dropdown-toggle(href="#" data-toggle="dropdown")
-        /       = $config.community_name
-        /       | &nbsp;
-        /       span.caret
-        /     ul.dropdown-menu
-        /       - CommunityPage.asc(:order).each do |page|
-        /         li: a(href="/activities/#{page.identifier}")
-        /           = page.title
-        / - if $config.use_photos?
-        /   li class=cp(controller: 'site', action: 'photos')
-        /     a(href='/gallery') = $config.photos_name
-        / - if $config.use_sermons?
-        /   li class=cp(controller: 'site', action: 'sermons')
-        /     a(href='/word') = $config.sermons_name
-        / - if $config.use_about?
-        /   li class=cp(controller: 'site', action: 'about')
-        /     a(href="/about") = $config.about_name
       - if user_signed_in?
         = render "partials/admin_nav"
