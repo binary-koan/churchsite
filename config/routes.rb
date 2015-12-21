@@ -1,15 +1,8 @@
 Rails.application.routes.draw do
-  root 'site#homepage'
-  # get "news", to: 'site#news'
-  # get "news/:date", to: 'site#news'
-  # get "word", to: 'site#sermons'
-  # get "word/:id", to: 'site#sermon'
-  # get "about", to: 'site#about'
-  # get "activities/:id", to: 'site#community'
-  # get "gallery", to: 'site#photos'
-  # get "gallery/:gallery", to: 'site#gallery'
+  root "site#homepage"
 
-  get "events_in/:year/:month", to: 'site#events_in'
+  mount Ckeditor::Engine => "/ckeditor"
+  devise_for :users, :controllers => { :registrations => :registrations }
 
   get "uploads/church/image/:id/:filename", to: 'uploads#church_image'
   get "uploads/photo/image/:id/thumb_:filename", to: 'uploads#photo_thumb'
@@ -19,13 +12,6 @@ Rails.application.routes.draw do
   get "uploads/ckeditor/pictures/:id/content_:filename", to: 'uploads#ckeditor_picture_content'
   get "uploads/ckeditor/pictures/:id/thumb_:filename", to: 'uploads#ckeditor_picture_thumb'
 
-  get "admin", to: 'admin#dashboard'
-  get "admin/options"
-  get "admin/about"
-  get "admin/users"
-  post "users/confirm", to: 'admin#confirm_user'
-  delete "users/deny", to: 'admin#deny_user'
-
   resources :news_items, path: "news"
   resources :sermons, path: "word"
   resources :photos do
@@ -34,9 +20,13 @@ Rails.application.routes.draw do
   end
 
   scope '/admin' do
-    resources :churches
-    resources :pages
-    resources :options
+    get "users", to: "admin#users"
+    post "users/confirm", to: "admin#confirm_user"
+    delete "users/deny", to: "admin#deny_user"
+
+    resources :churches, except: [:index, :show]
+    resources :pages, except: [:show]
+    resources :options, only: [:edit, :update]
 
     resources :community_pages do
       get :reorder
@@ -44,9 +34,7 @@ Rails.application.routes.draw do
     end
   end
 
-  mount Ckeditor::Engine => "/ckeditor"
-
-  devise_for :users, :controllers => { :registrations => :registrations }
+  get "events_in/:year/:month", to: "site#events_in"
 
   get "/:id", to: "pages#show"
 end
