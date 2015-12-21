@@ -1,19 +1,12 @@
 ul.nav.nav-admin
   li.dropdown
     a.dropdown-toggle(data-toggle='dropdown' href='#')
-      | Admin
+      | Logged in
       b.caret<
     ul.dropdown-menu
-      li.text-muted: a(href="/users/edit") Logged in as #{current_user.name}
+      li.text-muted: a(href="/users/edit") = current_user.name
       li.divider(role="separator")
-      li(class=cp(controller: 'admin', action: 'dashboard')): a(href="/admin") Dashboard
-      li(class=cp(controller: 'news_items', action: 'index')): a(href="/admin/news_items") News
-      li(class=cp(controller: 'community_pages', action: 'index')): a(href="/admin/community_pages") Activities
-      li(class=cp(controller: 'photos', action: 'index')): a(href="/admin/photos") Photos
-      li(class=cp(controller: 'sermons', action: 'index')): a(href="/admin/sermons") Sermons
       li(class=cp(controller: 'pages', action: 'index')): a(href="/admin/pages") Pages
-      li(class=cp(controller: 'churches', action: 'index')): a(href="/admin/churches") Churches
-      li(class=cp(controller: 'admin', action: 'about')): a(href="/admin/about") About Page
       li(class=cp(controller: 'admin', action: 'options')): a(href="/admin/options") Options
       li(class=cp(controller: 'admin', action: 'users')): a(href="/admin/users")
         | Users

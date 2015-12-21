@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   # Allow 'name' parameter in Devise registration (the lazy way)
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  before_action :assign_pages
+
   protected
 
   def configure_permitted_parameters
@@ -13,5 +15,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) { |u|
       u.permit(:name, :email, :password, :password_confirmation, :current_password)
     }
+  end
+
+  def assign_pages
+    @pages = Page.all
   end
 end

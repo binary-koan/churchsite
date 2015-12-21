@@ -10,7 +10,7 @@ class PagesController < ApplicationController
   end
 
   def show
-    redirect_to show_page_path
+    respond_with(@page)
   end
 
   def new
@@ -24,7 +24,7 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(page_params)
     flash[:notice] = 'Page was successfully created.' if @page.save
-    respond_with(@page)
+    redirect_to pages_path
   end
 
   def update
@@ -40,7 +40,7 @@ class PagesController < ApplicationController
   private
 
   def set_page
-    @page = Page.find(params[:id])
+    @page = Page.find_by(identifier: params[:id])
   end
 
   def page_params

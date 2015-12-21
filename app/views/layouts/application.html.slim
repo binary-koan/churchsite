@@ -1,9 +1,15 @@
 doctype html
 html
   head
-    title = @title ? @title + ' - ' + $config.title : $config.title + ' - ' + $config.tagline
-    = stylesheet_link_tag    "application", :media => "all"
+    title
+      - if @title
+        = "#{@title} - #{$config.title}"
+      - else
+        = "#{$config.title} - #{$config.tagline}"
+
+    = stylesheet_link_tag "application", :media => "all"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
+    /TODO make this editable
     meta name="description" content="A modern and vibrant church community based in Lincoln (near Christchurch), New Zealand"
     = csrf_meta_tags
   body

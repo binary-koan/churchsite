@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   delete "users/deny", to: 'admin#deny_user'
 
   resources :news_items, path: "news"
-  resources :sermons
+  resources :sermons, path: "word"
   resources :photos do
     get :reorder, on: :member
     get :reorder, on: :member
@@ -47,4 +47,6 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => "/ckeditor"
 
   devise_for :users, :controllers => { :registrations => :registrations }
+
+  get "/:id", to: "pages#show"
 end

@@ -1,0 +1,10 @@
+.mode-switch {
+  a {
+    @extend .btn;
+    @extend .btn-default;
+    @extend .pull-right;
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}

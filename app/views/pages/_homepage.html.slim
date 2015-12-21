@@ -1,0 +1,36 @@
+= render "partials/mode_switch"
+- if @editing
+  = render "churches/index"
+- else
+  .row.title-box
+    .col-md-9
+      .headings
+        h1 = $config.title
+        - if $config.church_type and not $config.church_type.empty?
+          h2.church-type = $config.church_type
+      p.lead = $config.tagline
+    .col-md-3.leader-box
+      img src=$config.leader_image.url style="width:64px;height:64px"
+      h6 = $config.leader_title
+      h4 = $config.leader_name
+      a#contact-link(href='#')
+        - if $config.leader_use_address?
+          span.glyphicon.glyphicon-map-marker.pull-right
+        - if $config.leader_use_phone?
+          span.glyphicon.glyphicon-phone.pull-right
+        - if $config.leader_use_email?
+          span.glyphicon.glyphicon-envelope.pull-right
+        | Contact
+      .popover.hide
+        dl.dl-horizontal
+          - if $config.leader_use_email? and $config.leader_email
+            dt Email
+            dd: a(href="mailto:#{$config.leader_email}") = $config.leader_email
+          - if $config.leader_use_phone? and $config.leader_phone
+            dt Phone
+            dd: a(href=phone_url($config.leader_phone)) = $config.leader_phone
+          - if $config.leader_use_address? and $config.leader_address
+            dt Address
+            dd == h($config.leader_address).gsub "\n", "<br>"
+  .row
+    == render 'churches/display', editable: false

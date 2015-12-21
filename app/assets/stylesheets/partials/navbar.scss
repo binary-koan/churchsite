@@ -10,6 +10,7 @@
 .navbar.navbar-site {
   @extend .navbar-default;
 
+  margin-bottom: 0;
   border: none;
   background: $gray-lighter;
 
@@ -71,20 +72,18 @@
   @extend .navbar-nav;
   @extend .navbar-right;
 
-  margin: 9px;
+  margin-top: 9px;
+  margin-bottom: 9px;
+  margin-right: 0;
 
   li.dropdown {
-    &.open > .dropdown-toggle {
-      background-color: transparent;
-      color: black;
-    }
-
     > .dropdown-toggle {
-      padding-top: 10px;
-      padding-bottom: 10px;
-      background-color: $brand-primary;
+      padding-top: 8px;
+      padding-bottom: 8px;
       border-radius: 3px;
-      color: white;
+
+      @extend .btn;
+      @extend .btn-primary;
     }
 
     > ul.dropdown-menu {

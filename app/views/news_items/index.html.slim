@@ -1,9 +1,4 @@
-- if user_signed_in?
-  .row
-    .col-md-12
-      = link_to params.merge(editing: (@editing ? nil : true)), class: "btn btn-primary pull-right"
-        .glyphicon.glyphicon-wrench
-        = @editing ? "Go back to viewing" : "Edit this content"
+= render "partials/mode_switch"
 
 - if @editing
   .row

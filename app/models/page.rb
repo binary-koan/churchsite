@@ -12,6 +12,11 @@ class Page
   validates :type, inclusion: { in: TYPES }
 
   before_save do |document|
-    document.identifier ||= document.title.parameterize
+    document.identifier = document.title.parameterize
+  end
+
+  TYPES.each do |type|
+    scope type, -> { where(type: type) }
+    define_method(type + "?") { |doc| doc.type == type }
   end
 end
