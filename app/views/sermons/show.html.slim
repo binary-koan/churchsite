@@ -1,12 +1,17 @@
-p#notice = notice
+= render "partials/mode_switch"
 
-p
-  strong Date:
-  = @sermon.date
-p
-  strong Description:
-  = @sermon.description
-
-= link_to 'Edit', edit_sermon_path(@sermon)
-'|
-= link_to 'Back', sermons_path
+.row.sermon
+  .col-md-12
+    h1
+      == breadcrumb @previous_page.title => @previous_page.url_path
+      div = @sermon.title
+    - if editing?
+      p
+        => link_to edit_sermon_path(@sermon), class: "btn btn-default" do
+          span.glyphicon.glyphicon-pencil>
+          | Edit
+        = link_to @sermon, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-default' do
+          span.glyphicon.glyphicon-trash>
+          | Delete
+    p.introduction = @sermon.formatted_description
+    == @sermon.content

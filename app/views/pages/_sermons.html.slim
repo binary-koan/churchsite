@@ -1,8 +1,10 @@
-- if editing?
-  = render "sermons/index"
-- else
-  .row
-    .col-md-12
-      h1 = @page.title
+.row
+  .col-md-12
+    h1 = @page.title
+    
+    - if editing?
+      p = link_to new_sermon_path, class: 'btn btn-primary' do
+        span.glyphicon.glyphicon-plus>
+        | Add Sermon
 
-      == render 'partials/sermons', editable: false, compact: false
+    == render 'partials/sermons'

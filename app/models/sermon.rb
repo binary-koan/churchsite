@@ -8,10 +8,9 @@ class Sermon
   mount_uploader :podcast_mp3, AudioUploader
   attr_accessor :picked_date
 
-  def pretty_description(compact = false)
-    desc = description
-    desc = desc[0..100] + '...' if compact and desc.length > 100
-    '<p>' + desc.split(/\n|\r\n?/).join('</p><p>') + '</p>'
+  #TODO move out of model layer
+  def formatted_description
+    CGI.escapeHTML(description).split(/\n|\r\n?/).join("<br />").html_safe
   end
 
   before_save do |document|
