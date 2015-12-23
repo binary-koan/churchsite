@@ -19,9 +19,9 @@
   .row
     .col-md-12
       h1 News
-      - if $config.news_announcement and not $config.news_announcement.empty?
+      - if Option.instance.news_announcement and not Option.instance.news_announcement.empty?
         p
-          == h($config.news_announcement).split("\n").join '<br />'
+          == h(Option.instance.news_announcement).split("\n").join '<br />'
   .row
     .col-md-9
       == render 'partials/news', editable: false

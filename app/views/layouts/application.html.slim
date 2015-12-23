@@ -3,9 +3,9 @@ html
   head
     title
       - if @title
-        = "#{@title} - #{$config.title}"
+        = "#{@title} - #{Option.instance.title}"
       - else
-        = "#{$config.title} - #{$config.tagline}"
+        = "#{Option.instance.title} - #{Option.instance.tagline}"
 
     = stylesheet_link_tag "application", :media => "all"
     meta name="viewport" content="width=device-width, initial-scale=1.0"

@@ -6,8 +6,8 @@ class UploadsController < ApplicationController
   end
 
   def leader_image
-    last_modified = $config.updated_at ? $config.updated_at.utc : DateTime.now
-    send_file $config.leader_image, last_modified
+    last_modified = Option.instance.updated_at ? Option.instance.updated_at.utc : DateTime.now
+    send_file Option.instance.leader_image, last_modified
   end
 
   def photo_image

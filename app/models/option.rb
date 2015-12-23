@@ -4,23 +4,6 @@ class Option
   include Mongoid::Document
   include Mongoid::Timestamps::Updated
 
-  field :use_news, type: Boolean, default: true
-  field :use_community, type: Boolean, default: true
-  field :use_about, type: Boolean, default: true
-  field :use_photos, type: Boolean, default: true
-  field :use_sermons, type: Boolean, default: true
-  alias_method :use_news?, :use_news
-  alias_method :use_community?, :use_community
-  alias_method :use_about?, :use_about
-  alias_method :use_sermons?, :use_sermons
-  alias_method :use_photos?, :use_photos
-
-  field :news_name, type: String, default: "News"
-  field :community_name, type: String, default: "Activities"
-  field :about_name, type: String, default: "About"
-  field :photos_name, type: String, default: "Photos"
-  field :sermons_name, type: String, default: "From the Minister"
-
   field :news_announcement, type: String
 
   field :title, type: String, default: "Our Parish"
@@ -42,4 +25,8 @@ class Option
   field :leader_email, type: String
   field :leader_address, type: String
   mount_uploader :leader_image, ImageUploader
+
+  def self.instance
+    first || create!
+  end
 end

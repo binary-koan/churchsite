@@ -5,7 +5,7 @@ class OptionsController < ApplicationController
   end
 
   def update
-    if $config.update_attributes(option_params)
+    if Option.instance.update_attributes(option_params)
       redirect_to :back, notice: "Option was successfully updated."
     else
       render action: "edit"

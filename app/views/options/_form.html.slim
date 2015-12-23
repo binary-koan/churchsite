@@ -1,9 +1,9 @@
-= form_for $config, html: { class: 'form-horizontal' } do |f|
-  - if $config.errors.any?
+= form_for Option.instance, html: { class: 'form-horizontal' } do |f|
+  - if Option.instance.errors.any?
     #error_explanation
-      h2 = "#{pluralize($config.errors.count, "error")} prohibited this option from being saved:"
+      h2 = "#{pluralize(Option.instance.errors.count, "error")} prohibited this option from being saved:"
       ul
-        - $config.errors.full_messages.each do |message|
+        - Option.instance.errors.full_messages.each do |message|
           li = message
 
   legend.col-sm-9.col-sm-offset-3 Basics
@@ -29,7 +29,7 @@
   .form-group
     = f.label :leader_image, "Picture", class: 'col-sm-3 control-label'
     .col-sm-9
-      img.image-preview src="/#{$config.leader_image.url}" style="width:100px;height:100px"
+      img.image-preview src="/#{Option.instance.leader_image.url}" style="width:100px;height:100px"
       br
       = f.file_field :leader_image, accept: 'image/*'
       p.help-block We recommend this is at least 128&times;128px

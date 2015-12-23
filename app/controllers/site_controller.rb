@@ -19,7 +19,7 @@ class SiteController < ApplicationController
       @news_title = "This Week"
     end
 
-    @title = $config.news_name
+    @title = Option.instance.news_name
   end
 
   def events_in
@@ -52,17 +52,17 @@ class SiteController < ApplicationController
     galleries.each do |gallery|
       @photos << [gallery, Photo.where(gallery: gallery).limit(4)]
     end
-    @title = $config.photos_name
+    @title = Option.instance.photos_name
   end
 
   def gallery
     @photos = Photo.where(gallery_id: params[:id]).asc :order
-    @title = $config.photos_name
+    @title = Option.instance.photos_name
   end
 
   def sermons
     @sermons = Sermon.paginate page: params[:page], per_page: 10
-    @title = $config.sermons_name
+    @title = Option.instance.sermons_name
   end
 
   def sermon
@@ -70,6 +70,6 @@ class SiteController < ApplicationController
   end
 
   def about
-    @title = $config.about_name
+    @title = Option.instance.about_name
   end
 end

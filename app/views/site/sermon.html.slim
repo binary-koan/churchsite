@@ -1,7 +1,7 @@
 .row.sermon
   .col-md-12
     h1
-      == breadcrumb $config.sermons_name => '/word'
+      == breadcrumb Option.instance.sermons_name => '/word'
       div = @sermon.title
     .introduction == @sermon.pretty_description
     == @sermon.content
