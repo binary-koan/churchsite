@@ -12,9 +12,8 @@ $ ->
   date = $datePicker.data 'date'
 
   load_month = (year, month) ->
-    $.getJSON "/events_in/#{year}/#{month}", (data) ->
-      if data instanceof Array
-        load_event_dates data
+    $.getJSON "/events_in?year=#{year}&month=#{month}", ({ days }) ->
+      load_event_dates(days)
   load_event_dates = (data) ->
     $days = $('td.day')
     start_index = 0

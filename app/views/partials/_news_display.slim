@@ -5,7 +5,7 @@ td.news-item.news-display
   p: strong
     = @news_item.title
   == h(@news_item.content).split("\n").join("<br />")
-- if editable
+- if editing?
   td.news-item.news-editor(style='display:none')
     == render 'news_items/form'
   td.controls

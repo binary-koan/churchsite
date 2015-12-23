@@ -61,12 +61,11 @@ class PagesController < ApplicationController
   def set_state_for_news
     if params[:date] and params[:date] =~ /(\d{4})(\d\d)(\d\d)/
       @date = Time.local $1.to_i, $2.to_i, $3.to_i
-      @news_items, @news_title = week_items_from @date
     else
       @date = Time.now.midnight
-      @news_items = news_items_from_week @date
-      @news_title = "This Week"
     end
+
+    @news_week = NewsWeek.new(@date)
   end
 
   def set_state_for_photos

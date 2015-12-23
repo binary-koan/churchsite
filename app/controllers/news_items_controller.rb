@@ -3,55 +3,14 @@ class NewsItemsController < ApplicationController
 
   before_action :authenticate_user!
 
-  # GET /news_items
-  # GET /news_items.json
-  def index
-    @news_item = new_item
-    @date = Time.now.midnight
-    @news_items = news_items_from_week @date
-    @news_title = "This Week"
-
-    @editing = user_signed_in? && params[:editing] == "true"
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @news_items }
-    end
-  end
-
-  # GET /news_items/1
-  # GET /news_items/1.json
-  def show
-    redirect_to :index unless params[:id] =~ /(\d{4})(\d\d)(\d\d)/
-
-    @news_item = new_item
-    @date = Time.local $1.to_i, $2.to_i, $3.to_i
-    @news_items, @news_title = week_items_from @date
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @news_item }
-    end
-  end
-
-  # GET /news_items/new
-  # GET /news_items/new.json
   def new
     @news_item = NewsItem.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @news_item }
-    end
   end
 
-  # GET /news_items/1/edit
   def edit
     @news_item = NewsItem.find(params[:id])
   end
 
-  # POST /news_items
-  # POST /news_items.json
   def create
     @news_item = NewsItem.new(news_item_params)
 
@@ -66,8 +25,6 @@ class NewsItemsController < ApplicationController
     end
   end
 
-  # PUT /news_items/1
-  # PUT /news_items/1.json
   def update
     @news_item = NewsItem.find(params[:id])
 
@@ -82,8 +39,6 @@ class NewsItemsController < ApplicationController
     end
   end
 
-  # DELETE /news_items/1
-  # DELETE /news_items/1.json
   def destroy
     @news_item = NewsItem.find(params[:id])
     @news_item.destroy
@@ -95,7 +50,8 @@ class NewsItemsController < ApplicationController
   end
 
   private
-    def news_item_params
-      params.require(:news_item).permit(:title, :content, :owner, :picked_date, :picked_time)
-    end
+
+  def news_item_params
+    params.require(:news_item).permit(:title, :content, :owner, :picked_date, :picked_time)
+  end
 end

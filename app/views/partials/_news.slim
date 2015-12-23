@@ -1,18 +1,13 @@
-h4 = @news_title
+h4 = @news_week.title
 #news
-  - if @news_items.count == 0
+  - week_items = @news_week.items
+  - if week_items.size == 0
     p: em Nothing to show
   - else
     table
-      - @news_items.each do |list|
-        - @news_item = list[:items].shift
-        - highlight = (@news_item.date.localtime.yday == @date.yday and @news_item.date.localtime.year == @date.year) \
-          ? 'highlight' : ''
-        tr class=highlight
-          td.title = list[:title]
-          == render 'partials/news_display', editable: editable
-        - list[:items].each do |item|
-          tr class=highlight
-            td.title
+      - week_items.each do |list|
+        - list[:items].each.with_index do |item, i|
+          tr class=(list[:highlight] ? "highlight" : "")
+            td.title = i == 0 ? list[:title] : ""
             - @news_item = item
             == render 'partials/news_display', editable: editable
