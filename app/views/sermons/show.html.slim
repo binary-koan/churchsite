@@ -3,7 +3,7 @@
 .row.sermon
   .col-md-12
     h1
-      == breadcrumb @previous_page.title => @previous_page.url_path
+      = breadcrumb Page.sermons.title => Page.sermons.url_path
       div = @sermon.title
     - if editing?
       p

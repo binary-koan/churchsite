@@ -4,6 +4,23 @@ class NewsWeek
   end
 
   def items
+    @items ||= generate_items
+  end
+
+  def title
+    this_monday = Chronic.parse("last monday")
+    week_monday = Chronic.parse("last monday", now: @date)
+
+    if week_monday == this_monday
+      "This week"
+    else
+      "Week of #{week_monday.strftime("%-d %b %Y")}"
+    end
+  end
+
+  private
+
+  def generate_items
     date, end_date = week_of(@date)
 
     items = date.step(end_date).map do |current_date|
@@ -19,19 +36,6 @@ class NewsWeek
       }
     end.compact
   end
-
-  def title
-    this_monday = Chronic.parse("last monday")
-    week_monday = Chronic.parse("last monday", now: @date)
-
-    if week_monday == this_monday
-      "This week"
-    else
-      "Week of #{week_monday.strftime("%-d %b %Y")}"
-    end
-  end
-
-  private
 
   def week_of(date)
     start_date = Chronic.parse("last monday", now: date).to_date

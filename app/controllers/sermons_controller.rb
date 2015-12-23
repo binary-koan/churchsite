@@ -3,7 +3,6 @@ class SermonsController < ApplicationController
 
   def show
     @sermon = Sermon.find(params[:id])
-    @previous_page = Page.where(identifier: params[:from]).first || Page.sermons.first
   end
 
   def new
@@ -38,7 +37,7 @@ class SermonsController < ApplicationController
     @sermon = Sermon.find(params[:id])
     @sermon.destroy
 
-    redirect_to Page.sermons.first.url_path
+    redirect_to Page.sermons.url_path
   end
 
   private

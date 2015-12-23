@@ -16,7 +16,8 @@ class Page
   end
 
   TYPES.each do |type|
-    scope type, -> { where(type: type) }
+    #TODO validate only one of each type
+    define_singleton_method(type) { where(type: type).first }
     define_method(type + "?") { self.type == type }
   end
 

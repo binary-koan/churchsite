@@ -20,19 +20,19 @@ Rails.application.routes.draw do
     post :reorder, on: :member
   end
 
+  resources :churches, except: [:index, :show]
+  resources :options, only: [:edit, :update]
+  resources :pages, except: [:show]
+
+  resources :community_pages do
+    get :reorder, on: :collection
+    post :reorder, on: :collection
+  end
+
   scope '/admin' do
     get "users", to: "admin#users"
     post "users/confirm", to: "admin#confirm_user"
     delete "users/deny", to: "admin#deny_user"
-
-    resources :churches, except: [:index, :show]
-    resources :pages, except: [:show]
-    resources :options, only: [:edit, :update]
-
-    resources :community_pages do
-      get :reorder, on: :collection
-      post :reorder, on: :collection
-    end
   end
 
   get :toggle_editing, to: "admin#toggle_editing"

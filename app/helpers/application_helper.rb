@@ -16,11 +16,11 @@ module ApplicationHelper
   # eg
   #   breadcrumb('First bit' => first_path, 'Second bit' => second_path, 'Current page' => nil)
   def breadcrumb(trail)
-    html = "<div class='breadcrumbs'>"
-    trail.each do |title, href|
-      html += "<a href='#{href}'>#{title} <span class='glyphicon glyphicon-menu-right'></span></a> "
+    fragments = trail.each.map do |title, href|
+      "<a href='#{href}'>#{title} <span class='glyphicon glyphicon-menu-right'></span></a>"
     end
-    html + '</div>'
+
+    "<div class='breadcrumbs'>#{fragments.join(" ")}</div>".html_safe
   end
 
   private

@@ -13,7 +13,7 @@ class ChurchesController < ApplicationController
     @church = Church.new(church_params)
 
     if @church.save
-      redirect_to :back, notice: "Church was successfully created."
+      redirect_to Page.homepage.url_path, notice: "Church was successfully created."
     else
       render action: "new"
     end
@@ -21,7 +21,7 @@ class ChurchesController < ApplicationController
 
   def update
     if @church.update_attributes(church_params)
-      redirect_to :back, notice: "Church was successfully updated."
+      redirect_to Page.homepage.url_path, notice: "Church was successfully updated."
     else
       render action: "edit"
     end

@@ -11,7 +11,7 @@
         .church-location: span.glyphicon.glyphicon-map-marker
       .media-body
         address == h(church.address).gsub "\n", '<br>'
-    - if editable
+    - if editing?
       p
         = link_to edit_church_path(church), class: 'btn btn-default' do
           span.glyphicon.glyphicon-pencil>

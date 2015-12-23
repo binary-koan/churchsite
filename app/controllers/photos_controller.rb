@@ -5,7 +5,6 @@ class PhotosController < ApplicationController
   def gallery
     @photos = Photo.where(gallery_id: params[:id]).asc(:order)
     @title = @photos.first.gallery
-    @previous_page = Page.where(identifier: params[:from]).first || Page.photos.first
   end
 
   def new

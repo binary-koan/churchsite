@@ -1,35 +1,42 @@
 - if editing?
-  = render "options/edit"
-- else
-  .row.title-box
-    .col-md-9
-      .headings
-        h1 = Option.instance.title
-        - if Option.instance.church_type and not Option.instance.church_type.empty?
-          h2.church-type = Option.instance.church_type
-      p.lead = Option.instance.tagline
-    .col-md-3.leader-box
-      img src=Option.instance.leader_image.url style="width:64px;height:64px"
-      h6 = Option.instance.leader_title
-      h4 = Option.instance.leader_name
-      a#contact-link(href='#')
-        - if Option.instance.leader_use_address?
-          span.glyphicon.glyphicon-map-marker.pull-right
-        - if Option.instance.leader_use_phone?
-          span.glyphicon.glyphicon-phone.pull-right
-        - if Option.instance.leader_use_email?
-          span.glyphicon.glyphicon-envelope.pull-right
-        | Contact
-      .popover.hide
-        dl.dl-horizontal
-          - if Option.instance.leader_use_email? and Option.instance.leader_email
-            dt Email
-            dd: a(href="mailto:#{Option.instance.leader_email}") = Option.instance.leader_email
-          - if Option.instance.leader_use_phone? and Option.instance.leader_phone
-            dt Phone
-            dd: a(href=phone_url(Option.instance.leader_phone)) = Option.instance.leader_phone
-          - if Option.instance.leader_use_address? and Option.instance.leader_address
-            dt Address
-            dd == h(Option.instance.leader_address).gsub "\n", "<br>"
-  .row
-    == render 'churches/display', editable: false
+  .row: .col-md-12
+    = link_to edit_option_path(Option.instance), class: "btn btn-primary" do
+      span.glyphicon.glyphicon-pencil>
+      | Homepage options
+.row.title-box
+  .col-md-9
+    .headings
+      h1 = Option.instance.title
+      - if Option.instance.church_type and not Option.instance.church_type.empty?
+        h2.church-type = Option.instance.church_type
+    p.lead = Option.instance.tagline
+  .col-md-3.leader-box
+    img src=Option.instance.leader_image.url style="width:64px;height:64px"
+    h6 = Option.instance.leader_title
+    h4 = Option.instance.leader_name
+    a#contact-link(href='#')
+      - if Option.instance.leader_use_address?
+        span.glyphicon.glyphicon-map-marker.pull-right
+      - if Option.instance.leader_use_phone?
+        span.glyphicon.glyphicon-phone.pull-right
+      - if Option.instance.leader_use_email?
+        span.glyphicon.glyphicon-envelope.pull-right
+      | Contact
+    .popover.hide
+      dl.dl-horizontal
+        - if Option.instance.leader_use_email? and Option.instance.leader_email
+          dt Email
+          dd: a(href="mailto:#{Option.instance.leader_email}") = Option.instance.leader_email
+        - if Option.instance.leader_use_phone? and Option.instance.leader_phone
+          dt Phone
+          dd: a(href=phone_url(Option.instance.leader_phone)) = Option.instance.leader_phone
+        - if Option.instance.leader_use_address? and Option.instance.leader_address
+          dt Address
+          dd == h(Option.instance.leader_address).gsub "\n", "<br>"
+- if editing?
+  .row: .col-md-12: p
+    = link_to new_church_path, class: 'btn btn-primary' do
+      span.glyphicon.glyphicon-plus>
+      | Add Church
+.row
+  = render 'churches/display'

@@ -2,7 +2,7 @@
 .row
   .col-md-12
     h1
-      == breadcrumb @previous_page.title => @previous_page.url_path
+      = breadcrumb Page.photos.title => Page.photos.url_path
       div = @photos.first.gallery
 
     .gallery.lightbox

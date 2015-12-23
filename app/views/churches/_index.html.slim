@@ -1,8 +1,0 @@
-.row: .col-md-12
-  h1 Churches
-.row: .col-md-12: p
-  = link_to new_church_path, class: 'btn btn-primary' do
-    span.glyphicon.glyphicon-plus>
-    | Add Church
-.row
-  = render "churches/display", editable: true

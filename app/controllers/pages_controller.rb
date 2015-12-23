@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     if params[:id]
       @page = Page.find_by(identifier: params[:id])
     else
-      @page = Page.homepage.first
+      @page = Page.homepage
     end
 
     @title = @page.title
