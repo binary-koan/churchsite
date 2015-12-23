@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "site#homepage"
+  root "pages#display"
 
   mount Ckeditor::Engine => "/ckeditor"
   devise_for :users, :controllers => { :registrations => :registrations }
@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   get "uploads/ckeditor/pictures/:id/content_:filename", to: 'uploads#ckeditor_picture_content'
   get "uploads/ckeditor/pictures/:id/thumb_:filename", to: 'uploads#ckeditor_picture_thumb'
 
-  resources :news_items, path: "news"
-  resources :sermons, path: "word"
-  resources :photos do
+  resources :news_items, path: "news", except: [:index]
+  resources :sermons, path: "word", except: [:index]
+  resources :photos, except: [:index] do
     get :reorder, on: :member
     get :reorder, on: :member
   end
@@ -34,7 +34,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get "gallery/:id", to: "site#gallery"
   get "events_in/:year/:month", to: "site#events_in"
 
-  get "/:id", to: "pages#show"
+  get "/:id", to: "pages#display"
 end

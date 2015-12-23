@@ -17,6 +17,14 @@ class Page
 
   TYPES.each do |type|
     scope type, -> { where(type: type) }
-    define_method(type + "?") { |doc| doc.type == type }
+    define_method(type + "?") { self.type == type }
+  end
+
+  def url_path
+    if homepage?
+      "/"
+    else
+      "/#{identifier}"
+    end
   end
 end

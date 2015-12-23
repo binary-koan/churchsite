@@ -16,29 +16,6 @@
   .form-group
     = f.label :tagline, class: 'col-sm-3 control-label'
     .col-sm-9 = f.text_field :tagline, class: 'form-control'
-  .form-group
-    = f.label :use_news, "Enable Sections", class: 'col-sm-3 control-label'
-    .col-sm-9
-      .checkbox: label for="option_use_news"
-        = f.check_box :use_news
-        | News
-      = f.text_field :news_name, class: 'form-control'
-      .checkbox: label for="option_use_community"
-        = f.check_box :use_community
-        | Activities
-      = f.text_field :community_name, class: 'form-control'
-      .checkbox: label for="option_use_sermons"
-        = f.check_box :use_sermons
-        | Sermons
-      = f.text_field :sermons_name, class: 'form-control'
-      .checkbox: label for="option_use_photos"
-        = f.check_box :use_photos
-        | Photos
-      = f.text_field :photos_name, class: 'form-control'
-      .checkbox: label for="option_use_about"
-        = f.check_box :use_about
-        | About Page
-      = f.text_field :about_name, class: 'form-control'
 
   legend.col-sm-9.col-sm-offset-3 Leader
   .form-group

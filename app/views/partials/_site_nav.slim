@@ -10,6 +10,6 @@ nav.navbar.navbar-site
       ul.nav.navbar-nav
         - @pages.each do |page|
           li class=(@page == page ? "active" : "")
-            a(href="/#{page.identifier}")= page.title
+            a(href=page.url_path) = page.title
       - if user_signed_in?
         = render "partials/admin_nav"

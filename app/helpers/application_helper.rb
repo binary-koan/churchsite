@@ -1,11 +1,6 @@
 module ApplicationHelper
-  #TODO: Should this check for tablets as well?
-  def mobile_device?
-    if session[:mobile_param]
-      session[:mobile_param] == "1"
-    else
-      request.user_agent =~ /Mobile|webOS/
-    end
+  def editing?
+    user_signed_in? && params[:editing]
   end
 
   def phone_url(number)
@@ -14,14 +9,6 @@ module ApplicationHelper
     else
       "callto://" + number.gsub(/\s+/, '')
     end
-  end
-
-  # Used in navbar to add 'active' class to the link for the current page
-  def cp(path)
-    "active" if current_page?(path)
-  rescue => err # If the path doesn't exist
-    p err
-    nil
   end
 
   # Very simple breadcrumb generator
@@ -34,5 +21,16 @@ module ApplicationHelper
       html += "<a href='#{href}'>#{title} <span class='glyphicon glyphicon-menu-right'></span></a> "
     end
     html + '</div>'
+  end
+
+  private
+
+  #TODO: Should this check for tablets as well?
+  def mobile_device?
+    if session[:mobile_param]
+      session[:mobile_param] == "1"
+    else
+      request.user_agent =~ /Mobile|webOS/
+    end
   end
 end

@@ -5,9 +5,8 @@ ul.nav.nav-admin
       b.caret<
     ul.dropdown-menu
       li.section-title Site admin
-      li(class=cp(controller: 'pages', action: 'index')): a(href="/admin/pages") Pages
-      li(class=cp(controller: 'admin', action: 'options')): a(href="/admin/options") Options
-      li(class=cp(controller: 'admin', action: 'users')): a(href="/admin/users")
+      li = link_to "Pages", pages_path
+      li = link_to users_path do
         | Users
         - users_count = User.where(confirmed_at: nil).count
         - if users_count > 0

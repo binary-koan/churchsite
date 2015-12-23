@@ -1,6 +1,6 @@
 = render "partials/mode_switch"
-- if @editing
-  = render "churches/index"
+- if editing?
+  = render "options/edit"
 - else
   .row.title-box
     .col-md-9

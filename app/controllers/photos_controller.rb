@@ -3,18 +3,18 @@ class PhotosController < ApplicationController
 
   # GET /photos
   # GET /photos.json
-  def index
-    galleries = Photo.all.distinct(:gallery).sort
-    @photos = []
-    galleries.each do |gallery|
-      @photos << [gallery, Photo.where(gallery: gallery).first]
-    end
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: galleries }
-    end
-  end
+  # def index
+  #   galleries = Photo.all.distinct(:gallery).sort
+  #   @photos = []
+  #   galleries.each do |gallery|
+  #     @photos << [gallery, Photo.where(gallery: gallery).first]
+  #   end
+  #
+  #   respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.json { render json: galleries }
+  #   end
+  # end
 
   # GET /photos/:gallery_id
   # GET /photos/:gallery_id.json
@@ -57,7 +57,8 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to "/admin/photos/#{@photo.gallery_id}" }
+        #TODO proper route helper
+        format.html { redirect_to "/photos/#{@photo.gallery_id}" }
         format.json { render json: @photo, status: :created, location: @photo }
       else
         format.html { render action: "new" }
@@ -73,7 +74,8 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.update_attributes(photo_params)
-        format.html { redirect_to "/admin/photos/#{params[:gallery]}" }
+        #TODO route helper
+        format.html { redirect_to "/photos/#{params[:gallery_id]}" }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

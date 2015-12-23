@@ -1,6 +1,6 @@
 - if user_signed_in?
   .row.mode-switch
     .col-md-12
-      = link_to params.merge(editing: (@editing ? nil : true))
+      = link_to params.merge(editing: (editing? ? nil : true))
         .glyphicon.glyphicon-wrench
-        = @editing ? "Stop editing" : "Edit this content"
+        = editing? ? "Stop editing" : "Edit this content"

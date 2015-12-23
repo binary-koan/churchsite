@@ -1,0 +1,9 @@
+= render "partials/mode_switch"
+- if editing?
+  = render "sermons/index"
+- else
+  .row
+    .col-md-12
+      h1 = @page.title
+
+      == render 'partials/sermons', editable: false, compact: false

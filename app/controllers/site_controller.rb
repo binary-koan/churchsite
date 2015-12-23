@@ -56,7 +56,7 @@ class SiteController < ApplicationController
   end
 
   def gallery
-    @photos = Photo.where(gallery_id: params[:gallery]).asc :order
+    @photos = Photo.where(gallery_id: params[:id]).asc :order
     @title = $config.photos_name
   end
 

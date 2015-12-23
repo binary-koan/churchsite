@@ -5,18 +5,22 @@ class PagesController < ApplicationController
   respond_to :html
 
   def display
-    @page = Page.find_by(identifier: params[:id])
-    respond_with(@page)
+    if params[:id]
+      @page = Page.find_by(identifier: params[:id])
+    else
+      @page = Page.homepage.first
+    end
+
+    @title = @page.title
+    set_state_for_page
   end
 
   def index
     @pages = Page.all
-    respond_with(@pages)
   end
 
   def new
     @page = Page.new
-    respond_with(@page)
   end
 
   def edit
@@ -30,12 +34,10 @@ class PagesController < ApplicationController
 
   def update
     flash[:notice] = 'Page was successfully updated.' if @page.update(page_params)
-    respond_with(@page)
   end
 
   def destroy
     @page.destroy
-    respond_with(@page)
   end
 
   private
@@ -48,11 +50,34 @@ class PagesController < ApplicationController
     params.require(:page).permit(:title, :content, :type)
   end
 
-  def show_page_path
+  def set_state_for_page
     case @page.type
-    when "custom" then page_path(@page)
-    when "homepage" then root_path
-    else "/#{@page.type}"
+    when "news" then set_state_for_news
+    when "photos" then set_state_for_photos
+    when "sermons" then set_state_for_sermons
     end
+  end
+
+  def set_state_for_news
+    if params[:date] and params[:date] =~ /(\d{4})(\d\d)(\d\d)/
+      @date = Time.local $1.to_i, $2.to_i, $3.to_i
+      @news_items, @news_title = week_items_from @date
+    else
+      @date = Time.now.midnight
+      @news_items = news_items_from_week @date
+      @news_title = "This Week"
+    end
+  end
+
+  def set_state_for_photos
+    galleries = Photo.all.distinct(:gallery).sort
+    @photos = []
+    galleries.each do |gallery|
+      @photos << [gallery, Photo.where(gallery: gallery).limit(4)]
+    end
+  end
+
+  def set_state_for_sermons
+    @sermons = Sermon.paginate page: params[:page], per_page: 10
   end
 end
