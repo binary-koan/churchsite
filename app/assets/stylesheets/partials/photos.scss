@@ -1,0 +1,31 @@
+.gallery {
+  display: inline-block;
+  margin-right: 10px;
+
+  .item {
+    @extend .well;
+    @extend .well-sm;
+
+    display: inline-block;
+    margin: 10px;
+    max-width: 220px;
+
+    a {
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    img {
+      display: inline-block;
+    }
+
+    p {
+      margin: 10px 0 0 0;
+    }
+  }
+
+  .control-buttons {
+    margin-top: 5px;
+    text-align: right;
+  }
+}

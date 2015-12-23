@@ -226,26 +226,6 @@ table.photos {
   }
 }
 
-.thumbs a {
-  @extend .well;
-  @extend .well-sm;
-
-  display: inline-block;
-  margin: 10px;
-  max-width: 220px;
-
-  background-repeat: no-repeat;
-  background-position: center;
-
-  img {
-    display: inline-block;
-  }
-
-  p {
-    margin: 10px 0 0 0;
-  }
-}
-
 .cke.cke_chrome {
   margin-bottom: 10px;
 }
@@ -297,22 +277,6 @@ table.photos {
 
   tr.highlight td.title {
     border-right-color: $gray;
-  }
-}
-
-// PHOTOS
-
-.gallery {
-  display: inline-block;
-  margin-right: 10px;
-
-  img {
-    display: block;
-    padding-bottom: 5px;
-  }
-
-  .user-controls {
-    text-align: right;
   }
 }
 

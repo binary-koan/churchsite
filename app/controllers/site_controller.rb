@@ -1,27 +1,6 @@
 class SiteController < ApplicationController
   include NewsItemsHelper
 
-  def homepage
-  end
-
-  def page
-    @page = Page.find(params[:id])
-    @title = page.title
-  end
-
-  def news
-    if params[:date] and params[:date] =~ /(\d{4})(\d\d)(\d\d)/
-      @date = Time.local $1.to_i, $2.to_i, $3.to_i
-      @news_items, @news_title = week_items_from @date
-    else
-      @date = Time.now.midnight
-      @news_items = news_items_from_week @date
-      @news_title = "This Week"
-    end
-
-    @title = Option.instance.news_name
-  end
-
   def events_in
     month = params[:month].to_i
     year = params[:year].to_i
@@ -46,30 +25,7 @@ class SiteController < ApplicationController
     @title = @page.title
   end
 
-  def photos
-    galleries = Photo.all.distinct(:gallery).sort
-    @photos = []
-    galleries.each do |gallery|
-      @photos << [gallery, Photo.where(gallery: gallery).limit(4)]
-    end
-    @title = Option.instance.photos_name
-  end
-
-  def gallery
-    @photos = Photo.where(gallery_id: params[:id]).asc :order
-    @title = Option.instance.photos_name
-  end
-
-  def sermons
-    @sermons = Sermon.paginate page: params[:page], per_page: 10
-    @title = Option.instance.sermons_name
-  end
-
   def sermon
     @sermon = Sermon.find params[:id]
-  end
-
-  def about
-    @title = Option.instance.about_name
   end
 end

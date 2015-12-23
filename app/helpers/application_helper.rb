@@ -1,6 +1,6 @@
 module ApplicationHelper
   def editing?
-    user_signed_in? && params[:editing]
+    user_signed_in? && session[:editing]
   end
 
   def phone_url(number)

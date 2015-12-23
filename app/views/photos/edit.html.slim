@@ -2,8 +2,4 @@
   .col-md-12
     h1 Editing Photo
 
-    /TODO do galleries better
-    == render 'form',
-      new_gallery: false,
-      gallery_id: params[:gallery_id],
-      gallery: Photo.find_by(gallery_id: params[:gallery_id]).gallery
+    == render 'form', new_gallery: false

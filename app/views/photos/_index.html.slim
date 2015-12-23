@@ -1,14 +1,21 @@
 .row
   .col-md-12
-    h1 Galleries
+    h1 = @title
 
-    p = link_to new_photo_path(new_gallery: true), class: 'btn btn-primary' do
-      span.glyphicon.glyphicon-plus>
-      | Add Gallery
+    - if editing?
+      p = link_to new_photo_path(new_gallery: true), class: 'btn btn-primary' do
+        span.glyphicon.glyphicon-plus>
+        | Add Gallery
 
-    .galleries
+    .gallery
       - @photos.each do |info|
-        - gallery, photo = info[0], info[1]
-        = link_to "/admin/photos/#{photo.gallery_id}", class: 'gallery well well-sm' do
-          img src="/#{photo.image.thumb.url}"
-          strong = gallery
+        /TODO something better than this
+        - gallery, photos = info[0], info[1]
+        - gallery_path = gallery_path(photos.first.gallery_id, from: @page.identifier)
+        a.item href=gallery_path
+          - if photos.length < 4
+            img src="/#{photos.first.image.thumb.url}"
+          - else
+            - photos.each do |photo|
+              img src="/#{photo.image.thumb.url}" style="width:100px;height:100px"
+          p: strong = gallery

@@ -14,9 +14,10 @@ Rails.application.routes.draw do
 
   resources :news_items, path: "news", except: [:index]
   resources :sermons, path: "word", except: [:index]
-  resources :photos, except: [:index] do
+  resources :photos, except: [:index, :show] do
+    get "gallery/:id", action: :gallery, on: :collection
     get :reorder, on: :member
-    get :reorder, on: :member
+    post :reorder, on: :member
   end
 
   scope '/admin' do
@@ -29,12 +30,12 @@ Rails.application.routes.draw do
     resources :options, only: [:edit, :update]
 
     resources :community_pages do
-      get :reorder
-      post :reorder
+      get :reorder, on: :collection
+      post :reorder, on: :collection
     end
   end
 
-  get "gallery/:id", to: "site#gallery"
+  get "toggle_editing", to: "admin#toggle_editing"
   get "events_in/:year/:month", to: "site#events_in"
 
   get "/:id", to: "pages#display"

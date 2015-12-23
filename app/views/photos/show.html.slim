@@ -24,11 +24,4 @@
         li.well.well-sm
           img src="/#{photo.image.thumb.url}"
           p.caption = photo.caption.length > 40 ? photo.caption[0..40] + '...' : photo.caption
-          .form-buttons
-            = link_to edit_photo_path(photo, gallery_id: params[:id]), class: 'btn btn-default' do
-              span.glyphicon.glyphicon-pencil>
-              | Edit
-            | &nbsp;
-            = link_to photo_path(photo, gallery_id: params[:id]), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-default' do
-              span.glyphicon.glyphicon-trash>
-              | Delete
+          

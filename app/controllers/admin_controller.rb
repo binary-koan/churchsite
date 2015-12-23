@@ -3,20 +3,10 @@ class AdminController < ApplicationController
 
   before_action :authenticate_user!
 
-  def dashboard
-    @news_item = NewsItem.new
+  def toggle_editing
+    session[:editing] = !session[:editing]
 
-    @news_items = news_items_from_week Time.now
-    @news_title = "This Week"
-    @date = Time.now
-
-    @sermons = Sermon.paginate page: params[:page], per_page: 10
-  end
-
-  def options
-  end
-
-  def about
+    redirect_to params[:return_to]
   end
 
   def users

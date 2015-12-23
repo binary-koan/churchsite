@@ -15,8 +15,8 @@
     .row: .col-sm-10.col-sm-offset-2
       legend Initial photo
   - else
-    input type='hidden' name='gallery_id' value=gallery_id
-    input type='hidden' name='gallery' value=gallery
+    input type='hidden' name='gallery_id' value=@photo.gallery_id
+    input type='hidden' name='gallery' value=@photo.gallery
 
   .form-group
     = f.label :caption, class: 'col-sm-2 control-label'
@@ -32,4 +32,4 @@
 
   .form-group: .col-sm-10.col-sm-offset-2
     = f.submit 'Save', class: 'btn btn-primary'
-    = link_to 'Back to List', "/admin/photos/#{gallery_id}", class: 'btn btn-link'
+    = link_to 'Back to List', gallery_path(@photo.gallery_id), class: 'btn btn-link'

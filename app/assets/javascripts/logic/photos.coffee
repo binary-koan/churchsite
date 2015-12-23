@@ -1,6 +1,6 @@
 $ ->
-  $('.gallery.thumbs').magnificPopup
-    delegate: 'a'
+  $('.gallery.lightbox').magnificPopup
+    delegate: 'a.image'
     type: 'image'
     gallery:
       enabled: true

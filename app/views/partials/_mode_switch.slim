@@ -1,6 +1,6 @@
 - if user_signed_in?
   .row.mode-switch
     .col-md-12
-      = link_to params.merge(editing: (editing? ? nil : true))
+      = link_to toggle_editing_path(return_to: request.url) do
         .glyphicon.glyphicon-wrench
         = editing? ? "Stop editing" : "Edit this content"
