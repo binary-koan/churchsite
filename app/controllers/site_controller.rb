@@ -18,8 +18,4 @@ class SiteController < ApplicationController
     @page = CommunityPage.where(identifier: params[:id]).first
     @title = @page.title
   end
-
-  def sermon
-    @sermon = Sermon.find params[:id]
-  end
 end

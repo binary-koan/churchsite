@@ -1,0 +1,14 @@
+li.list-group-item
+  .controls.pull-right
+    span.label.label-primary = page.type
+    =<> link_to edit_page_path(page), class: 'btn btn-default' do
+      span.glyphicon.glyphicon-pencil>
+      | Edit
+    = link_to page, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-default' do
+      span.glyphicon.glyphicon-trash>
+      | Delete
+  h5
+    - if page.parent
+      = page.parent.title
+      .glyphicon.glyphicon-menu-right<>
+    = link_to page.title, page_path(page)

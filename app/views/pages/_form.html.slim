@@ -11,6 +11,9 @@
     - options = options_for_select(Page::TYPES.map { |e| [e.humanize, e] }, @page.type)
     .col-sm-10 = f.select :type, options, {}, class: 'form-control'
   .form-group
+    = f.label :parent_id, class: 'col-sm-2 control-label'
+    .col-sm-10 = f.collection_select :parent_id, Page.collections, :id, :title, { include_blank: true }, class: 'form-control'
+  .form-group
     = f.label :title, class: 'col-sm-2 control-label'
     .col-sm-10 = f.text_field :title, class: 'form-control'
   .form-group#page_content_group

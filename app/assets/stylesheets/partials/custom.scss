@@ -167,46 +167,6 @@ td.user-controls {
   text-align: right;
 }
 
-table.data {
-  width: 100%;
-  margin-top: 20px;
-  border-bottom: 1px solid $gray-light;
-
-  &.compact {
-    width: 520px;
-  }
-
-  td {
-    border-top: 1px solid $gray-light;
-    padding: 20px 0;
-
-    h5, p {
-      margin: 0;
-    }
-  }
-
-  td.description {
-    width: 100%;
-  }
-
-  td.player {
-    min-width: 350px;
-  }
-
-  td.controls {
-    min-width: 190px;
-    text-align: right;
-  }
-
-  td.download .btn {
-    height: 36px;
-    font-size: 18px;
-    line-height: 38px;
-    padding: 0 10px;
-    margin-left: 10px;
-  }
-}
-
 table.photos {
   margin-top: 10px;
 

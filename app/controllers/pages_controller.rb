@@ -16,7 +16,8 @@ class PagesController < ApplicationController
   end
 
   def index
-    @pages = Page.all
+    @top_level_pages = Page.where(parent: nil).asc(:order)
+    @child_pages = Page.not.where(parent: nil).asc(:parent_id).asc(:order)
   end
 
   def new
@@ -34,6 +35,7 @@ class PagesController < ApplicationController
 
   def update
     flash[:notice] = 'Page was successfully updated.' if @page.update(page_params)
+    redirect_to pages_path
   end
 
   def destroy
@@ -47,7 +49,7 @@ class PagesController < ApplicationController
   end
 
   def page_params
-    params.require(:page).permit(:title, :content, :type)
+    params.require(:page).permit(:title, :content, :type, :parent_id)
   end
 
   def set_state_for_page

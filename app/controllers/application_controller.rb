@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def assign_pages
-    @pages = Page.all
+    @top_level_pages = Page.where(parent: nil).asc(:order)
   end
 end

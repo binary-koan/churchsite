@@ -8,8 +8,17 @@ nav.navbar.navbar-site
         span.icon-bar
     #main-menu.collapse.navbar-collapse
       ul.nav.navbar-nav
-        - @pages.each do |page|
-          li class=(@page == page ? "active" : "")
-            a(href=page.url_path) = page.title
+        - @top_level_pages.each do |page|
+          - if page.children.size > 0
+            li.dropdown
+              a.dropdown-toggle(href="#" data-toggle="dropdown")
+                => page.title
+                b.caret
+              ul.dropdown-menu
+                - page.children.each do |child|
+                  li: a(href=child.url_path) = child.title
+          - else
+            li class=(@page == page ? "active" : nil)
+              a(href=page.url_path) = page.title
       - if user_signed_in?
         = render "partials/admin_nav"

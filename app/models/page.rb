@@ -1,7 +1,12 @@
 class Page
   include Mongoid::Document
 
-  TYPES = %w{custom homepage news photos sermons}
+  SINGLETON_TYPES = %w{homepage news photos sermons}
+  TYPES = %w{custom collection} + SINGLETON_TYPES
+
+  #TODO validate belongs_to collection
+  belongs_to :parent, class_name: "Page"
+  has_many :children, class_name: "Page", inverse_of: :parent
 
   field :title, type: String
   field :content, type: String
@@ -15,9 +20,16 @@ class Page
     document.identifier = document.title.parameterize
   end
 
-  TYPES.each do |type|
+  SINGLETON_TYPES.each do |type|
     #TODO validate only one of each type
     define_singleton_method(type) { where(type: type).first }
+  end
+
+  (TYPES - SINGLETON_TYPES).each do |type|
+    scope type.pluralize, -> { where(type: type) }
+  end
+
+  TYPES.each do |type|
     define_method(type + "?") { self.type == type }
   end
 
