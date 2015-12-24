@@ -12,7 +12,7 @@ $ ->
   date = $datePicker.data 'date'
 
   load_month = (year, month) ->
-    $.getJSON "/events_in?year=#{year}&month=#{month}", ({ days }) ->
+    $.getJSON "/news/events_in_month?year=#{year}&month=#{month}", ({ days }) ->
       load_event_dates(days)
   load_event_dates = (data) ->
     $days = $('td.day')

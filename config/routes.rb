@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   get "uploads/ckeditor/pictures/:id/content_:filename", to: 'uploads#ckeditor_picture_content'
   get "uploads/ckeditor/pictures/:id/thumb_:filename", to: 'uploads#ckeditor_picture_thumb'
 
-  resources :news_items, path: "news", except: [:index, :show]
+  resources :news_items, path: "news", only: [:create, :update, :destroy] do
+    get :events_in_month, on: :collection
+  end
   resources :sermons, path: "word", except: [:index]
   resources :photos, except: [:index, :show] do
     get "gallery/:id", action: :gallery, on: :collection
@@ -38,7 +40,6 @@ Rails.application.routes.draw do
   end
 
   get :toggle_editing, to: "admin#toggle_editing"
-  get :events_in, to: "site#events_in"
 
   get "/:id", to: "pages#display"
 end

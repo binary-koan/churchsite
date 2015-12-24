@@ -3,39 +3,23 @@ class NewsItemsController < ApplicationController
 
   before_action :authenticate_user!
 
-  def new
-    @news_item = NewsItem.new
-  end
-
-  def edit
-    @news_item = NewsItem.find(params[:id])
-  end
-
   def create
     @news_item = NewsItem.new(news_item_params)
 
-    respond_to do |format|
-      if @news_item.save
-        format.html { redirect_to request.referer, notice: 'News item was successfully created.' }
-        format.json { render json: @news_item, status: :created, location: @news_item }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @news_item.errors, status: :unprocessable_entity }
-      end
+    if @news_item.save
+      redirect_to request.referer, notice: "News item was successfully created."
+    else
+      redirect_to request.referer, alert: "News item could not be created."
     end
   end
 
   def update
     @news_item = NewsItem.find(params[:id])
 
-    respond_to do |format|
-      if @news_item.update_attributes(news_item_params)
-        format.html { redirect_to request.referer, notice: 'News item was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @news_item.errors, status: :unprocessable_entity }
-      end
+    if @news_item.update_attributes(news_item_params)
+      redirect_to request.referer, notice: "News item was successfully updated."
+    else
+      redirect_to request.referer, alert: "News item could not be updated."
     end
   end
 
@@ -43,10 +27,20 @@ class NewsItemsController < ApplicationController
     @news_item = NewsItem.find(params[:id])
     @news_item.destroy
 
-    respond_to do |format|
-      format.html { redirect_to news_items_url }
-      format.json { head :no_content }
-    end
+    redirect_to request.referer
+  end
+
+  def events_in_month
+    month = params[:month].to_i
+    year = params[:year].to_i
+
+    start_date = Time.new(year, month, 1)
+    end_date = start_date + 1.month - 1.day
+
+    news_items = NewsItem.and({ :date.gte => start_date}, { :date.lt => end_date }).sort(date: 1)
+    days = Set.new(news_items.map { |item| item.date.localtime.mday })
+
+    render json: { days: days.to_a }
   end
 
   private
