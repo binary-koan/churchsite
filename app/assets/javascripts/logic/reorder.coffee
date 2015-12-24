@@ -10,7 +10,7 @@ do ->
     $.post("#{location.href}/reorder", { data: data })
       .done((data) ->
         if data.error then displayMessage("Error: #{e.error}", "danger")
-        else displayMessage("Successfully reordered!", "success")
+        else displayMessage("Successfully reordered! Reload to update the site navigation.", "success")
       )
       .fail((e) -> displayMessage("Can't communicate with the server: #{e}", "danger"))
 
