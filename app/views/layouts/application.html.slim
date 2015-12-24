@@ -16,6 +16,7 @@ html
     = render "partials/site_nav"
     
     .container: .row: .col-md-12.messages
+      = flash_messages
 
     .container
       = yield

@@ -1,6 +1,16 @@
 module ApplicationHelper
+  FLASH_TYPES = { error: "danger", alert: "danger" }
+
   def editing?
     user_signed_in? && session[:editing]
+  end
+
+  def flash_messages
+    flash.each.map do |key, message|
+      type = FLASH_TYPES[key] || "info"
+
+      content_tag "div", message, class: "alert alert-#{type}"
+    end.join.html_safe
   end
 
   def phone_url(number)
