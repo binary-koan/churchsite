@@ -1,25 +1,26 @@
 # Reorder lists in the admin section
-#TODO: Replace with drag and drop
-
-setup_reorder = (element_id, url) ->
-  el = document.getElementById(element_id)
-  return unless el
-
-  Sortable.create el, animation: 150
-
-  $el = $(el)
-  $el.parent().find('.btn-primary').click ->
-    $btn = $(this)
-    $btn.attr 'disabled', true
+do ->
+  updateOrder = (list) ->
+    $list = $(list)
 
     data = {}
-    $el.children().each (i, li) ->
-      data[$(li).data('document-id')] = i
+    $list.children("li").each (index, item) ->
+      data[$(item).data("document-id")] = index
 
-    $.post url, { data: data }, ->
-      $btn.attr 'disabled', false
-      window.location.href = window.location.href.replace(/\/reorder$/, '')
+    $.post("#{location.href}/reorder", { data: data })
+      .done((data) ->
+        if data.error then displayMessage("Error: #{e.error}", "danger")
+        else displayMessage("Successfully reordered!", "success")
+      )
+      .fail((e) -> displayMessage("Can't communicate with the server: #{e}", "danger"))
 
-$ ->
-  setup_reorder 'community-pages'
-  setup_reorder 'photos'
+  setupReorder = (element_id) ->
+    list = document.getElementById(element_id)
+    return unless list
+
+    Sortable.create(list, animation: 150, onEnd: updateOrder.bind(null, list))
+
+  $ ->
+    setupReorder("top-level-pages")
+    setupReorder("child-pages")
+    setupReorder("photos")

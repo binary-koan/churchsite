@@ -1,14 +1,15 @@
 .row: .col-md-12
   h1 Pages
   
-  p = link_to new_page_path, class: 'btn btn-primary' do
-    span.glyphicon.glyphicon-plus>
-    | Add Page
+  p
+    = link_to new_page_path, class: "btn btn-primary" do
+      span.glyphicon.glyphicon-plus>
+      | Add Page
 
-  ul.list-group
+  ul#top-level-pages.list-group
     - @top_level_pages.each do |page|
       = render "pages/list_item", page: page
   
-  ul.list-group
+  ul#child-pages.list-group
     - @child_pages.each do |page|
       = render "pages/list_item", page: page

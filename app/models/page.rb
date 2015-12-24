@@ -6,7 +6,7 @@ class Page
 
   #TODO validate belongs_to collection
   belongs_to :parent, class_name: "Page"
-  has_many :children, class_name: "Page", inverse_of: :parent
+  has_many :children, class_name: "Page", inverse_of: :parent, order: :order.asc
 
   field :title, type: String
   field :content, type: String

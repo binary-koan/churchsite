@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//TODO make turbolinks work
-// require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //

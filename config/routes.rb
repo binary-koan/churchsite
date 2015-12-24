@@ -22,7 +22,9 @@ Rails.application.routes.draw do
 
   resources :churches, except: [:index, :show]
   resources :options, only: [:edit, :update]
-  resources :pages, except: [:show]
+  resources :pages, except: [:show] do
+    post :reorder, on: :collection
+  end
 
   resources :community_pages do
     get :reorder, on: :collection
