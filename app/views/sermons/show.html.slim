@@ -4,7 +4,9 @@
   .col-md-12
     h1
       = breadcrumb Page.sermons.title => Page.sermons.url_path
-      div = @sermon.title
+      div
+        = @sermon.title
+        small.pull-right = @sermon.date.strftime("%-d %b %Y")
     - if editing?
       p
         => link_to edit_sermon_path(@sermon), class: "btn btn-default" do
