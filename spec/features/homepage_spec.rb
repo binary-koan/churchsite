@@ -9,11 +9,10 @@ RSpec.feature "Homepage", type: :feature do
   before do
     login
     create_homepage
+    visit "/"
   end
 
   scenario "Creating the default homepage" do
-    visit "/"
-
     expect(page).to have_text "Our Parish"
   end
 
@@ -26,8 +25,7 @@ RSpec.feature "Homepage", type: :feature do
 
     logout
 
-    visit "/"
-
+    expect(current_path).to eq "/"
     expect(page).to have_text "Lincoln Union Church"
     expect(page).to have_text "Methodist"
     expect(page).to have_text "Our mission is to know God and to make God known"
@@ -44,8 +42,7 @@ RSpec.feature "Homepage", type: :feature do
 
     logout
 
-    visit "/"
-
+    expect(current_path).to eq "/"
     expect(page).to have_text "Pastor"
     expect(page).to have_text "Joe Bloggs"
     expect(page).to have_text "Phone0000"
@@ -54,18 +51,78 @@ RSpec.feature "Homepage", type: :feature do
   end
 
   scenario "Adding a church" do
-    #TODO
+    add_church(
+      name: "Lincoln",
+      services: "Sundays 10am",
+      address: "Near Rolleston",
+      map_address: "Lincoln"
+    )
+
+    expect(current_path).to eq "/"
+
+    within(:css, ".church") do
+      expect(page).to have_text "Lincoln"
+      expect(page).to have_text "Sundays 10am"
+      expect(page).to have_text "Near Rolleston"
+      expect(page).to have_css "a[href*='maps.google.com/?q=Lincoln']"
+    end
   end
 
   scenario "Adding multiple churches" do
-    #TODO
+    add_church(
+      name: "Lincoln",
+      services: "Sundays 10am",
+      address: "Near Rolleston",
+      map_address: "Lincoln"
+    )
+
+    add_church(
+      name: "Rolleston",
+      services: "Sundays 9am",
+      address: "Near Lincoln",
+      map_address: "Rolleston"
+    )
+
+    within(:css, ".church:first-child") do
+      expect(page).to have_text "Lincoln"
+      expect(page).to have_text "Sundays 10am"
+      expect(page).to have_text "Near Rolleston"
+      expect(page).to have_css "a[href*='maps.google.com/?q=Lincoln']"
+    end
+
+    within(:css, ".church:last-child") do
+      expect(page).to have_text "Rolleston"
+      expect(page).to have_text "Sundays 9am"
+      expect(page).to have_text "Near Lincoln"
+      expect(page).to have_css "a[href*='maps.google.com/?q=Rolleston']"
+    end
   end
 
   scenario "Editing a church" do
-    #TODO
+    add_church
+    within(".church") { click_link "Edit" }
+
+    fill_in "Name", with: "Lincoln 2"
+    fill_in "Address", with: "Not near Rolleston"
+    click_button "Save"
+
+    expect(current_path).to eq "/"
+
+    within(:css, ".church") do
+      expect(page).to have_text "Lincoln 2"
+      expect(page).to have_text "Not near Rolleston"
+    end
   end
 
   scenario "Deleting a church" do
-    #TODO
+    add_church(
+      name: "Lincoln",
+      services: "Sundays 10am"
+    )
+
+    within(".church") { click_link "Delete" }
+
+    expect(page).not_to have_text "Lincoln"
+    expect(page).not_to have_text "Sundays 10am"
   end
 end

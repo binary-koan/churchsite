@@ -17,6 +17,6 @@
           span.glyphicon.glyphicon-pencil>
           | Edit
         | &nbsp;
-        = link_to church, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-default' do
+        = link_to church, method: :delete, class: "btn btn-default", data: { confirm: "Are you sure?" } do
           span.glyphicon.glyphicon-trash>
           | Delete
