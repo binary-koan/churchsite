@@ -1,9 +1,11 @@
 class NewsItem
   include Mongoid::Document
 
+  belongs_to :owner, class_name: "NewsItem"
+  has_many :related, class_name: "NewsItem", inverse_of: "owner"
+
   field :title, type: String
   field :content, type: String
-  field :owner, type: BSON::ObjectId
   field :date, type: Time, default: -> { Time.now }
 
   attr_accessor :picked_date

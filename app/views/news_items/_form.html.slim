@@ -6,10 +6,15 @@
         - @news_item.errors.full_messages.each do |message|
           li = message
 
-  .form-group: .col-sm-12 = f.text_field :title, class: 'form-control', placeholder: 'Title ...'
-  .form-group: .col-sm-12 = f.text_area :content, class: 'form-control', rows: 3, placeholder: 'Content ...'
+  .form-group: .col-sm-12
+    = f.label :title, class: "sr-only"
+    = f.text_field :title, class: 'form-control', placeholder: 'Title ...'
+  .form-group: .col-sm-12
+    = f.label :content, class: "sr-only"
+    = f.text_area :content, class: 'form-control', rows: 3, placeholder: 'Content ...'
   .form-group
     .col-sm-12: .input-group.date
+      = f.label :picked_date, "Date", class: "sr-only"
       = f.text_field :picked_date,
         class: 'form-control',
         value: @news_item.date.localtime.strftime('%d/%m/%Y %I:%M %p')

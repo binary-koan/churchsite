@@ -1,43 +1,19 @@
-require 'rails_helper'
+require "rails_helper"
+require "steps/authentication"
+require "steps/homepage"
 
 RSpec.feature "Homepage", type: :feature do
-  def login
-    user = create(:user)
-
-    visit "/users/sign_in"
-    fill_in "Email", with: user.email
-    fill_in "Password", with: "Testing1"
-    click_button "Sign in"
-  end
-
-  def logout
-    click_link "Sign out"
-  end
-
-  def create_homepage
-    visit "/pages/new"
-    select "Homepage", from: "Type"
-    fill_in "Title", with: "Home"
-    click_button "Save"
-  end
-
-  def edit_homepage_section(link_title)
-    click_link "Edit content"
-    click_link link_title
-
-    yield
-
-    click_button "Save"
-  end
+  include Steps::Authentication
+  include Steps::Homepage
 
   before do
     login
     create_homepage
-
-    visit "/"
   end
 
   scenario "Creating the default homepage" do
+    visit "/"
+
     expect(page).to have_text "Our Parish"
   end
 

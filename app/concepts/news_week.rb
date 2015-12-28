@@ -8,10 +8,9 @@ class NewsWeek
   end
 
   def title
-    this_monday = Chronic.parse("last monday")
-    week_monday = Chronic.parse("last monday", now: @date)
+    this_monday = Date.today.beginning_of_week
 
-    if week_monday == this_monday
+    if week_start == this_monday
       "This week"
     else
       "Week of #{week_monday.strftime("%-d %b %Y")}"
@@ -21,9 +20,7 @@ class NewsWeek
   private
 
   def generate_items
-    date, end_date = week_of(@date)
-
-    items = date.step(end_date).map do |current_date|
+    items = week_start.step(week_end).map do |current_date|
       items = NewsItem.and({ :date.gte => current_date }, { :date.lt => current_date + 1.day })
       next unless items.count > 0
 
@@ -37,8 +34,11 @@ class NewsWeek
     end.compact
   end
 
-  def week_of(date)
-    start_date = Chronic.parse("last monday", now: date).to_date
-    [start_date, start_date + 7.days]
+  def week_start
+    @date.to_date.beginning_of_week
+  end
+
+  def week_end
+    week_start + 7.days
   end
 end
