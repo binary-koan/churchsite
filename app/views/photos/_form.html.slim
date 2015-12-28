@@ -31,7 +31,7 @@
 
   .form-group: .col-sm-10.col-sm-offset-2
     = f.submit "Save", class: 'btn btn-primary'
-    - if @photo.gallery_id
+    - if @photo.gallery
       = link_to "Back to list", gallery_photos_path(gallery: @photo.gallery), class: "btn btn-link"
     - else
       = link_to "Back to list", Page.photos.url_path

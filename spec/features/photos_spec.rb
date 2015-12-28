@@ -79,6 +79,7 @@ RSpec.feature "Photos", type: :feature do
 
     within(".gallery .item:first-child") { click_link "Delete" }
 
+    expect(current_path).to eq "/photos/gallery"
     expect(page).not_to have_css "a[title='Church exterior']"
     expect(page).not_to have_css "img[alt='Church exterior'][src^='/uploads/photo/image/']"
   end

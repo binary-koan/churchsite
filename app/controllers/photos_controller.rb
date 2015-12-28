@@ -20,10 +20,6 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
-    if params[:gallery_id] and params[:gallery]
-      @photo.gallery_id = params[:gallery_id]
-      @photo.gallery = params[:gallery]
-    end
 
     if @photo.save
       redirect_to gallery_photos_path(gallery: @photo.gallery)
@@ -46,13 +42,12 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
 
     if params[:gallery]
-      @photos = Photo.where(gallery_id: @photo.gallery_id)
-      @photos.destroy
+      Photo.where(gallery: @photo.gallery).destroy
     else
       @photo.destroy
     end
 
-    if Photo.where(gallery_id: @photo.gallery_id).size > 0
+    if Photo.where(gallery: @photo.gallery).size > 0
       redirect_to gallery_photos_path(gallery: @photo.gallery)
     else
       redirect_to Page.photos.url_path
@@ -60,24 +55,18 @@ class PhotosController < ApplicationController
   end
 
   def reorder
-    if request.post?
-      params[:data].each do |id, order|
-        @photo = Photo.find(id)
-        @photo.order = order
-        @photo.save
-      end
-
-      redirect_to gallery_photos_path(gallery: @photo.gallery)
-    else
-      @photos = Photo.where(gallery_id: params[:id]).asc :order
-      @gallery = @photos.first.gallery
-      @gallery_id = params[:id]
+    params[:data].each do |id, order|
+      @photo = Photo.find(id)
+      @photo.order = order
+      @photo.save
     end
+
+    redirect_to gallery_photos_path(gallery: @photo.gallery)
   end
 
   private
 
   def photo_params
-    params.require(:photo).permit(:gallery, :gallery_id, :caption, :date, :order, :image)
+    params.require(:photo).permit(:gallery, :caption, :date, :order, :image)
   end
 end
