@@ -12,11 +12,11 @@
               | &nbsp;&mdash;&nbsp;
               = user.email
             td.user-controls
-              = link_to '/users/confirm?email='+user.email, method: 'post', class: 'btn btn-default' do
-                i.icon-check
+              = link_to "/users/confirm?email=#{user.email}", method: "post", class: "btn btn-default" do
+                span.glyphicon.glyphicon-ok
                 | Confirm
-              = link_to '/users/deny?email=' + user.email, method: 'delete', confirm: 'Are you sure?', class: 'btn btn-default' do
-                i.icon-cancel
+              = link_to "/users/deny?email=#{user.email}", method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-default" do
+                span.glyphicon.glyphicon-remove
                 | Deny
       h3 Active Users
     table.fill
