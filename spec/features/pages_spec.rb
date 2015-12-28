@@ -6,7 +6,7 @@ RSpec.feature "Pages", type: :feature do
   include Steps::Authentication
   include Steps::Pages
 
-  before { login }
+  background { login }
 
   scenario "Creating a custom page" do
     create_page type: "Custom", title: "Activities", content: "<p>Nothing yet</p>"

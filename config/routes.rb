@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
   resources :sermons, path: "word", except: [:index]
   resources :photos, except: [:index, :show] do
-    get "gallery/:id", action: :gallery, on: :collection
+    get :gallery, action: :gallery, on: :collection
     get :reorder, on: :member
     post :reorder, on: :member
   end

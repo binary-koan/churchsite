@@ -8,7 +8,7 @@ RSpec.feature "Homepage", type: :feature do
   include Steps::Pages
   include Steps::Homepage
 
-  before do
+  background do
     login
     create_page type: "Homepage", title: "Home"
     visit "/"

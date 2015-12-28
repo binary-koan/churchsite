@@ -8,7 +8,7 @@ RSpec.feature "News", type: :feature do
   include Steps::Pages
   include Steps::News
 
-  before do
+  background do
     login
     create_page type: "News", title: "News"
   end

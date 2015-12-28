@@ -3,12 +3,15 @@ class PhotosController < ApplicationController
   before_action :authenticate_user!
 
   def gallery
-    @photos = Photo.where(gallery_id: params[:id]).asc(:order)
-    @title = @photos.first.gallery
+    @photos = Photo.where(gallery: params[:gallery]).asc(:order)
+    #TODO throw Not Found unless @photos.size > 0
+    @title = params[:gallery]
   end
 
   def new
     @photo = Photo.new
+
+    @photo.gallery = params[:gallery] if params[:gallery]
   end
 
   def edit
@@ -22,12 +25,10 @@ class PhotosController < ApplicationController
       @photo.gallery = params[:gallery]
     end
 
-    respond_to do |format|
-      if @photo.save
-        redirect_to gallery_path(@photo.gallery_id)
-      else
-        render action: "new"
-      end
+    if @photo.save
+      redirect_to gallery_photos_path(gallery: @photo.gallery)
+    else
+      render action: "new"
     end
   end
 
@@ -35,7 +36,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
 
     if @photo.update_attributes(photo_params)
-      redirect_to gallery_path(@photo.gallery_id)
+      redirect_to gallery_photos_path(gallery: @photo.gallery)
     else
       render action: "edit"
     end
@@ -52,7 +53,7 @@ class PhotosController < ApplicationController
     end
 
     if Photo.where(gallery_id: @photo.gallery_id).size > 0
-      redirect_to gallery_path(@photo.gallery_id)
+      redirect_to gallery_photos_path(gallery: @photo.gallery)
     else
       redirect_to photos_path
     end
@@ -66,7 +67,7 @@ class PhotosController < ApplicationController
         @photo.save
       end
 
-      redirect_to gallery_path(@photo.gallery_id)
+      redirect_to gallery_photos_path(gallery: @photo.gallery)
     else
       @photos = Photo.where(gallery_id: params[:id]).asc :order
       @gallery = @photos.first.gallery

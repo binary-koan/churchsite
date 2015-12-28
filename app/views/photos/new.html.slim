@@ -1,12 +1,10 @@
 .row
   .col-md-12
-    - if params[:new_gallery]
-      h1 New Gallery
-    - elsif params[:gallery_id]
+    - if @photo.gallery
       h1
-        == breadcrumb params[:gallery] => photo_path(params[:gallery_id])
-        div New Photo
-    - else
-      h1 New Photo
+        == breadcrumb @photo.gallery => gallery_photos_path(gallery: @photo.gallery)
+        div New photo
+    - elsif params[:gallery]
+      h1 New gallery
 
-    == render 'form', new_gallery: params[:new_gallery], gallery: params[:gallery], gallery_id: params[:gallery_id]
+    == render 'form'

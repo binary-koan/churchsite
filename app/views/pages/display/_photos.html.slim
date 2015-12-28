@@ -3,15 +3,15 @@
     h1 = @title
 
     - if editing?
-      p = link_to new_photo_path(new_gallery: true), class: 'btn btn-primary' do
+      p = link_to new_photo_path, class: 'btn btn-primary' do
         span.glyphicon.glyphicon-plus>
-        | Add Gallery
+        | Add gallery
 
     .gallery
       - @photos.each do |info|
         /TODO something better than this
         - gallery, photos = info[0], info[1]
-        - gallery_path = gallery_path(photos.first.gallery_id, from: @page.identifier)
+        - gallery_path = gallery_photos_path(gallery: photos.first.gallery, from: @page.identifier)
         a.item href=gallery_path
           - if photos.length < 4
             img src="/#{photos.first.image.thumb.url}"

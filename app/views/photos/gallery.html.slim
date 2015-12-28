@@ -4,12 +4,19 @@
     h1
       = breadcrumb Page.photos.title => Page.photos.url_path
       div = @photos.first.gallery
+    
+    - if editing?
+      p = link_to new_photo_path(gallery: @photos.first.gallery), class: "btn btn-primary" do
+        span.glyphicon.glyphicon-plus>
+        | Add photo
 
+.row
+  .col-md-12
     .gallery.lightbox
       - @photos.each do |photo|
         .item
           a.image href="/#{photo.image.url}" title=photo.caption
-            img src="/#{photo.image.thumb.url}"
+            img src="/#{photo.image.thumb.url}" alt=photo.caption
           - if editing?
             .control-buttons
               => link_to edit_photo_path(photo), class: 'btn btn-default' do
