@@ -52,4 +52,20 @@ RSpec.feature "Homepage", type: :feature do
     expect(page).to have_text "Emailjoe@lincolnchurch.org.nz"
     expect(page).to have_text "AddressNowhere"
   end
+
+  scenario "Adding a church" do
+    #TODO
+  end
+
+  scenario "Adding multiple churches" do
+    #TODO
+  end
+
+  scenario "Editing a church" do
+    #TODO
+  end
+
+  scenario "Deleting a church" do
+    #TODO
+  end
 end

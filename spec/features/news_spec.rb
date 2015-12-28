@@ -17,4 +17,16 @@ RSpec.feature "News", type: :feature do
     expect(page).to have_text /Sunday \d+/
     expect(page).to have_text "ServiceAdvent begins"
   end
+
+  scenario "Adding a news item for a different week" do
+  end
+
+  scenario "Editing a news item" do
+  end
+
+  scenario "Deleting a news item" do
+  end
+
+  scenario "Editing the sitewide announcement" do
+  end
 end
