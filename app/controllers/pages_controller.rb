@@ -40,12 +40,12 @@ class PagesController < ApplicationController
 
   def destroy
     @page.destroy
+    redirect_to pages_path
   end
 
   def reorder
     docs = params.require(:data)
 
-    p docs
     docs.each do |id, order|
       doc = Page.find(id)
       doc.order = order
