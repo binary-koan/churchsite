@@ -87,10 +87,15 @@ class PagesController < ApplicationController
 
   def set_state_for_page
     case @page.type
+    when "homepage" then set_state_for_homepage
     when "news" then set_state_for_news
     when "photos" then set_state_for_photos
     when "sermons" then set_state_for_sermons
     end
+  end
+
+  def set_state_for_homepage
+    @title = nil
   end
 
   def set_state_for_news
