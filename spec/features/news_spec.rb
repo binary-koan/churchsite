@@ -21,7 +21,7 @@ RSpec.feature "News", type: :feature do
   end
 
   scenario "Adding a news item for a different week" do
-    add_news_item title: "Coffee morning", content: "All welcome", date: "last monday"
+    add_news_item title: "Coffee morning", content: "All welcome", date: "2 weeks ago"
 
     expect(page).not_to have_text /Monday \d+/
     expect(page).not_to have_text "Coffee morning"

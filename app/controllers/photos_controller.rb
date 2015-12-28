@@ -55,7 +55,7 @@ class PhotosController < ApplicationController
     if Photo.where(gallery_id: @photo.gallery_id).size > 0
       redirect_to gallery_photos_path(gallery: @photo.gallery)
     else
-      redirect_to photos_path
+      redirect_to Page.photos.url_path
     end
   end
 
