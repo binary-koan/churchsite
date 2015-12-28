@@ -1,12 +1,5 @@
 module Steps
   module Homepage
-    def create_homepage
-      visit "/pages/new"
-      select "Homepage", from: "Type"
-      fill_in "Title", with: "Home"
-      click_button "Save"
-    end
-
     def edit_homepage_section(link_title)
       if page.has_link?("Edit content")
         click_link "Edit content"

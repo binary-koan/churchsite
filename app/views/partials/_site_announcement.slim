@@ -1,0 +1,4 @@
+- if Option.instance.news_announcement and not Option.instance.news_announcement.empty?
+  .site-announcement
+    .container: .row: .col-md-12
+      == h(Option.instance.news_announcement).split("\n").join '<br />'

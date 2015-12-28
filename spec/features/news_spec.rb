@@ -1,14 +1,16 @@
 require "rails_helper"
 require "steps/authentication"
+require "steps/pages"
 require "steps/news"
 
 RSpec.feature "News", type: :feature do
   include Steps::Authentication
+  include Steps::Pages
   include Steps::News
 
   before do
     login
-    create_news_page
+    create_page type: "News", title: "News"
   end
 
   scenario "Adding a news item for this week" do
@@ -30,8 +32,6 @@ RSpec.feature "News", type: :feature do
   scenario "Editing a news item" do
     add_news_item title: "Service", content: "Advent begins", date: "this sunday"
 
-    puts page.body
-
     #TODO test JS hides/shows the form
     within(".news-editor", visible: false) do
       fill_in "Title", with: "Not actually a service", visible: false
@@ -52,6 +52,13 @@ RSpec.feature "News", type: :feature do
   end
 
   scenario "Editing the sitewide announcement" do
-    #TODO
+    change_announcement "This is really important!"
+
+    create_page type: "Homepage", title: "Home"
+
+    visit "/news"
+    expect(page).to have_text "This is really important!"
+    visit "/"
+    expect(page).to have_text "This is really important!"
   end
 end

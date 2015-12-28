@@ -6,7 +6,8 @@ class OptionsController < ApplicationController
 
   def update
     if Option.instance.update_attributes(option_params)
-      redirect_to Page.homepage.url_path, notice: "Option was successfully updated."
+      redirect_path = params[:return_to] || Page.homepage.url_path
+      redirect_to redirect_path, notice: "Option was successfully updated."
     else
       render action: "edit"
     end
