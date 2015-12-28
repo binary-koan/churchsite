@@ -18,7 +18,7 @@ module Steps
       end
     end
 
-    def add_news_item(title:, content:, date:)
+    def add_news_item(title:, content: "All welcome", date: "today")
       edit_news_page_part("#new_news_item") do
         fill_in "Title", with: title
         fill_in "Content", with: content
