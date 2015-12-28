@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     delete "users/deny", to: "admin#deny_user"
   end
 
+  get :admin, to: "admin#redirect"
   get :toggle_editing, to: "admin#toggle_editing"
 
   get "/:id", to: "pages#display"

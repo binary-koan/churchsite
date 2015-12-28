@@ -3,6 +3,12 @@ class AdminController < ApplicationController
 
   before_action :authenticate_user!
 
+  def redirect
+    # Utility so that going to /admin redirects to either sign in or
+    # the homepage depending on whether you're logged in
+    redirect_to root_path
+  end
+
   def toggle_editing
     session[:editing] = !session[:editing]
 
