@@ -1,10 +1,15 @@
 - if user_signed_in?
   .row.mode-switch
     .col-md-12
-      = link_to toggle_editing_path(return_to: request.url) do
+      - if editing? && @page
+        => link_to edit_page_path(@page), class: "btn btn-default" do
+          span.glyphicon.glyphicon-pencil>
+          | Page options
+
+      = link_to toggle_editing_path(return_to: request.url), class: "btn btn-primary" do
         - if editing?
-          span.glyphicon.glyphicon-remove
+          span.glyphicon.glyphicon-eye-open>
           | Stop editing
         - else
-          span.glyphicon.glyphicon-wrench
+          span.glyphicon.glyphicon-wrench>
           | Edit content

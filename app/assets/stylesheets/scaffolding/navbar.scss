@@ -83,18 +83,19 @@
       border-radius: 3px;
 
       @extend .btn;
-      @extend .btn-primary;
+      @extend .btn-default;
     }
 
     > ul.dropdown-menu {
       margin-top: 5px;
-      border: 1px solid darken($brand-primary, 20%);
+      border: 1px solid $btn-default-border;
       border-radius: 3px;
-      background-color: darken($brand-primary, 10%);
+      background-color: $btn-default-bg;
 
       > li.section-title {
         padding: 3px 20px;
         font-style: italic;
+        font-weight: bold;
         color: white;
       }
 
@@ -103,7 +104,7 @@
       }
 
       > li.divider {
-        background-color: darken($brand-primary, 20%);
+        background-color: $btn-default-border;
       }
     }
   }

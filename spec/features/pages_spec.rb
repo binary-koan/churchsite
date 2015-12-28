@@ -22,7 +22,7 @@ RSpec.feature "Pages", type: :feature do
     visit "/pages"
     click_link "Edit"
 
-    select "News", from: "Type"
+    select "News", from: "Page type"
     click_button "Save"
 
     visit "/activities"

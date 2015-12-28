@@ -3,6 +3,8 @@
     h1 = @page.title
     
     - if editing?
-      = render "pages/form"
+      = form_for @page do |f|
+        = f.label :content, "Page content", class: "sr-only"
+        = f.cktext_area :content
     - else
       == @page.content

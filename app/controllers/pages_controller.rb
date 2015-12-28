@@ -29,13 +29,13 @@ class PagesController < ApplicationController
 
   def create
     @page = Page.new(page_params)
-    flash[:notice] = 'Page was successfully created.' if @page.save
-    redirect_to pages_path
+    flash[:notice] = "Page was successfully created." if @page.save
+    redirect_to display_page_path(@page)
   end
 
   def update
-    flash[:notice] = 'Page was successfully updated.' if @page.update(page_params)
-    redirect_to pages_path
+    flash[:notice] = "Page was successfully updated." if @page.update(page_params)
+    redirect_to display_page_path(@page)
   end
 
   def destroy
@@ -56,6 +56,10 @@ class PagesController < ApplicationController
   end
 
   private
+
+  def display_page_path(page)
+    "/#{page.identifier}"
+  end
 
   def assign_page
     @page = Page.find(params[:id])
