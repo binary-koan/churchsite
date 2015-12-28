@@ -13,5 +13,5 @@ ul.nav.nav-admin
           span.badge.badge-important< = users_count
       li.divider(role="separator")
       li.section-title = current_user.name
-      li = link_to "Account Settings", '/users/edit'
-      li = link_to "Sign Out", '/users/sign_out', method: 'delete'
+      li = link_to "Account settings", edit_user_registration_path
+      li = link_to "Sign out", destroy_user_session_path

@@ -3,8 +3,8 @@
     .col-md-12
       = link_to toggle_editing_path(return_to: request.url) do
         - if editing?
-          .glyphicon.glyphicon-remove
+          span.glyphicon.glyphicon-remove
           | Stop editing
         - else
-          .glyphicon.glyphicon-wrench
+          span.glyphicon.glyphicon-wrench
           | Edit content

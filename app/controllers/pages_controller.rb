@@ -1,18 +1,18 @@
 class PagesController < ApplicationController
   before_action :assign_page, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :display
 
   respond_to :html
 
   def display
-    if params[:id]
-      @page = Page.find_by(identifier: params[:id])
-    else
-      @page = Page.homepage
-    end
+    assign_page_for_display
 
-    @title = @page.title
-    set_state_for_page
+    if @page
+      @title = @page.title
+      set_state_for_page
+    else
+      handle_nonexistent_page
+    end
   end
 
   def index
@@ -59,6 +59,22 @@ class PagesController < ApplicationController
 
   def assign_page
     @page = Page.find(params[:id])
+  end
+
+  def assign_page_for_display
+    if params[:id]
+      @page = Page.find_by(identifier: params[:id])
+    else
+      @page = Page.homepage
+    end
+  end
+
+  def handle_nonexistent_page
+    if user_signed_in?
+      redirect_to pages_path
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 
   def page_params

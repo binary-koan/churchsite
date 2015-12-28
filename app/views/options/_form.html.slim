@@ -8,7 +8,7 @@
 
   legend.col-sm-9.col-sm-offset-3 Basics
   .form-group
-    = f.label :title, "Church Name", class: 'col-sm-3 control-label'
+    = f.label :title, "Church name", class: 'col-sm-3 control-label'
     .col-sm-9 = f.text_field :title, class: 'form-control'
   .form-group
     = f.label :church_type, "Denomination", class: 'col-sm-3 control-label'
@@ -48,12 +48,12 @@
         | Address
       p.help-block These will be displayed on the front page of the website
   .form-group
-    = f.label :leader_phone, "Phone Number", class: 'col-sm-3 control-label'
+    = f.label :leader_phone, "Phone number", class: 'col-sm-3 control-label'
     .col-sm-9 = f.text_field :leader_phone, class: 'form-control'
   .form-group
-    = f.label :leader_email, "Email Address", class: 'col-sm-3 control-label'
+    = f.label :leader_email, "Email address", class: 'col-sm-3 control-label'
     .col-sm-9 = f.email_field :leader_email, class: 'form-control'
   .form-group
-    = f.label :leader_address, "Physical Address", class: 'col-sm-3 control-label'
+    = f.label :leader_address, "Physical address", class: 'col-sm-3 control-label'
     .col-sm-9 = f.text_area :leader_address, class: 'form-control', rows: 4
   .form-group: .col-sm-9.col-sm-offset-3 = f.submit 'Save', class: 'btn btn-primary'
