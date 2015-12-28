@@ -1,16 +1,12 @@
 require "rails_helper"
-require "steps/authentication"
-require "steps/pages"
 require "steps/news"
 
 RSpec.feature "News", type: :feature do
-  include Steps::Authentication
-  include Steps::Pages
   include Steps::News
 
   background do
     login
-    create_page type: "News", title: "News"
+    create_news_page
   end
 
   scenario "Adding a news item for this week" do

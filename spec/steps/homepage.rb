@@ -1,9 +1,17 @@
+require_relative "authentication"
+require_relative "pages"
+
 module Steps
   module Homepage
+    include Authentication
+    include Pages
+
+    def create_homepage
+      create_page type: "Homepage", title: "Home"
+    end
+
     def edit_homepage_section(link_title)
-      if page.has_link?("Edit content")
-        click_link "Edit content"
-      end
+      start_editing
 
       click_link link_title
       yield

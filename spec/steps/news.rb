@@ -1,8 +1,18 @@
+require_relative "authentication"
+require_relative "pages"
+
 module Steps
   module News
+    include Authentication
+    include Pages
+
+    def create_news_page
+      create_page type: "News", title: "News"
+    end
+
     def edit_news_page_part(selector)
       visit "/news"
-      click_link "Edit content"
+      start_editing
 
       within(:css, selector) do
         yield
@@ -21,7 +31,7 @@ module Steps
 
     def change_announcement(announcement)
       visit "/news"
-      click_link "Edit content"
+      start_editing
 
       within ".edit_option", visible: false do
         fill_in "Announcement", with: announcement, visible: false

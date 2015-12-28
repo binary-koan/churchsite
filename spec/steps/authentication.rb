@@ -12,5 +12,9 @@ module Steps
     def logout
       click_link "Sign out"
     end
+
+    def start_editing
+      click_link "Edit content" if page.has_link?("Edit content")
+    end
   end
 end

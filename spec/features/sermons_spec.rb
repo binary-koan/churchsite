@@ -1,11 +1,7 @@
 require "rails_helper"
-require "steps/authentication"
-require "steps/pages"
 require "steps/sermons"
 
 RSpec.feature "Sermons", type: :feature do
-  include Steps::Authentication
-  include Steps::Pages
   include Steps::Sermons
 
   background do

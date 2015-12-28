@@ -1,16 +1,12 @@
 require "rails_helper"
-require "steps/authentication"
-require "steps/pages"
 require "steps/homepage"
 
 RSpec.feature "Homepage", type: :feature do
-  include Steps::Authentication
-  include Steps::Pages
   include Steps::Homepage
 
   background do
     login
-    create_page type: "Homepage", title: "Home"
+    create_homepage
     visit "/"
   end
 

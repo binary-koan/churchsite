@@ -1,11 +1,7 @@
 require "rails_helper"
-require "steps/authentication"
-require "steps/pages"
 require "steps/photos"
 
 RSpec.feature "Photos", type: :feature do
-  include Steps::Authentication
-  include Steps::Pages
   include Steps::Photos
 
   background do

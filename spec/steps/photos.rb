@@ -1,12 +1,18 @@
+require_relative "authentication"
+require_relative "pages"
+
 module Steps
   module Photos
+    include Authentication
+    include Pages
+
     def create_photos_page
       create_page type: "Photos", title: "Galleries"
     end
 
     def create_gallery(name, image:)
       visit "/galleries"
-      click_link "Edit content"
+      start_editing
 
       click_link "Add gallery"
 

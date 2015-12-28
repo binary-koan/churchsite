@@ -1,12 +1,18 @@
+require_relative "authentication"
+require_relative "pages"
+
 module Steps
   module Sermons
+    include Pages
+    include Authentication
+
     def create_sermons_page
       create_page type: "Sermons", title: "From the Minister"
     end
 
     def add_sermon(title:, introduction:, content:, date:)
       visit "/from-the-minister"
-      click_link "Edit content" if page.has_link?("Edit content")
+      start_editing
       click_link "Add sermon"
 
       fill_in "Date", with: date
