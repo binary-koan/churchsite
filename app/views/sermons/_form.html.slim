@@ -7,7 +7,7 @@
           li = message
 
   .form-group
-    = f.label :date, class: 'col-sm-3 control-label'
+    = f.label :picked_date, "Date", class: 'col-sm-3 control-label'
     .col-sm-9: .input-group.date
       = f.text_field :picked_date, class: 'form-control', value: @sermon.date.strftime('%d/%m/%Y')
       - date_description = 'This will accept almost any date, including things like "last sunday" or "may 14th"'
