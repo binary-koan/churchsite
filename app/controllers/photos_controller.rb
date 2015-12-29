@@ -64,6 +64,18 @@ class PhotosController < ApplicationController
     render json: { updated: params[:data].size }
   end
 
+  def rename_gallery
+    Photo.where(gallery: params[:old_name]).update_all(gallery: params[:new_name])
+
+    redirect_to gallery_photos_path(gallery: params[:new_name])
+  end
+
+  def delete_gallery
+    Photo.where(gallery: params[:gallery]).destroy
+
+    redirect_to Page.photos.url_path
+  end
+
   private
 
   def photo_params

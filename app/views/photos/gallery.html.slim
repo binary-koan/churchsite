@@ -3,12 +3,25 @@
   .col-md-12
     h1
       = breadcrumb Page.photos.title => Page.photos.url_path
-      div = @photos.first.gallery
-    
+      - if editing?
+        = form_tag rename_gallery_photos_path, class: "form-inline" do
+          = hidden_field_tag :old_name, @photos.first.gallery
+          = label_tag :new_name, "New name", class: "sr-only"
+          => text_field_tag :new_name, @photos.first.gallery, class: "form-control"
+          = button_tag type: "submit", class: "btn btn-default" do
+            span.glyphicon.glyphicon-pencil>
+            | Rename
+      - else
+        = @photos.first.gallery
+
     - if editing?
-      p = link_to new_photo_path(gallery: @photos.first.gallery), class: "btn btn-primary" do
-        span.glyphicon.glyphicon-plus>
-        | Add photo
+      p
+        => link_to new_photo_path(gallery: @photos.first.gallery), class: "btn btn-primary" do
+          span.glyphicon.glyphicon-plus>
+          | Add photo
+        = link_to delete_gallery_photos_path(gallery: @photos.first.gallery), class: "btn btn-default", method: "delete", data: { confirm: "Are you sure?" } do
+          span.glyphicon.glyphicon-trash>
+          | Delete gallery
 
 .row
   .col-md-12

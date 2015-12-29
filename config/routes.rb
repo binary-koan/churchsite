@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   resources :photos, except: [:index, :show] do
     get :gallery, action: :gallery, on: :collection
     post "gallery/reorder", action: :reorder, on: :collection
+
+    post :rename_gallery, action: :rename_gallery, on: :collection
+    delete :delete_gallery, action: :delete_gallery, on: :collection
   end
 
   resources :churches, except: [:index, :show]

@@ -43,8 +43,21 @@ RSpec.feature "Photos", type: :feature do
     #TODO something with javascript ...
   end
 
-  scenario "Editing a gallery" do
-    #TODO make this possible
+  scenario "Renaming a gallery" do
+    create_gallery "Church photos", image: {
+      caption: "Church exterior",
+      file_path: Rails.root.join("spec/features/files/test.png")
+    }
+
+    fill_in "New name", with: "All photos"
+    click_button "Rename"
+
+    expect(page).to have_css "input[value='All photos']"
+    expect(page).not_to have_css "input[value='Church photos']"
+
+    visit "/galleries"
+    expect(page).to have_text "All photos"
+    expect(page).not_to have_text "Church photos"
   end
 
   scenario "Editing a photo" do
@@ -93,6 +106,14 @@ RSpec.feature "Photos", type: :feature do
   end
 
   scenario "Deleting a gallery directly" do
-    #TODO make this possible
+    create_gallery "Church photos", image: {
+      caption: "Church exterior",
+      file_path: Rails.root.join("spec/features/files/test.png")
+    }
+
+    click_link "Delete gallery"
+
+    expect(current_path).to eq "/galleries"
+    expect(page).not_to have_link "Church photos"
   end
 end
