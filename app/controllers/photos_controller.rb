@@ -56,12 +56,12 @@ class PhotosController < ApplicationController
 
   def reorder
     params[:data].each do |id, order|
-      @photo = Photo.find(id)
-      @photo.order = order
-      @photo.save
+      photo = Photo.find(id)
+      photo.order = order
+      photo.save
     end
 
-    redirect_to gallery_photos_path(gallery: @photo.gallery)
+    render json: { updated: params[:data].size }
   end
 
   private

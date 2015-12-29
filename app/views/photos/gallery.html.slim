@@ -12,9 +12,11 @@
 
 .row
   .col-md-12
-    .gallery.lightbox
+    ul.gallery.lightbox(class=(editing? ? "reorderable" : ""))
       - @photos.each do |photo|
-        .item
+        li.item(data-document-id=photo._id)
+          - if editing?
+            .reorder: span.glyphicon.glyphicon-move
           a.image href="/#{photo.image.url}" title=photo.caption
             img src="/#{photo.image.thumb.url}" alt=photo.caption
           - if editing?
@@ -22,6 +24,6 @@
               => link_to edit_photo_path(photo), class: 'btn btn-default' do
                 span.glyphicon.glyphicon-pencil>
                 | Edit
-              = link_to photo_path(photo), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-default' do
+              => link_to photo_path(photo), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-default' do
                 span.glyphicon.glyphicon-trash>
                 | Delete

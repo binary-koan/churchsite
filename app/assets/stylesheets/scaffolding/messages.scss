@@ -1,6 +1,16 @@
 .messages .alert {
   margin-top: 20px;
   margin-bottom: 0;
+
+  pre {
+    background: transparent;
+    border: none;
+    color: inherit;
+
+    code {
+      font-size: 90%;
+    }
+  }
 }
 
 .site-announcement {

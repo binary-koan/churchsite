@@ -15,11 +15,12 @@ Rails.application.routes.draw do
   resources :news_items, path: "news", only: [:create, :update, :destroy] do
     get :events_in_month, on: :collection
   end
+
   resources :sermons, path: "word", except: [:index]
+
   resources :photos, except: [:index, :show] do
     get :gallery, action: :gallery, on: :collection
-    get :reorder, on: :member
-    post :reorder, on: :member
+    post "gallery/reorder", action: :reorder, on: :collection
   end
 
   resources :churches, except: [:index, :show]
