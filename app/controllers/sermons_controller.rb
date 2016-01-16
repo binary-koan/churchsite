@@ -1,5 +1,5 @@
 class SermonsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :show
 
   def show
     @sermon = Sermon.find(params[:id])

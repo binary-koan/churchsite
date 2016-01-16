@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   include PhotosHelper
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :gallery
 
   def gallery
     @photos = Photo.where(gallery: params[:gallery]).asc(:order)

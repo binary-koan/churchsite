@@ -1,7 +1,7 @@
 class NewsItemsController < ApplicationController
   include NewsItemsHelper
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :events
 
   def create
     @news_item = NewsItem.new(news_item_params)
