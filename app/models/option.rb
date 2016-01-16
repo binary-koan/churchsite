@@ -14,6 +14,9 @@ class Option
   field :leader_title, type: String
   field :leader_name, type: String
   field :leader_phone, type: String
+  field :leader_email, type: String
+  field :leader_address, type: String
+  mount_uploader :leader_image, ImageUploader
 
   field :leader_use_email, type: Boolean, default: true
   field :leader_use_phone, type: Boolean, default: true
@@ -21,10 +24,6 @@ class Option
   alias_method :leader_use_email?, :leader_use_email
   alias_method :leader_use_phone?, :leader_use_phone
   alias_method :leader_use_address?, :leader_use_address
-
-  field :leader_email, type: String
-  field :leader_address, type: String
-  mount_uploader :leader_image, ImageUploader
 
   def self.instance
     first || create!
