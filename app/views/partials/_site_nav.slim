@@ -9,7 +9,7 @@ nav.navbar.navbar-site
     #main-menu.collapse.navbar-collapse
       ul.nav.navbar-nav
         - @top_level_pages.each do |page|
-          - if page.children.size > 0
+          - if page.collection?
             li.dropdown
               a.dropdown-toggle(href="#" data-toggle="dropdown")
                 => page.title

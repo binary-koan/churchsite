@@ -58,7 +58,11 @@ class PagesController < ApplicationController
   private
 
   def display_page_path(page)
-    "/#{page.identifier}"
+    if page.collection?
+      display_page_path(page.children.first || Page.homepage)
+    else
+      "/#{page.identifier}"
+    end
   end
 
   def assign_page
