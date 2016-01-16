@@ -1,6 +1,6 @@
 .row: .col-md-12
   h1 Pages
-  
+
   p
     = link_to new_page_path, class: "btn btn-primary" do
       span.glyphicon.glyphicon-plus>
@@ -9,7 +9,7 @@
   ul#top-level-pages.list-group
     - @top_level_pages.each do |page|
       = render "pages/list_item", page: page
-  
+
   ul#child-pages.list-group
     - @child_pages.each do |page|
       = render "pages/list_item", page: page
