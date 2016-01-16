@@ -14,4 +14,4 @@ ul.nav.nav-admin
       li.divider(role="separator")
       li.section-title = current_user.name
       li = link_to "Account settings", edit_user_registration_path
-      li = link_to "Sign out", destroy_user_session_path
+      li = link_to "Sign out", destroy_user_session_path, method: :delete
