@@ -13,6 +13,6 @@
 
 .row
   .col-md-9
-    == render 'partials/news', editable: false
+    #news-container
   .col-md-3
     .news-date-picker data-date=(@date.strftime('%d/%m/%Y'))

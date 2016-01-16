@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :sermons, path: "word", except: [:index]
 
   resources :news_items, path: "news", only: [:create, :update, :destroy] do
-    get :events_in_month, on: :collection
+    get :events, on: :collection
   end
 
   resources :photos, except: [:index, :show] do

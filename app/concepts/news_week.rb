@@ -13,7 +13,7 @@ class NewsWeek
     if week_start == this_monday
       "This week"
     else
-      "Week of #{week_monday.strftime("%-d %b %Y")}"
+      "Week of #{week_start.strftime("%-d %b %Y")}"
     end
   end
 
@@ -35,7 +35,7 @@ class NewsWeek
   end
 
   def week_start
-    @date.to_date.beginning_of_week
+    @week_start ||= @date.to_date.beginning_of_week
   end
 
   def week_end

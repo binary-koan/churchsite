@@ -30,22 +30,35 @@ class NewsItemsController < ApplicationController
     redirect_to request.referer
   end
 
-  def events_in_month
+  def events
     month = params[:month].to_i
     year = params[:year].to_i
+    day = params[:day].to_i
 
-    start_date = Time.new(year, month, 1)
-    end_date = start_date + 1.month - 1.day
-
-    news_items = NewsItem.and({ :date.gte => start_date}, { :date.lt => end_date }).sort(date: 1)
-    days = Set.new(news_items.map { |item| item.date.localtime.mday })
-
-    render json: { days: days.to_a }
+    render json: {
+      days: days_with_events(year, month),
+      content: news_container_content(year, month, day)
+    }
   end
 
   private
 
   def news_item_params
-    params.require(:news_item).permit(:title, :content, :owner, :picked_date, :picked_time)
+    params.require(:news_item).permit(:title, :content, :owner, :picked_date, :picked_time, :repeat_type, :repeat_until)
+  end
+
+  def news_container_content(year, month, day)
+    @news_week = NewsWeek.new(Time.local(year, month, day))
+
+    render_to_string("events")
+  end
+
+  def days_with_events(year, month)
+    month_start = Time.local(year, month, 1)
+    month_end = month_start + 1.month - 1.day
+
+    news_items = NewsItem.and({ :date.gte => month_start}, { :date.lt => month_end }).sort(date: 1)
+    days = Set.new(news_items.map { |item| item.date.localtime.mday })
+    days.to_a
   end
 end
