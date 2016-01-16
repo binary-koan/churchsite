@@ -15,3 +15,9 @@ td.news-item.news-display
     = link_to @news_item, method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-default" do
       .glyphicon.glyphicon-trash
       span.sr-only Delete
+      = @news_item.owner ? "One" : ""
+    - if @news_item.owner
+      =< link_to news_item_path(@news_item, all: true), method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-default" do
+        .glyphicon.glyphicon-trash
+        span.sr-only Delete
+        | All

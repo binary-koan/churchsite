@@ -25,7 +25,12 @@ class NewsItemsController < ApplicationController
 
   def destroy
     @news_item = NewsItem.find(params[:id])
-    @news_item.destroy
+
+    if params[:all] && @news_item.owner
+      NewsItem.where(owner: @news_item.owner).destroy
+    else
+      @news_item.destroy
+    end
 
     redirect_to request.referer
   end
