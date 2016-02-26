@@ -1,5 +1,7 @@
 # Churchsite
 
+![Active](https://img.shields.io/badge/repo status-maintenance-blue.svg)
+
 Rails setup intended for the [Lincoln Union Church website](http://lincolnchurch.org.nz) but which
 could be made to work for other churches or organisations.
 
