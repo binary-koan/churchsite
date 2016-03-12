@@ -21,4 +21,4 @@ nav.navbar.navbar-site
             li class=(@page == page ? "active" : nil)
               a(href=page.url_path) = page.title
       - if user_signed_in?
-        = render "partials/admin_nav"
+        = render partial: "admin/admin_navigation"

@@ -13,8 +13,8 @@ html
     meta name="description" content="A modern and vibrant church community based in Lincoln (near Christchurch), New Zealand"
     = csrf_meta_tags
   body
-    = render "partials/site_announcement"
-    = render "partials/site_nav"
+    = render partial: "layouts/announcement"
+    = render partial: "layouts/navigation"
 
     .container: .row: .col-md-12.messages
       = flash_messages

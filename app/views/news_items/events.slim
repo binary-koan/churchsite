@@ -11,4 +11,4 @@
             tr class=(list[:highlight] ? "highlight" : "")
               td.title = i == 0 ? list[:title] : ""
               - @news_item = item
-              == render 'partials/news_display', editable: editing?
+              == render partial: "event"

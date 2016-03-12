@@ -1,7 +1,0 @@
-.list-group
-  - @sermons.each do |sermon|
-    = link_to sermon_path(sermon, from: @page.identifier), class: "list-group-item" do
-      span.glyphicon.glyphicon-arrow-right.pull-right
-      h5.list-group-item-heading = "#{sermon.date.strftime("%-d %b %Y")} — #{sermon.title}"
-      p.list-group-item-text = sermon.formatted_description
-= will_paginate @sermons

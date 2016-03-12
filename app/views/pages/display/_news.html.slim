@@ -7,9 +7,9 @@
     .col-md-6
       h4 Add News
       - @news_item = NewsItem.new
-      == render 'news_items/form'
+      == render partial: "news_items/form"
     .col-md-6
-      == render 'partials/announcement'
+      == render partial: "options/announcement_form"
 
 .row
   .col-md-9
