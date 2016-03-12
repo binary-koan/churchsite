@@ -14,6 +14,7 @@ module Steps
     end
 
     def start_editing
+      login unless page.has_link?("Sign out")
       click_link "Edit content" if page.has_link?("Edit content")
     end
   end

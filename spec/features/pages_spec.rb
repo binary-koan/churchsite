@@ -27,8 +27,7 @@ RSpec.feature "Pages", type: :feature do
 
     visit "/activities"
     expect(page).to have_text "Activities"
-    expect(page).to have_text "This week"
-    expect(page).to have_text "Nothing to show"
+    expect(page).to have_text "News"
   end
 
   scenario "Editing a page" do
