@@ -21,8 +21,10 @@ html
 
     .container
       = yield
-    
+
     - if user_signed_in?
       = javascript_include_tag "admin"
     - else
       = javascript_include_tag "application"
+
+    = render partial: "layouts/analytics"
