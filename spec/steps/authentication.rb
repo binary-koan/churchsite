@@ -1,5 +1,16 @@
 module Steps
   module Authentication
+    def sign_up(name: "Fritz", email: "fritz@nomail.com", password: "Testing1")
+      visit "/users/sign_up"
+
+      fill_in "Name", with: name
+      fill_in "Email", with: email
+      fill_in "Password", with: password
+      fill_in "Password confirmation", with: password
+
+      click_button "Sign up"
+    end
+
     def login
       user = create(:user)
 

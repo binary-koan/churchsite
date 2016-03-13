@@ -30,7 +30,7 @@ gem "ckeditor", "~> 4.1.1"
 
 gem "tzinfo-data"
 
-gem "byebug", group: [:development, :test]
+gem "pry-byebug", group: [:development, :test]
 
 group :test do
   gem "rspec-rails"

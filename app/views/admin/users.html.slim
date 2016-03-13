@@ -3,7 +3,7 @@
     h1 Users
     - users = User.where confirmed_at: nil
     - if users.length > 0
-      h3 Not Yet Confirmed
+      h3 Not yet confirmed
       table.fill
         - users.each do |user|
           tr
@@ -12,13 +12,13 @@
               | &nbsp;&mdash;&nbsp;
               = user.email
             td.user-controls
-              = link_to "/users/confirm?email=#{user.email}", method: "post", class: "btn btn-default" do
+              = link_to users_confirm_path(email: user.email), method: "post", class: "btn btn-default" do
                 span.glyphicon.glyphicon-ok
                 | Confirm
-              = link_to "/users/deny?email=#{user.email}", method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-default" do
+              = link_to users_deny_path(email: user.email), method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-default" do
                 span.glyphicon.glyphicon-remove
                 | Deny
-      h3 Active Users
+      h3 Active users
     table.fill
       - User.where(:confirmed_at.lte => DateTime.now).each do |user|
         tr

@@ -20,4 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  devise:
+    registrations:
+      user:
+        signed_up_but_unconfirmed: "Your account has been created, but an existing administrator will need to confirm it before you can log in."
