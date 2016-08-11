@@ -6,10 +6,11 @@
           span.glyphicon.glyphicon-pencil>
           | Page options
 
-      = link_to toggle_editing_path(return_to: request.url), class: "btn btn-primary" do
-        - if editing?
+      - if editing?
+        = link_to toggle_editing_path(return_to: request.url), class: "btn btn-default" do
           span.glyphicon.glyphicon-eye-open>
           | Stop editing
-        - else
+      - else
+        = link_to toggle_editing_path(return_to: request.url), class: "btn btn-primary" do
           span.glyphicon.glyphicon-wrench>
           | Edit content
