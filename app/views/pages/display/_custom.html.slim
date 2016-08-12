@@ -3,12 +3,19 @@
     h1 = @page.title
 
     - if editing?
-      = form_for @page do |f|
+      = form_for @page, html: { multipart: true } do |f|
         = f.label :content, "Page content", class: "sr-only"
         = f.cktext_area :content
-        <div>
+        = render partial: "attachments_form"
+        div
           = f.submit "Save", class: "btn btn-primary"
           = link_to "Cancel", request.url, class: "btn btn-link"
-        </div>
     - else
       == @page.content
+      - if @page.attachments.any?
+        .row: .col-md-12
+          strong> Download:
+          - @page.attachments.each do |attachment|
+            => link_to attachment.path, class: "btn btn-primary" do
+              span.glyphicon.glyphicon-file>
+              = attachment.filename

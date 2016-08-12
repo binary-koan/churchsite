@@ -1,0 +1,29 @@
+.form-group.attachments
+  .attachment-form-template.hidden
+    label New attachment
+    = file_field_tag "new_attachments[]", class: "attachment-input"
+    = button_tag type: "button", class: "btn btn-default pull-right delete-new-attachment" do
+      span.glyphicon.glyphicon-remove
+      span.sr-only Remove
+
+  - if @page.attachments.any?
+    p.text-right
+      = button_tag type: "button", class: "btn btn-link delete-all-attachments" do
+        span.glyphicon.glyphicon-remove>
+        | Remove all attachments
+
+  ul.list-group.attachments-list
+    - @page.attachments.each.with_index do |attachment, i|
+      li.list-group-item
+        = check_box_tag "delete_existing_attachments[]", attachment.id, false, class: "hidden"
+        => link_to attachment.path, class: "btn btn-default" do
+          span.glyphicon.glyphicon-download-alt
+          span.sr-only Download
+        = attachment.filename
+        = button_tag type: "button", class: "btn btn-default pull-right delete-existing-attachment" do
+          span.glyphicon.glyphicon-remove
+          span.sr-only Remove
+    li.list-group-item.add-attachment
+      = button_tag type: "button", class: "btn btn-default" do
+        span.glyphicon.glyphicon-paperclip>
+        | Add Attachment

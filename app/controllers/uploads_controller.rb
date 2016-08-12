@@ -1,4 +1,10 @@
 class UploadsController < ApplicationController
+  def attachment
+    @attachment = Attachment.find params[:id]
+    last_modified = @attachment.updated_at ? @attachment.updated_at.utc : DateTime.now
+    send_file @attachment.attachment, last_modified
+  end
+
   def church_image
     @church = Church.find params[:id]
     last_modified = @church.updated_at ? @church.updated_at.utc : DateTime.now

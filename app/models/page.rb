@@ -4,7 +4,6 @@ class Page
   SINGLETON_TYPES = %w{homepage news photos sermons}
   TYPES = %w{custom collection} + SINGLETON_TYPES
 
-  #TODO validate belongs_to collection
   belongs_to :parent, class_name: "Page"
   has_many :children, class_name: "Page", inverse_of: :parent, order: :order.asc
 
@@ -13,6 +12,8 @@ class Page
   field :identifier, type: String
   field :order, type: Integer, default: 0
   field :type, type: String
+
+  has_many :attachments
 
   validates :type, inclusion: { in: TYPES }
 

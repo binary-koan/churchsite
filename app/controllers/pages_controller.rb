@@ -34,7 +34,18 @@ class PagesController < ApplicationController
   end
 
   def update
-    flash[:notice] = "Page was successfully updated." if @page.update(page_params)
+    if @page.update(page_params)
+      params[:delete_existing_attachments].each do |id|
+        Attachment.find(id).destroy!
+      end if params[:delete_existing_attachments]
+
+      params[:new_attachments].each do |attachment|
+        @page.attachments.create!(attachment: attachment) if attachment.present?
+      end if params[:new_attachments]
+
+      flash[:notice] = "Page was successfully updated."
+    end
+
     redirect_to display_page_path(@page)
   end
 

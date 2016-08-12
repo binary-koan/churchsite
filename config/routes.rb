@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => "/ckeditor"
   devise_for :users, :controllers => { :registrations => :registrations }
 
+  get "uploads/attachment/attachment/:id/:filename", to: 'uploads#attachment'
   get "uploads/church/image/:id/:filename", to: 'uploads#church_image'
   get "uploads/photo/image/:id/thumb_:filename", to: 'uploads#photo_thumb'
   get "uploads/photo/image/:id/:filename", to: 'uploads#photo_image'
