@@ -38,3 +38,7 @@ group :test do
   gem "database_cleaner"
   gem "capybara"
 end
+
+group :production do
+  gem 'therubyracer'
+end
