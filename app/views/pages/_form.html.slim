@@ -16,10 +16,12 @@
   .form-group
     = f.label :title, class: "col-sm-2 control-label"
     .col-sm-10 = f.text_field :title, class: "form-control"
-  .form-group#page_content_group
-    = f.label :content, "Page content", class: "col-sm-2 control-label"
-    .col-sm-10 = f.cktext_area :content
-  = render partial: "attachments_form"
+  #page_content_group
+    .form-group
+      = f.label :content, "Page content", class: "col-sm-2 control-label"
+      .col-sm-10 = f.cktext_area :content
+    .form-group: .col-sm-10.col-sm-offset-2
+      = render partial: "attachments_form"
   .form-group: .col-sm-10.col-sm-offset-2
     = f.submit 'Save', class: "btn btn-primary"
     = link_to "Back to list", pages_path, class: "btn btn-link"
