@@ -13,7 +13,6 @@
 //= require ./application
 //
 //= require bootstrap-timepicker
-//= require ckeditor/init
 //= require jquery.placeholder
 //= require sortable
 //

@@ -20,7 +20,7 @@ gem "mini_magick"
 gem "chronic"
 
 gem "slim"
-gem "slim-rails"
+gem "slim-rails", "3.1.1" # Avoids a bug with ckeditor and later versions of slim
 
 gem "jquery-rails"
 gem "bootstrap-datepicker-rails"
@@ -30,10 +30,6 @@ gem "ckeditor", "~> 4"
 gem "tzinfo-data"
 
 gem "pry-byebug", group: [:development, :test]
-
-group :development do
-  gem "web-console", "~> 2"
-end
 
 group :test do
   gem "rspec-rails"
