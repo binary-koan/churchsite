@@ -1,7 +1,7 @@
 class NewsItem
   include Mongoid::Document
 
-  belongs_to :owner, class_name: "NewsItem"
+  belongs_to :owner, class_name: "NewsItem", optional: true
   has_many :related, class_name: "NewsItem", inverse_of: "owner"
 
   field :title, type: String

@@ -2,8 +2,6 @@ class PagesController < ApplicationController
   before_action :assign_page, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: :display
 
-  respond_to :html
-
   def display
     assign_page_for_display
 

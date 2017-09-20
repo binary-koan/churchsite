@@ -1,6 +1,5 @@
 development:
-  # Configure available database sessions. (required)
-  sessions:
+  clients:
     # Defines the default session. (required)
     default:
       # Defines the name of the default database that Mongoid can connect to.
@@ -88,8 +87,13 @@ development:
     # Ensure all times are UTC in the app side. (default: false)
     # use_utc: false
 production:
-  sessions:
+  clients:
     default:
+      <% if ENV['MONGODB_URI'] %>
+      uri: <%= ENV['MONGODB_URI'] %>
+      options:
+        connect_timeout: 15
+      <% else %>
       database: <%= ENV['OPENSHIFT_APP_NAME'] or 'churchsite' %>
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
@@ -105,8 +109,9 @@ production:
       username: <%= ENV['OPENSHIFT_MONGODB_DB_USERNAME'] %>
       password: <%= ENV['OPENSHIFT_MONGODB_DB_PASSWORD'] %>
       <% end %>
+      <% end %>
 test:
-  sessions:
+  clients:
     default:
       database: churchsite_new_test
       hosts:

@@ -4,7 +4,7 @@ class Page
   SINGLETON_TYPES = %w{homepage news photos sermons}
   TYPES = %w{custom collection} + SINGLETON_TYPES
 
-  belongs_to :parent, class_name: "Page"
+  belongs_to :parent, class_name: "Page", optional: true
   has_many :children, class_name: "Page", inverse_of: :parent, order: :order.asc
 
   field :title, type: String

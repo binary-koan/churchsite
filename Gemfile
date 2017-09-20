@@ -1,16 +1,16 @@
 source "https://rubygems.org"
 
-gem "rails", "4.1.10"
+gem "rails", "~> 5.0"
 
-gem "sass-rails", "~> 4.0.3"
-gem "bootstrap-sass", "~> 3.3.3"
-gem "bootswatch-rails", "~> 3.2.3"
+gem "sass-rails"
+gem "bootstrap-sass", "~> 3"
+gem "bootswatch-rails", "~> 3"
 
-gem "uglifier", ">= 1.3.0"
-gem "coffee-rails", "~> 4.0.0"
+gem "uglifier"
+gem "coffee-rails", "~> 4"
 
 gem "bson_ext"
-gem "mongoid", "~> 4.0.0"
+gem "mongoid", "~> 6"
 
 gem "devise"
 gem "carrierwave"
@@ -26,11 +26,15 @@ gem "slim-rails"
 gem "jquery-rails"
 gem "bootstrap-datepicker-rails"
 gem "bootstrap-timepicker-rails"
-gem "ckeditor", "~> 4.1.1"
+gem "ckeditor", "~> 4"
 
 gem "tzinfo-data"
 
 gem "pry-byebug", group: [:development, :test]
+
+group :development do
+  gem "web-console", "~> 2"
+end
 
 group :test do
   gem "rspec-rails"
