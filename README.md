@@ -23,7 +23,7 @@ way to do that is to start a Rails console and enter:
 
 ```ruby
 User.create!(name: "Your name", email: "you@domain.com", password: "secret", password_confirmation: "secret")
-User.first.confirm!
+User.first.confirm
 ```
 
 There is no default homepage, so the first time you start the server you'll need to go to `/admin`

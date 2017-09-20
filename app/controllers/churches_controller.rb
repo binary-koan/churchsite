@@ -30,7 +30,7 @@ class ChurchesController < ApplicationController
   def destroy
     @church.destroy
 
-    redirect_to :back
+    redirect_to Page.homepage.url_path, notice: "Church was destroyed."
   end
 
   private

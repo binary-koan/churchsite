@@ -9,7 +9,6 @@ gem "bootswatch-rails", "~> 3"
 gem "uglifier"
 gem "coffee-rails", "~> 4"
 
-gem "bson_ext"
 gem "mongoid", "~> 6"
 
 gem "devise"

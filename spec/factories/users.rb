@@ -6,7 +6,7 @@ FactoryGirl.define do
     password_confirmation "Testing1"
 
     after(:build) do |user|
-      user.confirm!
+      user.confirm
     end
   end
 end
