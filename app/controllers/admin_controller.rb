@@ -19,13 +19,11 @@ class AdminController < ApplicationController
   end
 
   def confirm_user
-    puts "Email:"
-    puts params[:email]
-    User.where(email: params[:email]).each do |user|
-      puts "Confirming ..."
-      user.confirm!
+    if User.find_by(email: params[:email]).confirm
+      redirect_to action: 'users', notice: "User has been confirmed."
+    else
+      redirect_to action: 'users', error: "Couldn't confirm that user. Maybe they're already confirmed?"
     end
-    redirect_to action: 'users'
   end
 
   def deny_user

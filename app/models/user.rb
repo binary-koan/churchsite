@@ -11,7 +11,7 @@ class User
   field :name,               :type => String, :default => ""
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
-  
+
   ## Recoverable
   field :reset_password_token,   :type => String
   field :reset_password_sent_at, :type => Time
@@ -33,7 +33,7 @@ class User
   field :unconfirmed_email,    :type => String # Only if using reconfirmable
 
   def send_devise_notification(*args)
-    puts "User model: Not sending notification [#{args.join(', ')}]"
+    logger.info "User model: Not sending notification [#{args.join(', ')}]"
     # Don't send an email, accounts are confirmed manually
   end
 
@@ -44,6 +44,6 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
-  
+
   #attr_accessible :email, :password, :password_confirmation, :remember_me
 end
