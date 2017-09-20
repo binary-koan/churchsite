@@ -90,7 +90,7 @@ class PagesController < ApplicationController
     if user_signed_in?
       redirect_to pages_path
     else
-      raise ActionController::RoutingError.new('Not Found')
+      render file: "#{Rails.root}/public/404", layout: false, status: :not_found
     end
   end
 

@@ -1,5 +1,5 @@
 module ApplicationHelper
-  FLASH_TYPES = { error: "danger", alert: "danger" }
+  FLASH_TYPES = ActiveSupport::HashWithIndifferentAccess.new(error: "danger", alert: "danger", notice: "success")
 
   def editing?
     user_signed_in? && session[:editing]
