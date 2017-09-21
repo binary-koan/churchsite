@@ -29,6 +29,8 @@ gem "ckeditor", "~> 4"
 
 gem "tzinfo-data"
 
+gem "rollbar"
+
 gem "pry-byebug", group: [:development, :test]
 
 group :test do
