@@ -1,0 +1,3 @@
+module Churchsite
+  SECURE_SITE_DOMAIN = ENV["SECURE_SITE_DOMAIN"]
+end
