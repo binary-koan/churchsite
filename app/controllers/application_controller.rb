@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :assign_pages
 
+  rescue_from Mongoid::Errors::DocumentNotFound, with: :render_404
+
   protected
 
   def configure_permitted_parameters
@@ -16,5 +18,9 @@ class ApplicationController < ActionController::Base
 
   def assign_pages
     @top_level_pages = Page.where(parent: nil).asc(:order)
+  end
+
+  def render_404
+    render file: "#{Rails.root}/public/404", layout: false, status: :not_found
   end
 end

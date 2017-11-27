@@ -4,13 +4,8 @@ class PagesController < ApplicationController
 
   def display
     assign_page_for_display
-
-    if @page
-      @title = @page.title
-      set_state_for_page
-    else
-      handle_nonexistent_page
-    end
+    @title = @page.title
+    set_state_for_page
   end
 
   def index
@@ -83,14 +78,6 @@ class PagesController < ApplicationController
       @page = Page.find_by(identifier: params[:id])
     else
       @page = Page.homepage
-    end
-  end
-
-  def handle_nonexistent_page
-    if user_signed_in?
-      redirect_to pages_path
-    else
-      render file: "#{Rails.root}/public/404", layout: false, status: :not_found
     end
   end
 

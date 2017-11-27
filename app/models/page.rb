@@ -23,7 +23,7 @@ class Page
 
   SINGLETON_TYPES.each do |type|
     #TODO validate only one of each type
-    define_singleton_method(type) { where(type: type).first }
+    define_singleton_method(type) { find_by(type: type) }
   end
 
   (TYPES - SINGLETON_TYPES).each do |type|
