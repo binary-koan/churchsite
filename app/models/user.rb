@@ -32,9 +32,13 @@ class User
   field :confirmation_sent_at, :type => Time
   field :unconfirmed_email,    :type => String # Only if using reconfirmable
 
-  def send_devise_notification(*args)
-    logger.info "User model: Not sending notification [#{args.join(', ')}]"
-    # Don't send an email, accounts are confirmed manually
+  def send_devise_notification(notification, *args)
+    if notification == :confirmation_instructions
+      # Don't send an email, accounts are confirmed manually
+      logger.info "User model: Not sending notification #{notification.inspect} [#{args.map(&:inspect).join(', ')}]"
+    else
+      super
+    end
   end
 
   ## Lockable

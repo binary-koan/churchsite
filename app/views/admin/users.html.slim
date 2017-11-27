@@ -4,28 +4,24 @@
     - users = User.where confirmed_at: nil
     - if users.length > 0
       h3 Not yet confirmed
-      table.fill
+      ul.list-group
         - users.each do |user|
-          tr
-            td.fill
-              strong = user.name
-              | &nbsp;&mdash;&nbsp;
-              = user.email
-            td.user-controls
-              = link_to users_confirm_path(email: user.email), method: "post", class: "btn btn-default" do
-                span.glyphicon.glyphicon-ok
+          li.list-group-item
+            span.pull-right
+              => link_to users_confirm_path(email: user.email), method: "post", class: "btn btn-default" do
+                span.glyphicon.glyphicon-ok>
                 | Confirm
-              = link_to users_deny_path(email: user.email), method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-default" do
-                span.glyphicon.glyphicon-remove
+              => link_to users_deny_path(email: user.email), method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-default" do
+                span.glyphicon.glyphicon-remove>
                 | Deny
+            h4.list-group-item-heading user.name
+            p.list-group-item-text = user.email
       h3 Active users
-    table.fill
+    ul.list-group
       - User.where(:confirmed_at.lte => DateTime.now).each do |user|
-        tr
-          td
-            strong = user.name
-            | &nbsp;&mdash;&nbsp;
-            = user.email
-          td.user-controls
+        li.list-group-item
+          span.pull-right
             - if user == current_user
-              = link_to "Account Settings", '/users/edit', class: 'btn btn-default'
+              => link_to "Account Settings", '/users/edit', class: 'btn btn-default'
+          h4.list-group-item-heading = user.name
+          p.list-group-item-text = user.email
