@@ -54,14 +54,15 @@ RSpec.feature "Pages", type: :feature do
     visit "/pages"
     click_link "Delete"
 
-    expect { visit "/activities" }.to raise_error Mongoid::Errors::DocumentNotFound
+    visit "/activities"
+    expect(page).to have_text "The page you were looking for doesn't exist."
   end
 
-  scenario "Grouping pages in a collection" do
+  xscenario "Grouping pages in a collection" do
     #TODO
   end
 
-  scenario "Deleting a collection" do
+  xscenario "Deleting a collection" do
     #TODO
   end
 end
