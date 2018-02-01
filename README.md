@@ -19,12 +19,11 @@ Since this is intended to be deployed to OpenShift, you may also want to install
 
 As with any Rails site, you can start a local development server with `bundle exec rails server`,
 but you'll need to manually create an admin user before you can actually do anything. The easiest
-way to do that is to start a Rails console and enter:
+way to do that is to seed the database:
 
-```ruby
-User.create!(name: "Your name", email: "you@domain.com", password: "secret", password_confirmation: "secret")
-User.first.confirm
+```
+INITIAL_USER_NAME="Your name" INITIAL_USER_EMAIL="you@domain.com" INITIAL_USER_PASSWORD="secret" bundle exec rails db:seed
 ```
 
-There is no default homepage, so the first time you start the server you'll need to go to `/admin`
-and create a page with type "Homepage".
+This also creates a default homepage, but to make things work you'll need to go to `/admin`, log in
+with the credentials you decided on above, and create and edit pages and settings.
