@@ -116,4 +116,10 @@ RSpec.feature "Photos", type: :feature do
     expect(current_path).to eq "/galleries"
     expect(page).not_to have_link "Church photos"
   end
+
+  scenario "Trying to go to a nonexistent gallery" do
+    visit "/photos/gallery?gallery=doesNotExist"
+
+    expect(page).to have_text "The page you were looking for doesn't exist."
+  end
 end
