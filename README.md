@@ -1,6 +1,6 @@
 # Churchsite
 
-![Build status](https://travis-ci.org/binary-koan/churchsite.svg?branch=master)
+[![Build Status](https://travis-ci.org/binary-koan/churchsite.svg?branch=master)](https://travis-ci.org/binary-koan/churchsite)
 
 Rails setup intended for the [Lincoln Union Church website](http://lincolnchurch.org.nz) but which
 could be made to work for other churches or organisations.
