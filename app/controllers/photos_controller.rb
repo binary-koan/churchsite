@@ -4,8 +4,9 @@ class PhotosController < ApplicationController
 
   def gallery
     @photos = Photo.where(gallery: params[:gallery]).asc(:order)
-    #TODO throw Not Found unless @photos.size > 0
     @title = params[:gallery]
+
+    render_404 unless @photos.any?
   end
 
   def new
