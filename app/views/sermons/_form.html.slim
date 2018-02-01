@@ -9,7 +9,7 @@
   .form-group
     = f.label :picked_date, "Date", class: 'col-sm-3 control-label'
     .col-sm-9: .input-group.date
-      = f.text_field :picked_date, class: 'form-control', value: @sermon.date.strftime('%d/%m/%Y')
+      = f.text_field :picked_date, class: 'form-control', value: (@sermon.date&.strftime('%d/%m/%Y') || @sermon.picked_date)
       - date_description = 'This will accept almost any date, including things like "last sunday" or "may 14th"'
       span.add-on.input-group-addon data-toggle='tooltip' data-placement='bottom' title=date_description
         span.glyphicon.glyphicon-calendar

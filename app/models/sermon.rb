@@ -13,9 +13,11 @@ class Sermon
     CGI.escapeHTML(description).split(/\n|\r\n?/).join("<br />").html_safe
   end
 
-  before_save do |document|
+  before_validation do |document|
     if document.picked_date
-      document[:date] = Chronic.parse(document.picked_date, endian_precedence: :little, context: :past).to_date
+      document[:date] = Chronic.parse(document.picked_date, endian_precedence: :little, context: :past)&.to_date
     end
+
+    errors.add(:date, "is not a date") unless document[:date]
   end
 end
