@@ -5,6 +5,20 @@
 Rails setup intended for the [Lincoln Union Church website](http://lincolnchurch.org.nz) but which
 could be made to work for other churches or organisations.
 
+## Docker development
+
+If you have docker, seed the database with:
+
+```
+docker-compose run -e INITIAL_USER_NAME="Test" -e INITIAL_USER_EMAIL="test@example.com" -e INITIAL_USER_PASSWORD="Testing1" web bundle exec rails db:seed
+```
+
+Then start a server with:
+
+```
+docker-compose up
+```
+
 ## Requirements
 
 In addition to the [standard requirements for Ruby on Rails](http://guides.rubyonrails.org/getting_started.html#installing-rails)
@@ -12,8 +26,6 @@ you will need
 
 - [MongoDB](https://www.mongodb.org/)
 - [ImageMagick](http://www.imagemagick.org/script/index.php) or GraphicsMagick
-
-Since this is intended to be deployed to OpenShift, you may also want to install the `rhc` gem.
 
 ## Setup
 

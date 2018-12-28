@@ -2,6 +2,9 @@ development:
   clients:
     # Defines the default session. (required)
     default:
+      <% if ENV['MONGODB_URI'] %>
+      uri: <%= ENV['MONGODB_URI'] %>
+      <% else %>
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
       database: churchsite_new_development
@@ -9,6 +12,7 @@ development:
       # of host:port pairs. (required)
       hosts:
         - 127.0.0.1:27017
+      <% end %>
       options:
         # Change the default write concern. (default = { w: 1 })
         # write:

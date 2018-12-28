@@ -12,3 +12,5 @@ user.confirm
 # Create a homepage so going to / works
 
 Page.create!(type: "homepage", title: "Home")
+
+puts "Seeded!"
