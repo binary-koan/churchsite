@@ -1,0 +1,26 @@
+.headings {
+  h1,
+  h2 {
+    display: inline-block;
+  }
+
+  h1 {
+    font-size: $font-size-base * 2;
+    margin-bottom: 0;
+  }
+
+  h2 {
+    position: relative;
+    margin: 0;
+    font-size: $font-size-base;
+  }
+}
+
+@media (min-width: $screen-sm) {
+  .headings h1 {
+    font-size: $font-size-base * 3.5;
+  }
+  .headings h2 {
+    left: 6px;
+  }
+}

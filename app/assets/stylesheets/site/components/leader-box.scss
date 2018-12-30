@@ -1,0 +1,40 @@
+.leader-box {
+  @extend .well;
+  @extend .well-sm;
+  margin-top: 15px;
+
+  img {
+    float: right;
+    display: inline-block;
+    margin: 5px 2px 5px 5px;
+  }
+
+  h6 {
+    margin: 5px 0;
+  }
+
+  h4 {
+    margin: 5px 0;
+  }
+
+  .glyphicon {
+    display: inline-block;
+    margin-right: 5px;
+
+    &.glyphicon-phone {
+      margin-right: 1px;
+    }
+  }
+
+  dl.dl-horizontal {
+    margin-bottom: 0;
+
+    dt {
+      width: 60px;
+    }
+
+    dd {
+      margin-left: 70px;
+    }
+  }
+}

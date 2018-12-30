@@ -1,0 +1,10 @@
+#error_explanation {
+  @extend .alert;
+  @extend .alert-danger;
+
+  h2 {
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    margin: 0 0 0.5em 0;
+  }
+}
