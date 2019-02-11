@@ -10,7 +10,7 @@ could be made to work for other churches or organisations.
 If you have docker, seed the database with:
 
 ```
-docker-compose run -e INITIAL_USER_NAME="Test" -e INITIAL_USER_EMAIL="test@example.com" -e INITIAL_USER_PASSWORD="Testing1" web bundle exec rails db:seed
+docker-compose run --rm -e INITIAL_USER_NAME="Admin" -e INITIAL_USER_EMAIL="admin@example.com" -e INITIAL_USER_PASSWORD="password" web bundle exec rails db:seed
 ```
 
 Then start a server with:
@@ -19,7 +19,9 @@ Then start a server with:
 docker-compose up
 ```
 
-## Requirements
+## Non-docker development
+
+### Requirements
 
 In addition to the [standard requirements for Ruby on Rails](http://guides.rubyonrails.org/getting_started.html#installing-rails)
 you will need
@@ -27,7 +29,7 @@ you will need
 - [MongoDB](https://www.mongodb.org/)
 - [ImageMagick](http://www.imagemagick.org/script/index.php) or GraphicsMagick
 
-## Setup
+### Setup
 
 As with any Rails site, you can start a local development server with `bundle exec rails server`,
 but you'll need to manually create an admin user before you can actually do anything. The easiest

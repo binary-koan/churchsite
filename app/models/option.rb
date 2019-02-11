@@ -18,6 +18,7 @@ class Option
   field :leader_address, type: String
   mount_uploader :leader_image, ImageUploader
   mount_uploader :banner_image, ImageUploader
+  mount_uploader :vertical_banner_image, ImageUploader
 
   field :leader_use_email, type: Boolean, default: true
   field :leader_use_phone, type: Boolean, default: true
@@ -27,6 +28,6 @@ class Option
   alias_method :leader_use_address?, :leader_use_address
 
   def self.instance
-    first || create!
+    @instance ||= first || create!
   end
 end

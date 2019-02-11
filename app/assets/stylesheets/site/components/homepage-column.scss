@@ -36,4 +36,22 @@
     margin-left: -10px;
     margin-right: -10px;
   }
+
+  @media screen and (max-width: $screen-md) {
+    h1 {
+      font-size: $font-size-base * 2.5;
+    }
+
+    .churchtype {
+      font-size: $font-size-base * 1.25;
+    }
+
+    .lead {
+      font-size: $font-size-base * 1.25;
+    }
+  }
+
+  @media screen and (max-width: $screen-xs) {
+    padding-top: 10px;
+  }
 }

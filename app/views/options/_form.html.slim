@@ -35,11 +35,17 @@
       p.help-block We recommend this is at least 128&times;128px
       p.help-block Note that the preview won't update until you click 'Save'
   .form-group
-    = f.label :leader_image, "Banner Image", class: 'col-sm-3 control-label'
+    = f.label :banner_image, "Banner Image", class: 'col-sm-3 control-label'
     .col-sm-9
-      img.image-preview src="/#{Option.instance.banner_image.url}" style="width:100px;height:100px"
+      img.image-preview src="/#{Option.instance.banner_image.url}" style="height:100px"
       br
       = f.file_field :banner_image, accept: 'image/*'
+  .form-group
+    = f.label :vertical_banner_image, "Banner Image (Vertical)", class: 'col-sm-3 control-label'
+    .col-sm-9
+      img.image-preview src="/#{Option.instance.vertical_banner_image.url}" style="height:100px"
+      br
+      = f.file_field :vertical_banner_image, accept: 'image/*'
   .form-group
     label.control-label.col-sm-3 Contact Methods
     .col-sm-9

@@ -68,13 +68,16 @@
   margin: 10px 0;
 }
 
-.navbar.navbar-site .nav.nav-admin {
-  @extend .navbar-nav;
-  @extend .navbar-right;
+.navbar-nav {
+  margin-left: 0;
+  margin-right: 0;
+}
 
+.navbar.navbar-site .nav.nav-admin {
   margin-top: 9px;
   margin-bottom: 9px;
   margin-right: 0;
+  margin-left: 0;
 
   li.dropdown {
     > .dropdown-toggle {

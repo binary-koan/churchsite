@@ -20,7 +20,8 @@ class OptionsController < ApplicationController
       :news_announcement, :title, :church_type, :tagline, :about_page,
       :leader_title, :leader_name, :leader_phone,
       :leader_use_email, :leader_use_phone, :leader_use_address,
-      :leader_email, :leader_address, :leader_image, :banner_image
+      :leader_email, :leader_address, :leader_image,
+      :banner_image, :vertical_banner_image
     )
   end
 end

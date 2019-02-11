@@ -3,8 +3,12 @@
     = link_to edit_option_path(Option.instance), class: "btn btn-primary" do
       span.glyphicon.glyphicon-pencil>
       | Homepage options
+
+.homepage-vertical-banner
+  img.img-responsive src="/#{Option.instance.vertical_banner_image.url}"
+
 .row
-  .col-md-6.homepage-column
+  .col-md-7.col-sm-6.homepage-column
     h1 = Option.instance.title
     - if Option.instance.church_type and not Option.instance.church_type.empty?
       .churchtype = Option.instance.church_type
@@ -12,25 +16,37 @@
 
     hr
 
+    - church = Church.first
     .media
       a.pull-left href="http://maps.google.com/?q=asd" target="_blank"
         .church-location: span.glyphicon.glyphicon-map-marker
       .media-body
         h2 Sunday Worship
-        .title 10:00am
-        address= simple_format("20 James St\nLincoln\nChristchurch")
-        em With God's Soldiers for our young ones
+        .title= church.services_description
+        address= simple_format(church.address)
+        em= church.details
 
     hr
 
     .media
-      a.pull-left href="http://maps.google.com/?q=asd" target="_blank"
-        .church-location: span.glyphicon.glyphicon-map-marker
+      .pull-left
+        img src=Option.instance.leader_image.url style="width:64px;height:64px"
       .media-body
-        h2 Minister
-        .title Rev. Phyll Harris
-        a href="#" Get in touch >
+        h2= Option.instance.leader_title
+        .title= Option.instance.leader_name
+        a href="#contact-details" data-toggle="collapse" aria-expanded="false" aria-controls="contact-details"
+          | Get in touch ›
+        #contact-details.contact-details.collapse
+          - if Option.instance.leader_use_email? and Option.instance.leader_email
+            div: strong Email
+            p: a(href="mailto:#{Option.instance.leader_email}")= Option.instance.leader_email
+          - if Option.instance.leader_use_phone? and Option.instance.leader_phone
+            div: strong Phone
+            p: a(href=phone_url(Option.instance.leader_phone))= Option.instance.leader_phone
+          - if Option.instance.leader_use_address? and Option.instance.leader_address
+            div
+              strong Address
+              br
+              = simple_format(Option.instance.leader_address)
 
     hr
-  .col-md-6
-    img.img-responsive src="/#{Option.instance.banner_image.url}"
