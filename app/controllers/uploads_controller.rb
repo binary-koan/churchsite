@@ -16,6 +16,11 @@ class UploadsController < ApplicationController
     send_file Option.instance.leader_image, last_modified
   end
 
+  def banner_image
+    last_modified = Option.instance.updated_at ? Option.instance.updated_at.utc : DateTime.now
+    send_file Option.instance.banner_image, last_modified
+  end
+
   def photo_image
     @photo = Photo.find params[:id]
     last_modified = @photo.updated_at ? @photo.updated_at.utc : DateTime.now

@@ -1,0 +1,39 @@
+.homepage-column {
+  padding-top: 40px;
+
+  h1 {
+    font-size: $font-size-base * 3.5;
+    margin-bottom: 5px;
+  }
+
+  .churchtype {
+    font-size: $font-size-base * 1.5;
+    font-family: $font-family-sans-serif;
+    font-weight: $headings-font-weight;
+    color: $headings-color;
+    margin-bottom: 20px;
+  }
+
+  .media > .pull-left {
+    margin-right: 20px;
+    padding-right: 0;
+  }
+
+  h2 {
+    font-size: $font-size-base;
+    margin: 0;
+  }
+
+  .title {
+    margin: 5px 0;
+    font-size: $font-size-base * 1.25;
+    font-weight: $headings-font-weight;
+    font-family: $font-family-sans-serif;
+    color: $headings-color;
+  }
+
+  hr {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+}

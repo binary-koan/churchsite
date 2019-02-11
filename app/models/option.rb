@@ -17,6 +17,7 @@ class Option
   field :leader_email, type: String
   field :leader_address, type: String
   mount_uploader :leader_image, ImageUploader
+  mount_uploader :banner_image, ImageUploader
 
   field :leader_use_email, type: Boolean, default: true
   field :leader_use_phone, type: Boolean, default: true

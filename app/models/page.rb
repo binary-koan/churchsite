@@ -1,7 +1,7 @@
 class Page
   include Mongoid::Document
 
-  SINGLETON_TYPES = %w{homepage news photos sermons}
+  SINGLETON_TYPES = %w{homepage homepage2 news photos sermons}
   TYPES = %w{custom collection} + SINGLETON_TYPES
 
   belongs_to :parent, class_name: "Page", optional: true

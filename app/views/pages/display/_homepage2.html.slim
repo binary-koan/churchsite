@@ -1,0 +1,36 @@
+- if editing?
+  .row: .col-md-12
+    = link_to edit_option_path(Option.instance), class: "btn btn-primary" do
+      span.glyphicon.glyphicon-pencil>
+      | Homepage options
+.row
+  .col-md-6.homepage-column
+    h1 = Option.instance.title
+    - if Option.instance.church_type and not Option.instance.church_type.empty?
+      .churchtype = Option.instance.church_type
+    p.lead = Option.instance.tagline
+
+    hr
+
+    .media
+      a.pull-left href="http://maps.google.com/?q=asd" target="_blank"
+        .church-location: span.glyphicon.glyphicon-map-marker
+      .media-body
+        h2 Sunday Worship
+        .title 10:00am
+        address= simple_format("20 James St\nLincoln\nChristchurch")
+        em With God's Soldiers for our young ones
+
+    hr
+
+    .media
+      a.pull-left href="http://maps.google.com/?q=asd" target="_blank"
+        .church-location: span.glyphicon.glyphicon-map-marker
+      .media-body
+        h2 Minister
+        .title Rev. Phyll Harris
+        a href="#" Get in touch >
+
+    hr
+  .col-md-6
+    img.img-responsive src="/#{Option.instance.banner_image.url}"

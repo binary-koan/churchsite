@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "uploads/photo/image/:id/thumb_:filename", to: 'uploads#photo_thumb'
   get "uploads/photo/image/:id/:filename", to: 'uploads#photo_image'
   get "uploads/option/leader_image/:id/:filename", to: 'uploads#leader_image'
+  get "uploads/option/banner_image/:id/:filename", to: 'uploads#banner_image'
   get "uploads/ckeditor/pictures/:id/:filename", to: 'uploads#ckeditor_picture'
   get "uploads/ckeditor/pictures/:id/content_:filename", to: 'uploads#ckeditor_picture_content'
   get "uploads/ckeditor/pictures/:id/thumb_:filename", to: 'uploads#ckeditor_picture_thumb'

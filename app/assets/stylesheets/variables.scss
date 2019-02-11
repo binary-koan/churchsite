@@ -1,14 +1,17 @@
-@import url('//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Alegreya:400,700,400italic,700italic');
+@import url("//fonts.googleapis.com/css?family=Lato:400,700|Open+Sans:400,700,400italic,700italic");
 
 $brand-primary: #d01437;
 
 $font-size-base: 16px;
 
-$font-family-sans-serif: "Source Sans Pro", sans-serif;
-$font-family-serif: "Alegreya", serif;
+$font-family-sans-serif: "Lato", sans-serif;
+$font-family-serif: "Open Sans", serif;
 $font-family-base: $font-family-serif;
 
-$headings-font-weight: 600;
+$text-color: #555;
+$headings-color: black;
+
+$headings-font-weight: 700;
 
 $padding-base-vertical: 4px;
 $padding-base-horizontal: 12px;
