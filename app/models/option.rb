@@ -28,6 +28,6 @@ class Option
   alias_method :leader_use_address?, :leader_use_address
 
   def self.instance
-    @instance ||= first || create!
+    first || create!
   end
 end

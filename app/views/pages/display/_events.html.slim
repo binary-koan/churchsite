@@ -1,0 +1,11 @@
+.row: .col-md-12
+  h1 Events
+
+- if editing?
+  = render partial: "options/announcement_form", locals: { return_to: Page.events.url_path }
+  .well.well-sm
+    h4 Add Event
+    - @event = Event.new
+    = render partial: "events/form"
+
+/ .row

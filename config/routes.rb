@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     get :events, on: :collection
   end
 
+  resources :events, only: [:create, :update, :destroy]
+
   resources :photos, except: [:index, :show] do
     get :gallery, action: :gallery, on: :collection
     post "gallery/reorder", action: :reorder, on: :collection

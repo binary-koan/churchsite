@@ -3,6 +3,10 @@
     = link_to edit_option_path(Option.instance), class: "btn btn-primary" do
       span.glyphicon.glyphicon-pencil>
       | Homepage options
+    = ' '
+    = link_to edit_church_path(Church.first), class: "btn btn-primary" do
+      span.glyphicon.glyphicon-pencil>
+      | Church options
 
 .homepage-vertical-banner
   img.img-responsive src="/#{Option.instance.vertical_banner_image.url}"
