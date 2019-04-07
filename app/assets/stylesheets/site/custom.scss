@@ -1,6 +1,10 @@
 @import "./components/**/*";
 @import "./overrides/**/*";
 
+body {
+  overflow-x: hidden;
+}
+
 // RESPONSIVE STYLES
 // --------------------------------------------------------
 

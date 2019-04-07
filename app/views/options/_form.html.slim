@@ -41,12 +41,6 @@
       br
       = f.file_field :banner_image, accept: 'image/*'
   .form-group
-    = f.label :vertical_banner_image, "Banner Image (Vertical)", class: 'col-sm-3 control-label'
-    .col-sm-9
-      img.image-preview src="/#{Option.instance.vertical_banner_image.url}" style="height:100px"
-      br
-      = f.file_field :vertical_banner_image, accept: 'image/*'
-  .form-group
     label.control-label.col-sm-3 Contact Methods
     .col-sm-9
       .checkbox: label

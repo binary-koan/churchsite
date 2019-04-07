@@ -12,7 +12,7 @@
 
   margin-bottom: 0;
   border: none;
-  background: $gray-lighter;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 
   .navbar-nav {
     font-size: 14px;
@@ -24,6 +24,7 @@
 
     > .active > a {
       background: white;
+      font-weight: bold;
 
       &:hover {
         background: white;

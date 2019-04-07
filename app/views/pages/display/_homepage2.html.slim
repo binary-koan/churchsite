@@ -8,49 +8,72 @@
       span.glyphicon.glyphicon-pencil>
       | Church options
 
-.homepage-vertical-banner
-  img.img-responsive src="/#{Option.instance.vertical_banner_image.url}"
+.homepage-banner
+  .image style="background-image: url(/#{Option.instance.banner_image.url})"
 
-.row
-  .col-md-7.col-sm-6.homepage-column
+  .caption
     h1 = Option.instance.title
-    - if Option.instance.church_type and not Option.instance.church_type.empty?
-      .churchtype = Option.instance.church_type
     p.lead = Option.instance.tagline
 
-    hr
+.row
+  .col-md-6.homepage-card
+    .content
+      - church = Church.first
+      h4 Join us
+      .media
+        a.pull-left href=church.map_address target="_blank"
+          .church-location: span.glyphicon.glyphicon-map-marker
+        .media-body
+          .title= church.services_description
+          address= simple_format(church.address)
+          em= church.details
+          a.link href=church.map_address target="_blank" View map ›
 
-    - church = Church.first
-    .media
-      a.pull-left href="http://maps.google.com/?q=asd" target="_blank"
-        .church-location: span.glyphicon.glyphicon-map-marker
-      .media-body
-        h2 Sunday Worship
-        .title= church.services_description
-        address= simple_format(church.address)
-        em= church.details
+  .col-md-6.homepage-card
+    .content
+      h4 Get in touch
+      .media
+        .pull-left
+          img.image src=Option.instance.leader_image.url
+        .media-body
+          .title= Option.instance.leader_name
+          p= Option.instance.leader_title
+          a#contact-link href="#"
+            = ' Contact '
+            - if Option.instance.leader_use_address?
+              span.glyphicon.glyphicon-map-marker
+            = ' '
+            - if Option.instance.leader_use_phone?
+              span.glyphicon.glyphicon-phone
+            = ' '
+            - if Option.instance.leader_use_email?
+              span.glyphicon.glyphicon-envelope
+          .popover.contact-details.collapse
+            - if Option.instance.leader_use_email? and Option.instance.leader_email
+              div: strong Email
+              p: a(href="mailto:#{Option.instance.leader_email}")= Option.instance.leader_email
+            - if Option.instance.leader_use_phone? and Option.instance.leader_phone
+              div: strong Phone
+              p: a(href=phone_url(Option.instance.leader_phone))= Option.instance.leader_phone
+            - if Option.instance.leader_use_address? and Option.instance.leader_address
+              div
+                strong Address
+                br
+                = simple_format(Option.instance.leader_address)
 
-    hr
-
-    .media
-      .pull-left
-        img src=Option.instance.leader_image.url style="width:64px;height:64px"
-      .media-body
-        h2= Option.instance.leader_title
-        .title= Option.instance.leader_name
-        a href="#contact-details" data-toggle="collapse" aria-expanded="false" aria-controls="contact-details"
-          | Get in touch ›
-        #contact-details.contact-details.collapse
-          - if Option.instance.leader_use_email? and Option.instance.leader_email
-            div: strong Email
-            p: a(href="mailto:#{Option.instance.leader_email}")= Option.instance.leader_email
-          - if Option.instance.leader_use_phone? and Option.instance.leader_phone
-            div: strong Phone
-            p: a(href=phone_url(Option.instance.leader_phone))= Option.instance.leader_phone
-          - if Option.instance.leader_use_address? and Option.instance.leader_address
-            div
-              strong Address
-              br
-              = simple_format(Option.instance.leader_address)
-
-    hr
+.row.homepage-links
+  .col-md-4
+    = link_to '/from-the-minister' do
+      = image_tag "homepage/from-the-minister.jpg", class: "img-responsive img-rounded"
+      h4 From the Minister
+      p We are a multi ethnic, multigenerational family of faith journeying the ups and downs of life together.
+  .col-md-4
+    = link_to '/whats-on' do
+      = image_tag "homepage/whats-on.jpg", class: "img-responsive img-rounded"
+      h4 What's On
+      p We are a multi ethnic, multigenerational family of faith journeying the ups and downs of life together.
+  .col-md-4
+    = link_to '/gallery' do
+      = image_tag "homepage/gallery.jpg", class: "img-responsive img-rounded"
+      h4 Gallery
+      p We are a multi ethnic, multigenerational family of faith journeying the ups and downs of life together.

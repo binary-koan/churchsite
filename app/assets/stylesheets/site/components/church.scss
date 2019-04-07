@@ -20,15 +20,15 @@
 .church-location {
   @extend .well;
   padding: 0;
+  margin-bottom: 0;
 
-  width: 64px;
-  height: 64px;
-  font-size: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  font-size: 56px;
   text-align: center;
   background-image: image-url("roadmap.svg");
-
-  .glyphicon:before {
-    display: inline-block;
-    margin-top: 7px;
-  }
+  background-size: cover;
 }
