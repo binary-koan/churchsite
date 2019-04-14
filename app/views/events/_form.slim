@@ -13,14 +13,15 @@
         = f.text_field :title, class: 'form-control'
       .form-group: .col-sm-12
         = f.label :content
-        = f.text_area :content, class: 'form-control', rows: 3
+        = f.cktext_area :content, class: 'form-control'
     .col-md-6
       .form-group: .col-sm-12
-        = f.label :date_description
-        = f.text_field :date_description, class: 'form-control'
+        = f.label :image
+        = f.file_field :image
       .form-group: .col-sm-12
         = f.label :show_until
         = f.text_field :show_until, class: 'form-control'
+        p.help-block This will accept almost any date, including things like "tomorrow at 5pm" or "june 25th at 10:30"
       .form-group: .col-sm-12
         = f.label :special
         div

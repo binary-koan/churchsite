@@ -1,6 +1,4 @@
-class NewsItemsController < ApplicationController
-  include NewsItemsHelper
-
+class EventsController < ApplicationController
   before_action :authenticate_user!, except: :events
 
   def create
@@ -33,6 +31,6 @@ class NewsItemsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :content, :date_description, :show_until, :special, :image)
+    params.require(:event).permit(:title, :content, :show_until, :special, :image)
   end
 end
