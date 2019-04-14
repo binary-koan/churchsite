@@ -1,0 +1,18 @@
+table.photos {
+  margin-top: 10px;
+
+  td {
+    vertical-align: top;
+    padding-top: 10px;
+  }
+
+  .well {
+    margin-right: 10px;
+    margin-top: -10px;
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}

@@ -1,268 +1,14 @@
-h1 form .form-control {
-  font-size: 32px;
-  height: 48px;
-}
+@import "./components/**/*";
+@import "./overrides/**/*";
 
-// ERROR MESSAGES
-// -----------------------------------------------------
-
-#error_explanation {
-  @extend .alert;
-  @extend .alert-danger;
-
-  h2 {
-    font-family: $font-family-base;
-    font-size: $font-size-base;
-    margin: 0 0 0.5em 0;
-  }
-}
-
-// LOGIN FORM
-// ------------------------------------------------------
-
-form#new_user {
-  margin-top: 20px;
-}
-
-// COMPONENTS
-// ------------------------------------------------------
-
-h1 {
-  .breadcrumbs {
-    margin-left: 3px;
-  }
-}
-
-.row.messages {
-  margin-top: 20px;
-
-  .alert {
-    margin-bottom: 0;
-  }
-}
-
-// BREADCRUMBS
-// ------------------------------------------------------
-
-.breadcrumbs {
-  @extend h4;
-  margin-bottom: 5px;
-
-  .glyphicon {
-    font-size: 16px;
-  }
-}
-
-// CHURCH DISPLAY
-// ------------------------------------------------------
-
-.church {
-  margin-bottom: 10px;
-
-  h4 {
-    margin-bottom: 5px;
-  }
-}
-
-.church-image {
-  background-size: cover;
-  background-position: center;
-  height: 300px;
-  margin: 0 -15px 10px -15px;
-}
-
-.church:first-child .church-image {
-  margin-left: 0;
-}
-
-.church-location {
-  @extend .well;
-  padding: 0;
-
-  width: 64px;
-  height: 64px;
-  font-size: 47px;
-  text-align: center;
-  background-image: image-url("roadmap.svg");
-
-  .glyphicon:before {
-    display: inline-block;
-    margin-top: 7px;
-  }
-}
-
-// HOMEPAGE
-// -------------------------------------------------------
-
-.title-box {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.headings {
-  h1, h2 {
-    display: inline-block;
-  }
-
-  h1 {
-    font-size: $font-size-base * 2;
-    margin-bottom: 0;
-  }
-
-  h2 {
-    position: relative;
-    margin: 0;
-    font-size: $font-size-base;
-  }
-}
-
-@media(min-width: $screen-sm) {
-  .headings h1 {
-    font-size: $font-size-base * 3.5;
-  }
-  .headings h2 {
-    left: 6px;
-  }
-}
-
-.leader-box {
-  @extend .well;
-  @extend .well-sm;
-  margin-top: 15px;
-
-  img {
-    float: right;
-    display: inline-block;
-    margin: 5px 2px 5px 5px;
-  }
-
-  h6 {
-    margin: 5px 0;
-  }
-
-  h4 {
-    margin: 5px 0;
-  }
-
-  .glyphicon {
-    display: inline-block;
-    margin-right: 5px;
-
-    &.glyphicon-phone {
-      margin-right: 1px;
-    }
-  }
-
-  dl.dl-horizontal {
-    margin-bottom: 0;
-
-    dt {
-      width: 60px;
-    }
-
-    dd {
-      margin-left: 70px;
-    }
-  }
-}
-
-table.fill {
-  width: 100%;
-}
-
-td.fill {
-  width: 50%;
-}
-
-td.user-controls {
-  width: 50%;
-  text-align: right;
-}
-
-table.photos {
-  margin-top: 10px;
-
-  td {
-    vertical-align: top;
-    padding-top: 10px;
-  }
-
-  .well {
-    margin-right: 10px;
-    margin-top: -10px;
-
-    img {
-      width: 100px;
-      height: 100px;
-    }
-  }
-}
-
-.cke.cke_chrome {
-  margin-bottom: 10px;
-}
-
-.popover {
-  width: auto;
-  max-width: 300px;
-}
-
-// NEWS
-// -------------------------------------------------------
-
-#news table {
-  td {
-    vertical-align: top;
-  }
-
-  td.title {
-    text-align: right;
-    border-right: 3px solid $gray-light;
-    padding: 5px 5px 5px 10px;
-    min-width: 140px;
-  }
-
-  td.time {
-    font-style: italic;
-    padding: 5px 0 5px 5px;
-    min-width: 90px;
-  }
-
-  td.news-item {
-    padding: 5px 10px 5px 0;
-    width: 100%;
-
-    p {
-      margin: 0;
-    }
-  }
-
-  td.controls {
-    min-width: 200px;
-    text-align: right;
-    padding: 5px;
-  }
-
-  tr.highlight td {
-    background: $gray-lighter;
-  }
-
-  tr.highlight td.title {
-    border-right-color: $gray;
-  }
-}
-
-// SERMONS
-// -------------------------------------------------------
-
-.sermon .introduction {
-  font-weight: bold;
+body {
+  overflow-x: hidden;
 }
 
 // RESPONSIVE STYLES
 // --------------------------------------------------------
 
-@media(max-width: 979px) {
+@media (max-width: 979px) {
   #title-zone {
     float: none;
   }
@@ -270,7 +16,8 @@ table.photos {
   #leader-box {
     float: none;
 
-    .pull-left, .pull-right {
+    .pull-left,
+    .pull-right {
       margin-bottom: 0;
     }
 
@@ -286,7 +33,7 @@ table.photos {
   }
 }
 
-@media(max-width: 767px) {
+@media (max-width: 767px) {
   body {
     padding: 0;
   }
@@ -320,8 +67,8 @@ table.photos {
 }
 
 // Play nice with IE10 snap
-@-ms-viewport{
-    width: device-width;
+@-ms-viewport {
+  width: device-width;
 }
 
 // MISC
@@ -330,7 +77,8 @@ ul.sortable li {
   cursor: move;
 }
 
-.cke_reset_all, .cke_reset_all * {
+.cke_reset_all,
+.cke_reset_all * {
   box-sizing: content-box;
 }
 
@@ -382,7 +130,8 @@ ul.card-flow {
     margin-right: 10px;
     max-width: 220px;
 
-    p, div {
+    p,
+    div {
       text-align: center;
     }
 

@@ -1,0 +1,79 @@
+.homepage-card {
+  margin-top: -40px;
+  margin-bottom: 35px;
+  padding: 16px;
+
+  .content {
+    min-height: 190px;
+    padding: 25px;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    background-color: white;
+  }
+
+  h4 {
+    margin-top: 0;
+    font-size: 24px;
+  }
+
+  .churchtype {
+    font-size: $font-size-base * 1.5;
+    font-family: $font-family-sans-serif;
+    font-weight: $headings-font-weight;
+    color: $headings-color;
+    margin-bottom: 20px;
+  }
+
+  .media > .pull-left {
+    margin-right: 20px;
+    padding-right: 0;
+  }
+
+  h2 {
+    font-size: $font-size-base;
+    margin: 0;
+  }
+
+  .title {
+    margin: 5px 0 0 0;
+    font-size: $font-size-base * 1.25;
+    font-weight: $headings-font-weight;
+    font-family: $font-family-sans-serif;
+    color: $headings-color;
+  }
+
+  address {
+    margin-bottom: 5px;
+  }
+
+  .link {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .image {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #e3e3e3;
+  }
+
+  @media screen and (max-width: $screen-md) {
+    h1 {
+      font-size: $font-size-base * 2.5;
+    }
+
+    .churchtype {
+      font-size: $font-size-base * 1.25;
+    }
+
+    .lead {
+      font-size: $font-size-base * 1.25;
+    }
+  }
+
+  @media screen and (max-width: $screen-xs) {
+    padding-top: 10px;
+  }
+}

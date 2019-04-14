@@ -1,7 +1,7 @@
 class Page
   include Mongoid::Document
 
-  SINGLETON_TYPES = %w{homepage news photos sermons}
+  SINGLETON_TYPES = %w{homepage homepage2 news events photos sermons}
   TYPES = %w{custom collection} + SINGLETON_TYPES
 
   belongs_to :parent, class_name: "Page", optional: true
@@ -26,12 +26,20 @@ class Page
     define_singleton_method(type) { find_by(type: type) }
   end
 
+  def self.homepage
+    Page.find_by(type: { '$in': ['homepage', 'homepage2'] })
+  end
+
   (TYPES - SINGLETON_TYPES).each do |type|
     scope type.pluralize, -> { where(type: type) }
   end
 
   TYPES.each do |type|
     define_method(type + "?") { self.type == type }
+  end
+
+  def homepage?
+    type == 'homepage' || homepage2?
   end
 
   def url_path

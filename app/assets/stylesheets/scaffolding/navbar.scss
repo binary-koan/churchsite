@@ -12,7 +12,7 @@
 
   margin-bottom: 0;
   border: none;
-  background: $gray-lighter;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 
   .navbar-nav {
     font-size: 14px;
@@ -24,6 +24,7 @@
 
     > .active > a {
       background: white;
+      font-weight: bold;
 
       &:hover {
         background: white;
@@ -68,13 +69,16 @@
   margin: 10px 0;
 }
 
-.navbar.navbar-site .nav.nav-admin {
-  @extend .navbar-nav;
-  @extend .navbar-right;
+.navbar-nav {
+  margin-left: 0;
+  margin-right: 0;
+}
 
+.navbar.navbar-site .nav.nav-admin {
   margin-top: 9px;
   margin-bottom: 9px;
   margin-right: 0;
+  margin-left: 0;
 
   li.dropdown {
     > .dropdown-toggle {

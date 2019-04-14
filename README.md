@@ -1,11 +1,27 @@
 # Churchsite
 
-![Build status](https://travis-ci.org/binary-koan/churchsite.svg?branch=master)
+[![Build Status](https://travis-ci.org/binary-koan/churchsite.svg?branch=master)](https://travis-ci.org/binary-koan/churchsite)
 
 Rails setup intended for the [Lincoln Union Church website](http://lincolnchurch.org.nz) but which
 could be made to work for other churches or organisations.
 
-## Requirements
+## Docker development
+
+If you have docker, seed the database with:
+
+```
+docker-compose run --rm -e INITIAL_USER_NAME="Admin" -e INITIAL_USER_EMAIL="admin@example.com" -e INITIAL_USER_PASSWORD="password" web bundle exec rails db:seed
+```
+
+Then start a server with:
+
+```
+docker-compose up
+```
+
+## Non-docker development
+
+### Requirements
 
 In addition to the [standard requirements for Ruby on Rails](http://guides.rubyonrails.org/getting_started.html#installing-rails)
 you will need
@@ -13,9 +29,7 @@ you will need
 - [MongoDB](https://www.mongodb.org/)
 - [ImageMagick](http://www.imagemagick.org/script/index.php) or GraphicsMagick
 
-Since this is intended to be deployed to OpenShift, you may also want to install the `rhc` gem.
-
-## Setup
+### Setup
 
 As with any Rails site, you can start a local development server with `bundle exec rails server`,
 but you'll need to manually create an admin user before you can actually do anything. The easiest

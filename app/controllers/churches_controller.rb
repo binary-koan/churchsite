@@ -37,7 +37,7 @@ class ChurchesController < ApplicationController
 
   def church_params
     params.require(:church).permit(
-      :image, :name, :services_description, :address, :map_address
+      :image, :name, :services_description, :details, :address, :map_address
     )
   end
 

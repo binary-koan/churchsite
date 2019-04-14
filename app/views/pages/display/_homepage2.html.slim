@@ -1,0 +1,80 @@
+- if editing?
+  .row: .col-md-12
+    = link_to edit_option_path(Option.instance), class: "btn btn-primary" do
+      span.glyphicon.glyphicon-pencil>
+      | Homepage options
+    = ' '
+    = link_to edit_church_path(Church.first), class: "btn btn-primary" do
+      span.glyphicon.glyphicon-pencil>
+      | Church options
+
+.homepage-banner
+  .image style="background-image: url(/#{Option.instance.banner_image.url})"
+
+  .caption
+    h1 = Option.instance.title
+    p.lead = Option.instance.tagline
+
+.row
+  .col-md-6.homepage-card
+    .content
+      - church = Church.first
+      h4 Join us
+      .media
+        a.pull-left href=church.map_address target="_blank"
+          .church-location: span.glyphicon.glyphicon-map-marker
+        .media-body
+          .title= church.services_description
+          address= simple_format(church.address)
+          em= church.details
+          a.link href=church.map_address target="_blank" View map ›
+
+  .col-md-6.homepage-card
+    .content
+      h4 Get in touch
+      .media
+        .pull-left
+          img.image src=Option.instance.leader_image.url
+        .media-body
+          .title= Option.instance.leader_name
+          p= Option.instance.leader_title
+          a#contact-link href="#"
+            = ' Contact '
+            - if Option.instance.leader_use_address?
+              span.glyphicon.glyphicon-map-marker
+            = ' '
+            - if Option.instance.leader_use_phone?
+              span.glyphicon.glyphicon-phone
+            = ' '
+            - if Option.instance.leader_use_email?
+              span.glyphicon.glyphicon-envelope
+          .popover.contact-details.collapse
+            - if Option.instance.leader_use_email? and Option.instance.leader_email
+              div: strong Email
+              p: a(href="mailto:#{Option.instance.leader_email}")= Option.instance.leader_email
+            - if Option.instance.leader_use_phone? and Option.instance.leader_phone
+              div: strong Phone
+              p: a(href=phone_url(Option.instance.leader_phone))= Option.instance.leader_phone
+            - if Option.instance.leader_use_address? and Option.instance.leader_address
+              div
+                strong Address
+                br
+                = simple_format(Option.instance.leader_address)
+
+.row.homepage-links
+  .col-md-3
+    = link_to '/from-the-minister' do
+      = image_tag "homepage/from-the-minister.jpg", class: "img-responsive img-rounded"
+      h4 From the Minister
+  .col-md-3
+    = link_to '/news' do
+      = image_tag "homepage/whats-on.jpg", class: "img-responsive img-rounded"
+      h4 What's On
+  .col-md-3
+    = link_to '/gallery' do
+      = image_tag "homepage/gallery.jpg", class: "img-responsive img-rounded"
+      h4 Gallery
+  .col-md-3
+    = link_to '/about' do
+      = image_tag "homepage/about.jpg", class: "img-responsive img-rounded"
+      h4 About Us

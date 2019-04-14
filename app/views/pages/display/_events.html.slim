@@ -1,0 +1,31 @@
+.row: .col-md-12
+  h1 Events
+
+- if editing?
+  = render partial: "options/announcement_form", locals: { return_to: Page.events.url_path }
+  .well.well-sm
+    h4 Add Event
+    - @event = Event.new
+    = render partial: "events/form"
+
+- Event.visible.special.in_groups_of(2).each do |events|
+  .row
+    - events.compact.each do |event|
+      .col-md-6
+        .panel.panel-primary
+          .panel-body
+            img.img-responsive.img-rounded src="/#{event.image&.url}"
+            h3 = event.title
+            p = event.content.html_safe
+
+hr
+
+- Event.visible.normal.in_groups_of(2).each do |events|
+  .row
+    - events.compact.each do |event|
+      .col-md-6
+        .panel.panel-default
+          .panel-body
+            img.img-responsive.img-rounded src="/#{event.image&.url}"
+            h3 = event.title
+            p = event.content.html_safe
