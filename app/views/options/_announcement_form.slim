@@ -2,7 +2,7 @@ p.text-right: button.btn.btn-default.btn-announcement
   span.glyphicon.glyphicon-pencil>
   | Change Announcement
 = form_for Option.instance, html: { class: 'hidden' } do |f|
-  = hidden_field_tag :return_to, return_to || Page.news.url_path
+  = hidden_field_tag :return_to, local_assigns[:return_to] || Page.news.url_path
   = f.label :news_announcement, "Announcement", class: "sr-only"
   = f.text_area :news_announcement, placeholder: "Announcement ...", class: "form-control", rows: 3
   br
