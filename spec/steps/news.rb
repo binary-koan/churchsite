@@ -33,7 +33,7 @@ module Steps
       visit "/news"
       start_editing
 
-      within ".edit_option", visible: false do
+      within "[id*=edit_option]", visible: false do
         fill_in "Announcement", with: announcement, visible: false
         click_button "Save", visible: false
       end

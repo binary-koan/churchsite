@@ -3,10 +3,9 @@ $ ->
   $('.input-group-addon[data-toggle=tooltip]').tooltip()
 
   # Editing
-  $('.btn-announcement').parent().next().hide()
   $('.btn-announcement').click ->
     $(this).toggleClass 'active'
-    $(this).parent().next().toggle()
+    $(this).parent().next().toggleClass('hidden')
 
   $('.news-edit-btn').click (e) ->
     e.preventDefault()
