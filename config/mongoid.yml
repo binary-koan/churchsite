@@ -93,8 +93,8 @@ development:
 production:
   clients:
     default:
-      <% if ENV['MONGODB_URI'] %>
-      uri: <%= ENV['MONGODB_URI'] %>
+      <% if ENV['MONGODB_URI'] || ENV['MONGO_URL'] %>
+      uri: <%= ENV['MONGODB_URI'] || ENV['MONGO_URL'] %>
       options:
         connect_timeout: 15
       <% else %>
