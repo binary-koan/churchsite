@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     get :events, on: :collection
   end
 
-  resources :events, only: [:create, :update, :destroy]
+  resources :events, only: [:create, :edit, :update, :destroy]
 
   resources :photos, except: [:index, :show] do
     get :gallery, action: :gallery, on: :collection

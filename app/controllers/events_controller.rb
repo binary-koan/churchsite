@@ -11,11 +11,15 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
   def update
     @event = Event.find(params[:id])
 
     if @event.update_attributes(event_params)
-      redirect_to request.referer, notice: "Event was successfully updated."
+      redirect_to Page.events.url_path, notice: "Event was successfully updated."
     else
       redirect_to request.referer, alert: "Event could not be updated."
     end
