@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get "images/uploads/ckeditor/pictures/:id/content_:filename", to: 'uploads#ckeditor_picture_content'
   get "images/uploads/ckeditor/pictures/:id/thumb_:filename", to: 'uploads#ckeditor_picture_thumb'
   get "images/uploads/ckeditor/pictures/:id/:filename", to: 'uploads#ckeditor_picture'
+  get "ckeditor/uploads/ckeditor/pictures/:id/content_:filename", to: 'uploads#ckeditor_picture_content'
+  get "ckeditor/uploads/ckeditor/pictures/:id/thumb_:filename", to: 'uploads#ckeditor_picture_thumb'
+  get "ckeditor/uploads/ckeditor/pictures/:id/:filename", to: 'uploads#ckeditor_picture'
 
   resources :sermons, path: "word", except: [:index]
 
