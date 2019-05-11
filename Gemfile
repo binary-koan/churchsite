@@ -33,6 +33,8 @@ gem "rollbar"
 
 gem "pry-byebug", group: [:development, :test]
 
+gem 'puma'
+
 group :test do
   gem "rspec-rails"
   gem "factory_girl_rails"
