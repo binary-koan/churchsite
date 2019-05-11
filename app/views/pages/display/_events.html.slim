@@ -8,40 +8,40 @@
     - @event = Event.new
     = render partial: "events/form"
 
-- Event.visible.special.in_groups_of(2).each do |events|
-  .row
-    - events.compact.each do |event|
-      .col-md-6
-        .panel.panel-primary
-          .panel-body
-            - if editing?
-              p.text-right
-                => link_to edit_event_path(event), class: 'btn btn-default' do
-                  span.glyphicon.glyphicon-pencil>
-                  | Edit
-                = link_to event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' do
-                  span.glyphicon.glyphicon-trash>
-                  | Delete
+.events-list
+  - Event.visible.special.each do |event|
+    .event
+      .panel.panel-primary.event-panel
+        .panel-body
+          - if editing?
+            p.text-right
+              => link_to edit_event_path(event), class: 'btn btn-default' do
+                span.glyphicon.glyphicon-pencil>
+                | Edit
+              = link_to event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' do
+                span.glyphicon.glyphicon-trash>
+                | Delete
+          - if event.image.present?
             img.img-responsive.img-rounded src="/#{event.image&.url}"
-            h3 = event.title
-            p = event.content.html_safe
+          h3 = event.title
+          p = event.content.html_safe
 
 hr
 
-- Event.visible.normal.in_groups_of(2).each do |events|
-  .row
-    - events.compact.each do |event|
-      .col-md-6
-        .panel.panel-default
-          .panel-body
-            - if editing?
-              p.text-right
-                => link_to edit_event_path(event), class: 'btn btn-default' do
-                  span.glyphicon.glyphicon-pencil>
-                  | Edit
-                = link_to event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' do
-                  span.glyphicon.glyphicon-trash>
-                  | Delete
+.events-list
+  - Event.visible.normal.each do |event|
+    .event
+      .panel.panel-default.event-panel
+        .panel-body
+          - if editing?
+            p.text-right
+              => link_to edit_event_path(event), class: 'btn btn-default' do
+                span.glyphicon.glyphicon-pencil>
+                | Edit
+              = link_to event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' do
+                span.glyphicon.glyphicon-trash>
+                | Delete
+          - if event.image.present?
             img.img-responsive.img-rounded src="/#{event.image&.url}"
-            h3 = event.title
-            p = event.content.html_safe
+          h3 = event.title
+          p = event.content.html_safe
