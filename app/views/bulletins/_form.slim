@@ -1,0 +1,16 @@
+= form_for @bulletin, html: { class: 'form-horizontal' } do |f|
+  - if @bulletin.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@bulletin.errors.count, "error")} prohibited this bulletin from being saved:"
+      ul
+        - @bulletin.errors.full_messages.each do |message|
+          li = message
+
+  .form-group: .col-sm-12
+    = f.label :date
+    = f.text_field :date, class: 'form-control'
+  .form-group: .col-sm-12
+    = f.label :document
+    = f.file_field :document, accept: 'application/pdf'
+
+  .form-group: .col-sm-12 = f.submit 'Save', class: 'btn btn-primary'

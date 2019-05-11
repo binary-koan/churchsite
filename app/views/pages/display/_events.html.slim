@@ -1,5 +1,5 @@
 .row: .col-md-12
-  h1 Events
+  h1 = @page.title
 
 - if editing?
   = render partial: "options/announcement_form", locals: { return_to: Page.events.url_path }

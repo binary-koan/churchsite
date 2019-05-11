@@ -39,6 +39,12 @@ class UploadsController < ApplicationController
     send_file @photo.image.thumb, last_modified
   end
 
+  def bulletin_document
+    @bulletin = Bulletin.find params[:id]
+    last_modified = @bulletin.updated_at ? @bulletin.updated_at.utc : DateTime.now
+    send_file @bulletin.document, last_modified
+  end
+
   def ckeditor_picture
     @picture = Ckeditor::Picture.find params[:id]
     last_modified = @picture.updated_at ? @picture.updated_at.utc : DateTime.now

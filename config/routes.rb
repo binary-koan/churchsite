@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "uploads/photo/image/:id/:filename", to: 'uploads#photo_image'
   get "uploads/option/leader_image/:id/:filename", to: 'uploads#leader_image'
   get "uploads/option/banner_image/:id/:filename", to: 'uploads#banner_image'
+  get "uploads/bulletin/document/:id/:filename", to: "uploads#bulletin_document"
 
   # The routes CKEditor uses to fetch images seem super inconsistent ...
   get "uploads/ckeditor/pictures/:id/content_:filename", to: 'uploads#ckeditor_picture_content'
@@ -30,6 +31,8 @@ Rails.application.routes.draw do
   end
 
   resources :events, only: [:create, :edit, :update, :destroy]
+
+  resources :bulletins, only: [:create, :edit, :update, :destroy]
 
   resources :photos, except: [:index, :show] do
     get :gallery, action: :gallery, on: :collection
