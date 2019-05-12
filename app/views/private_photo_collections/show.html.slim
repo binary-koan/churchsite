@@ -1,0 +1,37 @@
+= render partial: "admin/mode_switch"
+
+.row
+  .col-md-12
+    h1
+      - if editing?
+        .pull-right
+          => link_to edit_private_photo_collection_path(@collection), class: "btn btn-default" do
+            span.glyphicon.glyphicon-wrench>
+            | Options
+          = link_to @collection, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-default' do
+            span.glyphicon.glyphicon-trash>
+            | Delete
+      = @collection.name
+
+    - if current_user.present?
+      .alert.alert-info Note: Anyone who isn't logged in will need to use the username and password from the collection options to access this page.
+    - if editing?
+      .well
+        = form_tag upload_private_photo_collection_path(@collection), multipart: true, class: 'form-inline' do
+          .form-group
+            = label_tag 'Add photos'
+            = file_field_tag 'photos[]', multiple: true, style: 'display: inline-block; margin-left: 5px'
+          = submit_tag 'Upload', class: 'btn btn-default'
+
+.row
+  .col-md-12
+    ul.gallery.lightbox
+      - @collection.private_photos.sort_by { |photo| File.basename(photo.image.url) }.each do |photo|
+        li.item
+          a.image href=photo.image.url title=File.basename(photo.image.url)
+            img src=photo.image.thumb.url title=File.basename(photo.image.url)
+          - if editing?
+            .control-buttons
+              => link_to remove_private_photo_collection_path(@collection, photo_id: photo._id), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-default' do
+                span.glyphicon.glyphicon-trash>
+                | Delete

@@ -6,6 +6,7 @@ ul.nav.navbar-nav.navbar-right.nav-admin
     ul.dropdown-menu
       li.section-title Site admin
       li = link_to "Pages", pages_path
+      li = link_to "Private Photos", private_photo_collections_path
       li = link_to users_path do
         | Users
         - users_count = User.where(confirmed_at: nil).count

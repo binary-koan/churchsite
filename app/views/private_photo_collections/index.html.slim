@@ -1,0 +1,19 @@
+.row: .col-md-12
+  h1 Private Photo Collections
+
+  p
+    = link_to new_private_photo_collection_path, class: "btn btn-primary" do
+      span.glyphicon.glyphicon-plus>
+      | Add Collection
+
+  ul.list-group
+    - @collections.each do |collection|
+      li.list-group-item
+        .controls.pull-right
+          => link_to edit_private_photo_collection_path(collection), class: 'btn btn-default' do
+            span.glyphicon.glyphicon-wrench>
+            | Options
+          = link_to collection, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' do
+            span.glyphicon.glyphicon-trash>
+            | Delete
+        h5= link_to collection.name, collection

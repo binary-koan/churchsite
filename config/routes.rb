@@ -34,6 +34,11 @@ Rails.application.routes.draw do
 
   resources :bulletins, only: [:create, :edit, :update, :destroy]
 
+  resources :private_photo_collections do
+    post :upload, on: :member
+    delete :remove, on: :member
+  end
+
   resources :photos, except: [:index, :show] do
     get :gallery, action: :gallery, on: :collection
     post "gallery/reorder", action: :reorder, on: :collection

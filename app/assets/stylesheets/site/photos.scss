@@ -1,15 +1,14 @@
 .gallery {
-  display: inline-block;
-  margin: 0 10px 0 0;
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -10px;
+  margin-right: -10px;
   padding: 0;
 
   .item {
-    @extend .well;
-    @extend .well-sm;
-
-    display: inline-block;
-    margin: 10px;
-    max-width: 220px;
+    width: 20%;
+    padding: 10px;
+    list-style: none;
 
     a {
       background-repeat: no-repeat;
@@ -17,7 +16,10 @@
     }
 
     img {
-      display: inline-block;
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.15);
     }
 
     p {
@@ -32,5 +34,21 @@
   .control-buttons {
     margin-top: 5px;
     text-align: right;
+  }
+}
+
+@media (max-width: $screen-md) {
+  .gallery {
+    .item {
+      width: 25%;
+    }
+  }
+}
+
+@media (max-width: $screen-sm) {
+  .gallery {
+    .item {
+      width: 50%;
+    }
   }
 }

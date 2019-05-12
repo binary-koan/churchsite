@@ -1,0 +1,22 @@
+= form_for @collection, html: { class: 'form-horizontal' } do |f|
+  - if @collection.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@collection.errors.count, "error")} prohibited this collection from being saved:"
+      ul
+        - @collection.errors.full_messages.each do |message|
+          li = message
+
+  .form-group
+    = f.label :name, class: 'col-sm-3 control-label'
+    .col-sm-9 = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :username, class: 'col-sm-3 control-label'
+    .col-sm-9 = f.text_field :username, class: 'form-control'
+  .form-group
+    = f.label :password, (@collection.persisted? ? 'Change Password' : 'Password'), class: 'col-sm-3 control-label'
+    .col-sm-9
+      = f.text_field :password, class: 'form-control'
+      p.help-block Make sure to note this down; you won't be able to see it again!
+  .form-group: .col-sm-9.col-sm-offset-3
+    = f.submit 'Save', class: 'btn btn-primary'
+    = link_to "Back to list", private_photo_collections_path, class: 'btn btn-link'
