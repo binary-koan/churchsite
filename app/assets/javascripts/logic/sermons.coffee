@@ -29,7 +29,17 @@ $ ->
     $(this).append list
 
   # Audio Player
-  $('audio').audioPlayer
-    strPlay: '<i class="icon-play"></i>'
-    strPause: '<i class="icon-pause"></i>'
-    strVolume: '<i class="icon-volume"></i>'
+  if $('#sermon_audio').length
+    new Plyr('#sermon_audio', {
+      urls: {
+        download: $('#sermon_audio source').attr('src'),
+      },
+      controls: [
+        'play',
+        'progress',
+        'current-time',
+        'mute',
+        'volume',
+        'download'
+      ]
+    })

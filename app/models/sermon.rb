@@ -4,7 +4,7 @@ class Sermon
   field :title, type: String
   field :description, type: String
   field :content, type: String
-  mount_uploader :podcast_ogg, AudioUploader
+  # mount_uploader :podcast_ogg, AudioUploader
   mount_uploader :podcast_mp3, AudioUploader
   attr_accessor :picked_date
 

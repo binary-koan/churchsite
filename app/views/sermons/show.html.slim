@@ -15,5 +15,8 @@
         = link_to @sermon, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-default' do
           span.glyphicon.glyphicon-trash>
           | Delete
+    - if @sermon.podcast_mp3.present?
+      audio.hidden#sermon_audio controls=true
+        source src=@sermon.podcast_mp3 type='audio/mp3'
     p.introduction = @sermon.formatted_description
     == @sermon.content

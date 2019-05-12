@@ -15,7 +15,6 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //
-//= require audioplayer
 //= require date
 //= require jquery.magnific-popup
 //

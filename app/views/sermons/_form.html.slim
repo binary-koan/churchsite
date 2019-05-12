@@ -47,31 +47,11 @@
   /           li Finally, use the file picker on this webpage to find the file you just saved
   /       .modal-footer
   /         button.btn.btn-default(data-dismiss='modal') Close
-  / .form-group
-  /   = f.label :podcast_mp3, "MP3 Podcast", class: 'col-sm-3 control-label'
-  /   .col-sm-9
-  /     = f.file_field :podcast_mp3, accept: 'audio/mp3'
-  /     p.help-block Podcast again in the MP3 audio format.
-  /     p.help-block
-  /       a(href='#' data-toggle='modal' data-target='#mp3FileModal') Learn how to make this sort of file
-  /     #mp3FileModal.modal.fade: .modal-dialog: .modal-content
-  /       .modal-header
-  /         h3 Make an MP3 file
-  /       .modal-body
-  /         p.lead Do this once
-  /         ol
-  /           li Download Audacity from <a href="http://audacity.sourceforge.net">here</a>
-  /           li Run the installer and follow the prompts
-  /         p.lead Do this each time
-  /         ol
-  /           li Record your sound in any format
-  /           li Open Audacity and click <em>File</em> <span class="glyphicon glyphicon-menu-right"></span> <em>Open ...</em>
-  /           li Find your recorded sound file and click <em>Open</em>
-  /           li Click <em>File</em> <span class="glyphicon glyphicon-menu-right"></span> <em>Export ...</em>
-  /           li Choose <em>MP3 Files</em> under <em>Save as type</em> and click <em>Save</em>
-  /           li Finally, use the file picker on this webpage to find the file you just saved
-  /       .modal-footer
-  /         button.btn.btn-default(data-dismiss='modal') Close
+  .form-group
+    = f.label :podcast_mp3, "MP3 Recording", class: 'col-sm-3 control-label'
+    .col-sm-9
+      = f.file_field :podcast_mp3, accept: 'audio/mp3'
+      p.help-block Sermon recording in the MP3 audio format.
   .form-group: .col-sm-9.col-sm-offset-3
     = f.submit 'Save', class: 'btn btn-primary'
     = link_to "Back to list", sermons_path, class: 'btn btn-link'

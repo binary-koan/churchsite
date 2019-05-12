@@ -14,6 +14,7 @@ gem "mongoid", "~> 6"
 gem "devise"
 gem "carrierwave"
 gem "carrierwave-mongoid", require: "carrierwave/mongoid"
+gem "fog-aws"
 gem "will_paginate_mongoid"
 
 gem "mini_magick"

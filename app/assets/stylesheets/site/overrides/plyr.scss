@@ -1,0 +1,46 @@
+.plyr {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 15px;
+
+  .plyr__controls {
+    flex: 1;
+  }
+
+  &.plyr--audio .plyr__control.plyr__tab-focus,
+  &.plyr--audio .plyr__control:hover,
+  &.plyr--audio .plyr__control[aria-expanded="true"] {
+    background-color: $brand-primary;
+  }
+
+  &.plyr--audio .plyr__control.plyr__tab-focus {
+    box-shadow: 0 0 0 5px transparentize($brand-primary, 0.75);
+  }
+
+  &.plyr--full-ui
+    input[type="range"].plyr__tab-focus::-webkit-slider-runnable-track {
+    box-shadow: 0 0 0 5px transparentize($brand-primary, 0.75);
+  }
+
+  &.plyr--full-ui input[type="range"].plyr__tab-focus::-moz-range-track {
+    box-shadow: 0 0 0 5px transparentize($brand-primary, 0.75);
+  }
+
+  &.plyr--full-ui input[type="range"].plyr__tab-focus::-ms-track {
+    box-shadow: 0 0 0 5px transparentize($brand-primary, 0.75);
+  }
+
+  &.plyr--full-ui input[type="range"] {
+    color: $brand-primary;
+  }
+
+  &::before {
+    content: "Listen online";
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: -2px;
+    color: $gray;
+  }
+}
