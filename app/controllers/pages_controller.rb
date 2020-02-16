@@ -117,6 +117,6 @@ class PagesController < ApplicationController
   end
 
   def set_state_for_sermons
-    @sermons = Sermon.asc(:date).paginate(page: params[:page], per_page: 10)
+    @sermons = Sermon.desc(:date).paginate(page: params[:page], per_page: 10)
   end
 end
