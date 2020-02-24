@@ -48,7 +48,6 @@ GEM
     autoprefixer-rails (9.5.1.1)
       execjs
     bcrypt (3.1.12)
-    bcrypt (3.1.12-x64-mingw32)
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     bootstrap-sass (3.4.1)
@@ -109,7 +108,6 @@ GEM
       factory_girl (~> 4.9.0)
       railties (>= 3.0.0)
     ffi (1.10.0)
-    ffi (1.10.0-x64-mingw32)
     fog-aws (3.5.0)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
@@ -164,8 +162,6 @@ GEM
     multi_json (1.13.1)
     nio4r (2.3.1)
     nokogiri (1.10.3)
-      mini_portile2 (~> 2.4.0)
-    nokogiri (1.10.3-x64-mingw32)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pry (0.12.2)
@@ -288,7 +284,6 @@ GEM
 
 PLATFORMS
   ruby
-  x64-mingw32
 
 DEPENDENCIES
   bootstrap-datepicker-rails
