@@ -12,6 +12,8 @@
       - @event = Event.new
       = render partial: "events/form"
 
+.alert.alert-info For regular activities please visit the Activities page.
+
 .events-list
   - Event.visible.special.order(show_until: :asc).each do |event|
     .event
