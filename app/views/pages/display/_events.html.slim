@@ -3,45 +3,26 @@
 
 - if editing?
   = render partial: "options/announcement_form", locals: { return_to: Page.events.url_path }
-  .well.well-sm
-    h4 Add Event
-    - @event = Event.new
-    = render partial: "events/form"
+  p.text-right: button.btn.btn-primary.btn-announcement type="button" data-toggle="collapse" data-target="#add-event"
+    span.glyphicon.glyphicon-plus>
+    | Add event
+  #add-event.hidden.collapse
+    .well.well-sm
+      h4 Add Event
+      - @event = Event.new
+      = render partial: "events/form"
 
 .events-list
-  - Event.visible.special.each do |event|
+  - Event.visible.special.order(show_until: :asc).each do |event|
     .event
-      .panel.panel-primary.event-panel
-        .panel-body
-          - if editing?
-            p.text-right
-              => link_to edit_event_path(event), class: 'btn btn-default' do
-                span.glyphicon.glyphicon-pencil>
-                | Edit
-              = link_to event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' do
-                span.glyphicon.glyphicon-trash>
-                | Delete
-          - if event.image.present?
-            img.img-responsive.img-rounded src="/#{event.image&.url}"
-          h3 = event.title
-          p = event.content.html_safe
+      = render "events/event", event: event, variant: "primary"
 
 hr
 
 .events-list
-  - Event.visible.normal.each do |event|
+  - Event.visible.normal.order(show_until: :asc).each do |event|
     .event
-      .panel.panel-default.event-panel
-        .panel-body
-          - if editing?
-            p.text-right
-              => link_to edit_event_path(event), class: 'btn btn-default' do
-                span.glyphicon.glyphicon-pencil>
-                | Edit
-              = link_to event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' do
-                span.glyphicon.glyphicon-trash>
-                | Delete
-          - if event.image.present?
-            img.img-responsive.img-rounded src="/#{event.image&.url}"
-          h3 = event.title
-          p = event.content.html_safe
+      = render "events/event", event: event, variant: "default"
+
+- if Event.visible.none?
+  p.lead.text-muted There are no upcoming events at the moment.

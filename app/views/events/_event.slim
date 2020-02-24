@@ -1,0 +1,16 @@
+.panel.event-panel class="panel-#{variant}"
+  .panel-body
+    - if editing?
+      p.text-right
+        => link_to edit_event_path(event), class: 'btn btn-default' do
+          span.glyphicon.glyphicon-pencil>
+          | Edit
+        = link_to event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' do
+          span.glyphicon.glyphicon-trash>
+          | Delete
+    .content
+      - if event.image.present?
+        img.image.img-rounded src="/#{event.image&.url}"
+      .text
+        h3 = event.title
+        p = event.content.html_safe

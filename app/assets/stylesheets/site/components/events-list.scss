@@ -1,11 +1,8 @@
 .events-list {
-  display: flex;
   margin-left: -15px;
   margin-right: -15px;
 
   .event {
-    flex: 1;
-    max-width: 50%;
     padding: 15px;
   }
 
@@ -17,11 +14,9 @@
 
 @media (max-width: $screen-sm) {
   .events-list {
-    display: block;
     margin: 0;
 
     .event {
-      max-width: none;
       padding: 0;
       margin-bottom: 15px;
     }
