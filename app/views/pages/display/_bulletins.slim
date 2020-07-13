@@ -2,7 +2,7 @@
   h1 = @page.title
 
 - if editing?
-  = render partial: "options/announcement_form", locals: { return_to: Page.events.url_path }
+  = render partial: "options/announcement_form", locals: { return_to: Page.bulletins.url_path }
   .well.well-sm
     h4 Add Bulletin
     - @bulletin = Bulletin.new
