@@ -28,8 +28,8 @@
     ul.gallery.lightbox
       - @collection.private_photos.sort_by { |photo| File.basename(photo.image.url) }.each do |photo|
         li.item
-          a.image href=photo.image.url title=File.basename(photo.image.url)
-            img src=photo.image.thumb.url title=File.basename(photo.image.url)
+          a.image href=photo.image.url
+            img src=photo.image.thumb.url
           - if editing?
             .control-buttons
               => link_to remove_private_photo_collection_path(@collection, photo_id: photo._id), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-default' do
