@@ -1,5 +1,5 @@
 CarrierWave.configure do |config|
-  unless Rails.env.test?
+  if !Rails.env.test? && !ENV['PRECOMPILING_ASSETS']
     config.fog_provider = 'fog/aws'
     config.fog_credentials = {
       provider:              'AWS',

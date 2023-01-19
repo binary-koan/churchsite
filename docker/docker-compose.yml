@@ -10,5 +10,6 @@ services:
       - "3000:3000"
     environment:
       MONGODB_URI: "mongodb://db:27017/churchsite"
+      BUNDLE_PATH: "vendor/bundle"
     depends_on:
       - db
