@@ -148,7 +148,7 @@ GEM
     mimemagic (0.3.10)
       nokogiri (~> 1)
       rake
-    mini_magick (4.9.3)
+    mini_magick (4.9.4)
     mini_mime (1.0.1)
     mini_portile2 (2.8.1)
     minitest (5.11.3)
