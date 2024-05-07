@@ -5,8 +5,8 @@ CarrierWave.configure do |config|
       provider:              'AWS',
       aws_access_key_id:     ENV['SPACES_ACCESS_KEY'] || Rails.application.credentials.spaces_access_key,
       aws_secret_access_key: ENV['SPACES_SECRET_KEY'] || Rails.application.credentials.spaces_secret_key,
-      region:                'nyc3',
-      endpoint:              'https://nyc3.digitaloceanspaces.com'
+      region:                ENV['SPACES_REGION'] || 'nyc3',
+      endpoint:              ENV['SPACES_ENDPOINT'] || 'https://nyc3.digitaloceanspaces.com'
     }
     config.fog_directory = ENV['SPACES_NAME'] || 'lincolnchurch-staging'
   end
